@@ -1,0 +1,75 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+#header{
+    background-color: lightblue;
+    height: 90px;
+    float: left;
+    width: 80%;
+       
+}
+#info{
+    background-color: blanchedalmond;
+    height: 90px;
+    
+}
+#rightbar{
+    background-color: lightcoral;
+    width: 20%;
+    height: 91vh;
+    float: right;
+    text-decoration: none;
+    
+}
+#rightbar a{
+    color:black;
+    
+}
+#content{
+    background-color: aquamarine;
+      height: 91vh;
+    
+}
+.header{
+    text-align: center;
+     background-color: lightblue;
+    height: 90px;
+    float: left;
+    width: 80%;
+ 
+}
+.info{
+    background-color: blanchedalmond;
+    height: 90px;
+    
+}
+.rightbar{
+    background-color: lightcoral;
+    width: 20%;
+    height: 91vh;
+    float: right;
+    text-decoration: none;
+    
+}
+#form{
+    background-image: url("maxresdefault.jpg");
+    background-repeat: no-repeat;
+      
+    
+    align-content: center;
+    text-align: center; 
+   
+}
+#form input {
+    
+}
+#register p{
+    color: red;
+}
+#register p a{
+    text-decoration: none;
+    color: red;
+    
+}
