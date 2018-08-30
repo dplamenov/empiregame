@@ -3,12 +3,11 @@ session_start();
 include 'config.php';
 $getbuild_sql="SELECT * FROM building";
 $get_build_q=  mysqli_query($dbc, $getbuild_sql);
-        echo '<p>Вашите пари:' . userdata($_SESSION['user']['user_id'], 'money') . 'лева</p>';
+echo '<p>Your money:' . userdata($_SESSION['user']['user_id'], 'money') . 'Euro</p>';
 
-echo '<p>Сграда Център</p><p>ВСИЧКИ ВРЕМЕНА СА В МИНУТИ</p>';
+echo '<p>Сграда Център</p><p>All times are in minutes</p>';
 echo '<table border="1"><tr><td>Име на сградата</td><td>Пари</td><td>Време</td><td>Построй</td></tr>';
 while ($building=  mysqli_fetch_assoc($get_build_q)) {
-    //table
     if(userdata($_SESSION['user']['user_id'], 'money')>=$building['money']){
         $link='<a href="?build='.$building['building_id'].'">Построй</a>';
         
