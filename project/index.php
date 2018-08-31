@@ -46,7 +46,7 @@ if (@$_SESSION['islogged'] === TRUE) {
     ?>
     <div class="header"><img scr="logo.png"></div>
 
-    <div class="info">Сървърно време: <?php echo date('H i s') ?></div>
+    <div class="info">Server time <?php echo date('H:i:s') ?></div>
     <div class="rightbar">
         <ul style="text-decoration: none">
 
@@ -165,7 +165,7 @@ if (isset($_GET['build'])) {
 
 <div id="header"><p>Здравей, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Изход</a>' ?></p>
 </div>
-<div id="info">Сървърно време: <?php echo date('H i s'); ?>
+<div id="info">Server time <?php echo date('H:i:s'); ?>
 </div>
 <div id="rightbar"><?php
     echo '<p>Вашите пари:  ' . userdata($_SESSION['user']['user_id'], 'money') . 'лева</p>';

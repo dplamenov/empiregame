@@ -23,9 +23,7 @@ $('#error').html(data);
 
             }).fail(function (er) {
                 console.log('1');
-            }).always(function () {
-                // console.log('d');
-            });
+            })
         });
     });
 
@@ -42,7 +40,7 @@ $('#error').html(data);
     <div> <input type="text" placeholder="Истинско име" id="realname" /></div>
     <div><input type="text" placeholder="email" id="email" /></div>
     <div id="register"><button id="btn">Регистирай се</button></div>
-    <div id="error" style="color: greenyellow"></div>
+    <div id="error" style="color: black"></div>
 </div>
 
 
