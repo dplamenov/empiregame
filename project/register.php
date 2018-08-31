@@ -40,7 +40,7 @@ $('#error').html(data);
     <div> <input type="text" placeholder="Потребителско име" id="username" /></div>
     <div><input type="password" placeholder="Парола" id="pass" /></div>
     <div> <input type="text" placeholder="Истинско име" id="realname" /></div>
-    <div><input type="password" placeholder="email" id="email" /></div>
+    <div><input type="text" placeholder="email" id="email" /></div>
     <div id="register"><button id="btn">Регистирай се</button></div>
     <div id="error" style="color: greenyellow"></div>
 </div>
