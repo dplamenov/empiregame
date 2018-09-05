@@ -7,9 +7,9 @@ if (ob == 'yes') {
 session_start();
 
 echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">';
-echo '<link rel="stylesheet" href="style.css" />';
+echo '<link rel="stylesheet" href="css/style.css" />';
 
-echo '<script src="jquery.js" type="text/javascript"></script>';
+echo '<script src="js/jquery.js" type="text/javascript"></script>';
 ?>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -39,10 +39,9 @@ echo '<script src="jquery.js" type="text/javascript"></script>';
 if (@$_SESSION['islogged'] === TRUE) {
     deletebuilding();
     deletearmy();
-//    include 'login.php';
-    //echo 'ok';
+
 } else {
-    //echo 'not ok';
+
     ?>
     <div class="header"><img scr="logo.png"></div>
 
@@ -148,7 +147,6 @@ if (isset($_GET['build'])) {
         if ($num_rows == 0) {
 
             $sql_remove_money = "UPDATE users SET money = money-'" . $now_build['money'] . "'WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
-            echo $sql_remove_money;
             mysqli_query($dbc, $sql_remove_money);
             $add_build_sql = "INSERT INTO building_now (user_id,building_name,end_time) VALUES ('" . $_SESSION['user']['user_id'] . "','" . $build_id . "','" . $end_time . "')";
             mysqli_query($dbc, $add_build_sql);
@@ -175,7 +173,7 @@ if (isset($_GET['build'])) {
 
 </div>
 <div id="content">
-    <img src="MAP-DARK.jpg" alt=""  usemap="#Map"/><br><img src="global.png" />
+    <img src="images/map.jpg" alt="" usemap="#Map"/><br><img src="images/global.png"/>
     <?php
 
 
@@ -203,23 +201,39 @@ if (isset($_GET['build'])) {
     $user_build_data = "SELECT * FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $user_build_data_r = mysqli_query($dbc, $user_build_data);
     if (mysqli_num_rows($user_build_data_r) >= 1) {
-        //  echo '<p>Сега строиш</p>';
-
-        echo '<table border="1">';
+     echo '<table border="1">';
         echo '<tr><td>Сграда</td><td>Ниво</td></tr>';
 
         while ($xv = mysqli_fetch_assoc($user_build_data_r)) {
-            //echo '<pre>'.print_r($xv, true).'</pre>';
             $get_build_name_by_id_sql = "SELECT * FROM building WHERE building_id='" . $xv['building_id'] . "' ";
             $xva = mysqli_query($dbc, $get_build_name_by_id_sql);
             $xvaa = mysqli_fetch_assoc($xva);
-            // echo $get_build_name_by_id_sql;
             echo '<tr><td>' . $xvaa['build_name'] . '</td><td>' . $xv['build_lv'] . '</td></tr>';
         }
         echo '</table>';
-    } else {
-//Town centre
     }
+
+    echo '<p>Твоята армия</p>';
+
+    $user_army_data = "SELECT * FROM user_army WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
+    $user_army_data_r = mysqli_query($dbc, $user_army_data);
+    if (mysqli_num_rows($user_army_data_r) >= 1) {
+        echo '<table border="1">';
+        echo '<tr><td>Армия</td><td>Брой</td></tr>';
+
+        while ($xv = mysqli_fetch_assoc($user_army_data_r)) {
+
+            $get_build_name_by_id_sql = "SELECT * FROM army WHERE army_id='" . $xv['army_name'] . "' ";
+            $xva = mysqli_query($dbc, $get_build_name_by_id_sql);
+            $xvaa = mysqli_fetch_assoc($xva);
+            $all_user_army[][$xvaa['army_id']] = $xv['count'];
+            echo '<tr><td>' . $xvaa['army_name'] . '</td><td>' . $xv['count'] . '</td></tr>';
+        }
+
+
+        echo '</table>';
+    }
+
     ?>
     <div id="text"></div>
 </div>
@@ -232,11 +246,8 @@ if (isset($_GET['build'])) {
     $get_users_build_area = mysqli_query($dbc, $sql_get_users_build_area);
     while ($get_users_build_area_array = mysqli_fetch_assoc($get_users_build_area)) {
         $sql_get_build_area = "SELECT * FROM building WHERE building_id='" . $get_users_build_area_array['building_id'] . "'";
-        // echo $sql_get_build_area;
         $get_build_area = mysqli_query($dbc, $sql_get_build_area);
         $get_build_area_array = mysqli_fetch_assoc($get_build_area);
-//                //echo '<pre>'.print_r($get_build_area_array, true).'</pre>';
-        //echo 'a';
         echo '<area alt="" title="" id="' . $get_build_area_array['geo_id'] . '" href="#" shape="rect" coords="' . $get_build_area_array['geo_location'] . '" />';
     }
     ?>

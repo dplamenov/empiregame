@@ -2,76 +2,66 @@
 
 session_start();
 include 'config.php';
-echo '<script src="jquery.js" type="text/javascript"></script>';
+echo '<script src="js/jquery.js" type="text/javascript"></script>';
 ?>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.army1').click(function () {
-            var armynum = $('#army_num').val();
-            var armyid = 1;
-            if (armynum <= 240 && armynum != 0) {
-            
-             
-                //busnes logic to train army
-                $.ajax({
-                    url: 'train_army.php',
-                    type: 'POST',
-                    data: {
-                        armynum: armynum,
-                        armyid: armyid
-                    }
-                }).done(function (data) {
-                
-                 $('#er').html(data);
-                });
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.army1').click(function () {
+                var armynum = $('#army_num').val();
+                var armyid = 1;
+                if (armynum <= 240 && armynum != 0) {
 
 
+                    //busnes logic to train army
+                    $.ajax({
+                        url: 'train_army.php',
+                        type: 'POST',
+                        data: {
+                            armynum: armynum,
+                            armyid: armyid
+                        }
+                    }).done(function (data) {
+                        window.location.href = "index.php";
+                        $('#er').html(data);
+                    });
 
 
-            } else {
-                $('#er').html('Невалиден брой армия');
-            }
+                } else {
+                    $('#er').html('Невалиден брой армия');
+                }
+
+            });
+            $('.army2').click(function () {
+                var armynum = $('#army_num').val();
+                var armyid = 2;
+                if (armynum <= 240 && armynum != 0) {
+                    $.ajax({
+                        url: 'train_army.php',
+                        type: 'POST',
+                        data: {
+                            armynum: armynum,
+                            armyid: armyid
+                        }
+                    }).done(function (data) {
+                       console.log(12);
+                        window.location.href = "index.php";
+                        console.log(1);
+                        $('#er').html(data);
+                    });
+
+
+                } else {
+                    $('#er').html('Невалиден брой армия');
+                }
+
+            });
+
 
         });
-        $('.army2').click(function () {
-            var armynum = $('#army_num').val();
-            var armyid = 2;
-            if (armynum <= 240 && armynum != 0) {
-                
-     
-                //busnes logic to train army
-                $.ajax({
-                    url: 'train_army.php',
-                    type: 'POST',
-                    data: {
-                        armynum: armynum,
-                        armyid: armyid
-                    }
-                }).done(function (data) {
-                 $('#er').html(data);
-                });
 
 
-
-
-            } else {
-                $('#er').html('Невалиден брой армия');
-            }
-
-        });
-
-
-    });
-
-
-
-
-
-
-
-
-</script>
+    </script>
 <?php
 
 echo '<p>Вашите пари:' . userdata($_SESSION['user']['user_id'], 'money') . 'лева</p>';

@@ -24,3 +24,6 @@ CREATE TABLE `digia_greatempire`.`user_army` ( `user_id` INT NOT NULL , `army_na
 
 ALTER TABLE `army` ADD `give_xp` INT NOT NULL AFTER `army_name`;
 
+ALTER TABLE `users` CHANGE `real_name` `real_name` VARCHAR(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+ALTER TABLE `building` CHANGE `geo_location` `geo_location` VARCHAR(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
