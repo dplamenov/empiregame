@@ -65,5 +65,3 @@ if (@count($error) > 0) {
     $v = '0';
     echo ' You register successfully -><a href="index.php">Click on me to play</a> ';
 }
-
-

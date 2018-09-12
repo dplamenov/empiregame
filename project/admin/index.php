@@ -1,12 +1,12 @@
 <?php
 session_start();
 $form_set = false;
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
     $form_set = true;
 }
-if($form_set) {
+if ($form_set) {
     if ($username == "admin" && $password == "2128") {
         $_SESSION['is_log'] = true;
         header("Location: logged.php");

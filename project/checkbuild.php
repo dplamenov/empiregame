@@ -15,11 +15,7 @@ while ($building = mysqli_fetch_assoc($get_build_q)) {
         $class = 'ok';
     } else {
         $link = 'Нямаш пари';
-//$link2 = $building['money']-$_SESSION['user']['money'].'<br>';
-
     }
-
-
     echo '<tr><td>' . $building['build_name'] . '</td><td>' . $building['money'] . ' Лева</td><td>' . $building['time'] . ' Мин</td><td>' . $link . @$link2 . '</td></tr>';
 }
 echo '</table>';

@@ -45,7 +45,9 @@ if (@$_SESSION['islogged'] === TRUE) {
     ?>
     <div class="header"><img scr="logo.png"></div>
 
-    <div class="info">Server time <?php echo date('H:i:s') ?></div>
+    <div class="info">
+        <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
+    </div>
     <div class="rightbar">
         <ul style="text-decoration: none">
 
@@ -78,7 +80,53 @@ if (@$_SESSION['islogged'] === TRUE) {
 
     <script type="text/javascript"> $(document).ready(function () {
 
+            function refresh() {
+                $.ajax({
+                    url: 'auto_refreshservertime.php',
+                }).done(function (data) {
+                    $("#servertime").html("Server time: " + data);
+                });
+            }
 
+            function auto_refresh() {
+                $.ajax({
+                    url: 'auto_refresharmy.php',
+                    data: {
+                        getCount: true
+                    },
+                    type: 'post'
+                }).done(function (count) {
+                    if (count >= 1) {
+                        for (let i = 1; i <= count; i++) {
+
+                            $.ajax({
+                                url: 'auto_refresharmy.php',
+                                data: {
+                                    id: i
+                                },
+                                type: 'post'
+                            }).done(function (data) {
+                                if (data == 1) {
+                                    window.location.href = "refresh_helper.php";
+
+                                }else{
+                                    $("#" + i).html(data);
+                                }
+
+                            });
+                        }
+                    }
+                    //document.getElementById("2").innerText = data;
+                });
+            }
+
+
+            setInterval(function () {
+                auto_refresh()
+            }, 1000);
+            setInterval(function () {
+                refresh();
+            }, 1000);
             $('#sgradacentur').click(function () {
                 $.ajax({
                     url: 'checkbuild.php'
@@ -163,7 +211,8 @@ if (isset($_GET['build'])) {
 
 <div id="header"><p>Здравей, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Изход</a>' ?></p>
 </div>
-<div id="info">Server time <?php echo date('H:i:s'); ?>
+<div id="info">
+    <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
 </div>
 <div id="rightbar"><?php
     echo '<p>Вашите пари:  ' . userdata($_SESSION['user']['user_id'], 'money') . 'лева</p>';
@@ -195,13 +244,41 @@ if (isset($_GET['build'])) {
     }
 
 
-    echo '<p>Твоите сгради</p>';
+    $sql_get_now_user_army = "SELECT * FROM `army_now` WHERE `user_id` = " . $_SESSION['user']['user_id'];
+    $get_now_user_army = mysqli_query($dbc, $sql_get_now_user_army);
+
+    if (mysqli_num_rows($get_now_user_army) >= 1) {
+        echo "<br>";
+        echo "<br>";
+        echo "<span>Сега тренираш</span>";
+        echo '<table>';
+        echo '<table border="1">';
+        echo '<tr><td>Армия</td><td>Брой</td><td>Остава още</td></tr>';
+        $counter = 0;
+        while ($army_now = mysqli_fetch_assoc($get_now_user_army)) {
+            $army_name = mysqli_fetch_assoc(mysqli_query($dbc, "SELECT `army_name` FROM `army` WHERE `army_id` = " . $army_now['army_name']))['army_name'];
+            date_default_timezone_set('Europe/Sofia');
+            $end_time = $army_now['end_time'] - time();
+            $end_time = date("H:i:s", $end_time - 7200);
+            echo "<tr><td>" . $army_name . "</td><td>" . $army_now['army_num'] . "</td><td id='" . $army_now['army_name'] . "'>" . $end_time . "</td></tr>";
+        }
+
+        echo "</table>";
+        echo "<br>";
+
+
+    } else {
+        echo "<p>В момента не тренираш армия</p>";
+    }
+
+
+    echo '<span>Твоите сгради</span>';
 
 
     $user_build_data = "SELECT * FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $user_build_data_r = mysqli_query($dbc, $user_build_data);
     if (mysqli_num_rows($user_build_data_r) >= 1) {
-     echo '<table border="1">';
+        echo '<table border="1">';
         echo '<tr><td>Сграда</td><td>Ниво</td></tr>';
 
         while ($xv = mysqli_fetch_assoc($user_build_data_r)) {
@@ -213,7 +290,8 @@ if (isset($_GET['build'])) {
         echo '</table>';
     }
 
-    echo '<p>Твоята армия</p>';
+    echo "<br>";
+    echo '<span>Твоята армия</span>';
 
     $user_army_data = "SELECT * FROM user_army WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $user_army_data_r = mysqli_query($dbc, $user_army_data);

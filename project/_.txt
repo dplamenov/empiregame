@@ -1,0 +1,16 @@
+Game 
+--------
+06.09.2018
+index.php (index file) -> 288 lines
+/admin -> 62 lines
+Total lines: 966 lines
+
+09.09.2018
+index.php (index file) -> 337 lines
+/admin -> 62
+Total lines: 1006 lines
+
+20.10.2018
+index.php (index file) -> ___ lines
+/admin -> ___ lines
+Total lines: ___ lines

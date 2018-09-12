@@ -1,15 +1,18 @@
 <?php
+spl_autoload_register(function ($file){
+    include $file.".php";
+});
 define('ob', 'no');
 mb_internal_encoding('UTF-8');
 
 date_default_timezone_set('Europe/Sofia');
-$dbc = mysqli_connect('localhost', 'digia_empire', '21282128', 'digia_greatempire');
+$dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
 mysqli_set_charset($dbc, 'utf8');
 
 
 function deletebuilding()
 {
-    $dbc = mysqli_connect('localhost', 'digia_empire', '21282128', 'digia_greatempire');
+    $dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
     $sega = time();
     $sql = "SELECT * FROM `building_now` WHERE `end_time` <'" . $sega . "'";
     $get_finished = mysqli_query($dbc, $sql);
@@ -50,7 +53,7 @@ function deletebuilding()
 
 function deletearmy()
 {
-    $dbc = mysqli_connect('localhost', 'digia_empire', '21282128', 'digia_greatempire');
+    $dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
     $sega = time();
     $sql = "SELECT * FROM army_now WHERE end_time <'" . $sega . "' AND user_id = '" . $_SESSION['user']['user_id'] . "'";
     $get_finished_army = mysqli_query($dbc, $sql);
@@ -87,16 +90,14 @@ function deletearmy()
 
         }
         $sql_delete = "DELETE FROM army_now WHERE `end_time` < '" . $sega . "'";
-
         mysqli_query($dbc, $sql_delete);
     }
 
 }
 
-
 function userdata($id, $param)
 {
-    $dbc = mysqli_connect('localhost', 'digia_empire', '21282128', 'digia_greatempire');
+    $dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
     $g = mysqli_query($dbc, "SELECT * FROM users WHERE user_id='$id'");
     $r = mysqli_fetch_assoc($g);
     return $r[$param];

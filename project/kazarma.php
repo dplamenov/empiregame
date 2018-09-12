@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include 'config.php';
 echo '<script src="js/jquery.js" type="text/javascript"></script>';
@@ -22,7 +21,11 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
                             armyid: armyid
                         }
                     }).done(function (data) {
-                        window.location.href = "index.php";
+                        console.log(data != "Нямаш пари.");
+                        if (data != "Нямаш пари.") {
+                            window.location.href = "index.php";
+                        }
+
                         $('#er').html(data);
                     });
 
@@ -44,22 +47,18 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
                             armyid: armyid
                         }
                     }).done(function (data) {
-                       console.log(12);
-                        window.location.href = "index.php";
-                        console.log(1);
+                        if (data != "Нямаш пари.") {
+                            window.location.href = "index.php";
+                        }
+
                         $('#er').html(data);
                     });
-
 
                 } else {
                     $('#er').html('Невалиден брой армия');
                 }
-
             });
-
-
         });
-
 
     </script>
 <?php
@@ -68,7 +67,7 @@ echo '<p>Вашите пари:' . userdata($_SESSION['user']['user_id'], 'money
 echo '<p>Казарма - Тренирай войници</p>';
 echo '<p>Максимум войници които можеш да тренираш на веднъж са 240</p>';
 echo '<p>Напиши колко войници искаш да тренираш и избери вид</p>';
-echo '<p>Има три вида войници по сила това са - леки(10,10),тежки(15,15),елитни(25,25).<br> Във скобите е дадено атаката и защитата на единиците.<br> За леки единици се иззисгва казарма ниво 1,<br>За тежки единици се иззисгва казарма ниво 5,<br>За елитни единици се иззисгва казарма ниво 11</p>';
+//echo '<p>Има три вида войници по сила това са - леки(10,10),тежки(15,15),елитни(25,25).<br> Във скобите е дадено атаката и защитата на единиците.<br> За леки единици се иззисгва казарма ниво 1,<br>За тежки единици се иззисгва казарма ниво 5,<br>За елитни единици се иззисгва казарма ниво 11</p>';
 //GET YOU KAZARMA LEVEL
 $sql_get_kazarma_level = "SELECT build_lv FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_id='1'";
 $get_kazarma_level = mysqli_query($dbc, $sql_get_kazarma_level);
@@ -82,10 +81,6 @@ $get_army_q = mysqli_query($dbc, $getarmy_sql);
 
 echo '<div id="armynum">
   <input id="army_num"type="text" placeholder="Брой войници / 240" />
-
-
-
-
 </div>';
 
 echo '<table border="1" id="army"><tr><td>Единица</td><td>Пари</td><td>Време</td><td>Тренирай</td></tr>';
@@ -105,5 +100,3 @@ while ($army = mysqli_fetch_assoc($get_army_q)) {
 }
 echo '</table>';
 echo '<div id="er"></div>';
-
-

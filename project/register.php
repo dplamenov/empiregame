@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-echo '<link rel="stylesheet" href="admin.css" />';
+echo '<link rel="stylesheet" href="css/style.css" />';
 echo '<script src="js/jquery.js" type="text/javascript"></script>';
 ?>
 <script type="text/javascript">
@@ -22,7 +22,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
 
 
             }).fail(function (er) {
-                console.log('1');
+                console.log(er);
             })
         });
     });
@@ -32,8 +32,8 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
 
 <div class="header">GREAT EMPIRE</div>
 
-<div class="info">e</div>
-<div class="rightbar">1</div>
+<div class="info"></div>
+<div class="rightbar"></div>
 <div id="form">
     <div><input type="text" placeholder="Потребителско име" id="username"/></div>
     <div><input type="password" placeholder="Парола" id="pass"/></div>
@@ -45,17 +45,10 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
     <div id="error" style="color: black"></div>
 </div>
 
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-
-
     <title>Регистирай се / Great Empire</title>
 </head>
-<body>
-
-
-</body>
 </html>
