@@ -37,8 +37,9 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
 </script>
 <?php
 if (@$_SESSION['islogged'] === TRUE) {
-    deletebuilding();
-    deletearmy();
+
+    deletebuilding($dbc);
+    deletearmy($dbc);
 
 } else {
 
@@ -80,11 +81,16 @@ if (@$_SESSION['islogged'] === TRUE) {
 
     <script type="text/javascript"> $(document).ready(function () {
 
+            function globalmap() {
+                console.log(1221);
+            }
+
+
             function refresh() {
                 $.ajax({
                     url: 'auto_refreshservertime.php',
                 }).done(function (data) {
-                    $("#servertime").html("Server time: " + data);
+                    $("#servertime").html("Server time " + data);
                 });
             }
 
@@ -109,17 +115,15 @@ if (@$_SESSION['islogged'] === TRUE) {
                                 if (data == 1) {
                                     window.location.href = "refresh_helper.php";
 
-                                }else{
+                                } else {
                                     $("#" + i).html(data);
                                 }
 
                             });
                         }
                     }
-                    //document.getElementById("2").innerText = data;
                 });
             }
-
 
             setInterval(function () {
                 auto_refresh()
@@ -210,19 +214,23 @@ if (isset($_GET['build'])) {
 ?>
 
 <div id="header"><p>Здравей, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Изход</a>' ?></p>
+    <div>
+        <a href="settings.php">Настройки на профила</a>
+    </div>
 </div>
 <div id="info">
     <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
 </div>
 <div id="rightbar"><?php
-    echo '<p>Вашите пари:  ' . userdata($_SESSION['user']['user_id'], 'money') . 'лева</p>';
-    echo 'XP   ' . userdata($_SESSION['user']['user_id'], 'xp') . '<br>';
+    echo '<p>Вашите пари:  ' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . 'лева</p>';
+    echo 'XP   ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . '<br>';
     echo @$is_now_build;
     ?>
 
 </div>
 <div id="content">
-    <img src="images/map.jpg" alt="" usemap="#Map"/><br><img src="images/global.png"/>
+    <img src="images/map.jpg" alt="" usemap="#Map"/><br>
+    <div><img src="images/global.png"/></div>
     <?php
 
 
@@ -249,7 +257,7 @@ if (isset($_GET['build'])) {
 
     if (mysqli_num_rows($get_now_user_army) >= 1) {
         echo "<br>";
-        echo "<br>";
+        //echo "<br>";
         echo "<span>Сега тренираш</span>";
         echo '<table>';
         echo '<table border="1">';
@@ -268,16 +276,15 @@ if (isset($_GET['build'])) {
 
 
     } else {
-        echo "<p>В момента не тренираш армия</p>";
+        //echo "<p>В момента не тренираш армия</p>";
     }
-
-
-    echo '<span>Твоите сгради</span>';
 
 
     $user_build_data = "SELECT * FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $user_build_data_r = mysqli_query($dbc, $user_build_data);
     if (mysqli_num_rows($user_build_data_r) >= 1) {
+        echo '<br>';
+        echo '<span>Твоите сгради</span>';
         echo '<table border="1">';
         echo '<tr><td>Сграда</td><td>Ниво</td></tr>';
 
@@ -291,11 +298,12 @@ if (isset($_GET['build'])) {
     }
 
     echo "<br>";
-    echo '<span>Твоята армия</span>';
+
 
     $user_army_data = "SELECT * FROM user_army WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $user_army_data_r = mysqli_query($dbc, $user_army_data);
     if (mysqli_num_rows($user_army_data_r) >= 1) {
+        echo '<span>Твоята армия</span>';
         echo '<table border="1">';
         echo '<tr><td>Армия</td><td>Брой</td></tr>';
 
@@ -319,7 +327,7 @@ if (isset($_GET['build'])) {
 <map name="Map" id="Map">
     <area alt="" title="" id="sgradacentur" href="#" shape="rect" coords="307,351,226,272"/>
     <?php
-    deletebuilding();
+    deletebuilding($dbc);
     $sql_get_users_build_area = "SELECT * FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $get_users_build_area = mysqli_query($dbc, $sql_get_users_build_area);
     while ($get_users_build_area_array = mysqli_fetch_assoc($get_users_build_area)) {

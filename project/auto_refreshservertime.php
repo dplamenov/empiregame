@@ -5,4 +5,4 @@ function getTimeInFormat(string $format, int $time): string
     return date($format, $time);
 }
 
-echo getTimeInFormat("d.m.Y H:i:s", time());
+echo getTimeInFormat("H:i:s", time());

@@ -2,6 +2,6 @@
 session_start();
 include_once 'config.php';
 sleep(1);
-deletearmy();
-deletebuilding();
+deletearmy($dbc);
+deletebuilding($dbc);
 header("Location: index.php");

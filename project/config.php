@@ -1,18 +1,29 @@
 <?php
-spl_autoload_register(function ($file){
-    include $file.".php";
+declare(strict_types = 1);
+spl_autoload_register(function (string $file) {
+    include $file . ".php";
+
 });
-define('ob', 'no');
 mb_internal_encoding('UTF-8');
 
-date_default_timezone_set('Europe/Sofia');
+define('ob', 'no', false);
+define('debug_mode', 'no', false); //IF == YES DEBUG MOD WORKING
+define('timezone','Europe/Sofia');
+
+$__logfile = 'log.txt';
+file_put_contents($__logfile, "#WEB SERVER MUST BE SET TO NOT VIEW THIS FILE!!!" . PHP_EOL);
+$logger = system\Logger::getInstance($__logfile);
+
+$__database = \system\DatabaseHelper::getInstance('localhost', 'digia_empire', '21282128', 'digia_greatempire');
+$__database->setCharset("utf8");
+date_default_timezone_set(timezone);
+
 $dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
 mysqli_set_charset($dbc, 'utf8');
 
-
-function deletebuilding()
+function deletebuilding($dbc)
 {
-    $dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
+    //$dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
     $sega = time();
     $sql = "SELECT * FROM `building_now` WHERE `end_time` <'" . $sega . "'";
     $get_finished = mysqli_query($dbc, $sql);
@@ -51,9 +62,9 @@ function deletebuilding()
 
 }
 
-function deletearmy()
+function deletearmy($dbc)
 {
-    $dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
+
     $sega = time();
     $sql = "SELECT * FROM army_now WHERE end_time <'" . $sega . "' AND user_id = '" . $_SESSION['user']['user_id'] . "'";
     $get_finished_army = mysqli_query($dbc, $sql);
@@ -95,9 +106,8 @@ function deletearmy()
 
 }
 
-function userdata($id, $param)
+function userdata(int $id, string $param,$dbc)
 {
-    $dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
     $g = mysqli_query($dbc, "SELECT * FROM users WHERE user_id='$id'");
     $r = mysqli_fetch_assoc($g);
     return $r[$param];

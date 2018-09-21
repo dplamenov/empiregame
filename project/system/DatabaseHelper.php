@@ -1,7 +1,8 @@
 <?php
+
 namespace system;
 
-class DatabaseHelper
+class DatabaseHelper extends Base
 {
     private static $instance = null;
 

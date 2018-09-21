@@ -12,13 +12,23 @@ echo '<a href="logout.php">Log out</a>';
 echo "<h1>List of all users:</h1>";
 $get_all_user_sql = "SELECT * FROM `users`";
 $get_all_user = mysqli_query($dbc, $get_all_user_sql);
-echo '<table><tr><td>User id</td><td>Username</td><td>Real name</td><td>Email</td><td>Password</td><td>Money</td><td>Xp</td></tr>';
+echo '<table><tr><td>User id</td><td>Username</td><td>Real name</td><td>Email</td><td>Password</td><td>Money</td><td>Xp</td><td>Active</td></tr>';
 $user_count = 0;
 while ($all_user = mysqli_fetch_assoc($get_all_user)) {
     $user_count++;
+
+    if(intval($all_user['active']) == 0){
+        $active = "Not active.";
+    }elseif(intval($all_user['active']) == 1){
+        $active = "Active.";
+    }else{
+        $active = "Error!";
+    }
+
     $all_user['pass'] = str_repeat("*", mb_strlen($all_user['pass']));
     echo '<tr><td>' . $all_user['user_id'] . '</td><td>' . $all_user['user_name'] . '</td><td>' . $all_user['real_name'] . '</td>
-<td>' . $all_user['email'] . '</td><td>' . $all_user['pass'] . '</td><td>' . $all_user['money'] . '</td><td>' . $all_user['xp'] . '</td></tr>';
+<td>' . $all_user['email'] . '</td><td>' . $all_user['pass'] . '</td><td>' . $all_user['money'] . '</td><td>' . $all_user['xp'] . '</td>
+<td>'.$active.'</td></tr>';
 }
 echo '</table>';
 $build_count = 0;

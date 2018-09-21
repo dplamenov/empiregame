@@ -4,7 +4,6 @@ session_start();
 include_once "config.php";
 function getCount($dbc): int
 {
-    $army_count = 0;
     $sql = "SELECT * FROM `army`";
     $result = mysqli_query($dbc, $sql);
     $army_count = mysqli_num_rows($result);

@@ -1,4 +1,4 @@
-CREATE TABLE `digia_greatempire`.`users` (
+CREATE TABLE `users` (
   `user_id`   INT          NOT NULL AUTO_INCREMENT,
   `user_name` VARCHAR(80)  NOT NULL,
   `real_name` VARCHAR(80)  NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE `digia_greatempire`.`users` (
 )
   ENGINE = InnoDB;
 
-CREATE TABLE `digia_greatempire`.`building` (
+CREATE TABLE `building` (
   `build_name`  VARCHAR(50) NOT NULL,
   `money`       INT         NOT NULL,
   `time`        INT         NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE `digia_greatempire`.`building` (
 )
   ENGINE = InnoDB;
 
-CREATE TABLE `digia_greatempire`.`building_now` (
+CREATE TABLE `building_now` (
   `user_id`       INT NOT NULL,
   `building_name` INT NOT NULL,
   `end_time`      INT NOT NULL
@@ -25,7 +25,7 @@ CREATE TABLE `digia_greatempire`.`building_now` (
   ENGINE = InnoDB;
 
 
-CREATE TABLE `digia_greatempire`.`users_building` (
+CREATE TABLE `users_building` (
   `user_id`    INT        NOT NULL,
   `build_name` VARCHAR(50) CHARACTER SET utf8
   COLLATE utf8_general_ci NOT NULL,
@@ -55,7 +55,7 @@ ALTER TABLE `army`
 COLLATE utf8_general_ci NOT NULL
   AFTER `army_id`;
 
-CREATE TABLE `digia_greatempire`.`army_now` (
+CREATE TABLE `army_now` (
   `user_id`   INT NOT NULL,
   `army_name` INT NOT NULL,
   `end_time`  INT NOT NULL,
@@ -82,3 +82,13 @@ COLLATE utf8_general_ci NOT NULL;
 ALTER TABLE `building`
   CHANGE `geo_location` `geo_location` VARCHAR(150) CHARACTER SET utf8
 COLLATE utf8_general_ci NOT NULL;
+
+ALTER TABLE `users`
+  ADD `x` INT NOT NULL
+  AFTER `xp`,
+  ADD `y` INT NOT NULL
+  AFTER `x`;
+
+ALTER TABLE `users`
+  ADD `active` TINYINT NOT NULL DEFAULT '1'
+  AFTER `y`;

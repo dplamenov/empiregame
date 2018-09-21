@@ -63,7 +63,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
     </script>
 <?php
 
-echo '<p>Вашите пари:' . userdata($_SESSION['user']['user_id'], 'money') . 'лева</p>';
+echo '<p>Вашите пари:' . userdata($_SESSION['user']['user_id'], 'money',$dbc) . 'лева</p>';
 echo '<p>Казарма - Тренирай войници</p>';
 echo '<p>Максимум войници които можеш да тренираш на веднъж са 240</p>';
 echo '<p>Напиши колко войници искаш да тренираш и избери вид</p>';
@@ -86,7 +86,7 @@ echo '<div id="armynum">
 echo '<table border="1" id="army"><tr><td>Единица</td><td>Пари</td><td>Време</td><td>Тренирай</td></tr>';
 while ($army = mysqli_fetch_assoc($get_army_q)) {
     //table
-    if (userdata($_SESSION['user']['user_id'], 'money') >= $army['money']) {
+    if (userdata($_SESSION['user']['user_id'], 'money',$dbc) >= $army['money']) {
         $link = '<a class="army' . $army['army_id'] . '" href="#">Тренирай</a>';
 
         $class = 'ok';
