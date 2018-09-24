@@ -13,6 +13,19 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
 ?>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        function refresh() {
+            $.ajax({
+                url: 'auto_refreshservertime.php',
+            }).done(function (data) {
+                console.log(data);
+                $("#servertime").html("Server time " + data);
+            });
+        }
+        setInterval(function () {
+            refresh()
+        },1000);
+
         $('#btn').click(function () {
 
             $.ajax({
@@ -90,6 +103,7 @@ if (@$_SESSION['islogged'] === TRUE) {
                 $.ajax({
                     url: 'auto_refreshservertime.php',
                 }).done(function (data) {
+                    console.log(data);
                     $("#servertime").html("Server time " + data);
                 });
             }

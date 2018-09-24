@@ -1,7 +1,8 @@
 <?php
 declare(strict_types = 1);
 spl_autoload_register(function (string $file) {
-    include $file . ".php";
+	$extension = ".php";
+    include $file . $extension;
 
 });
 mb_internal_encoding('UTF-8');

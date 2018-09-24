@@ -1,6 +1,18 @@
 <?php
 session_start();
 include 'config.php';
+$referer = explode('/',@$_SERVER['HTTP_REFERER']);
+
+$ref_counter = 0;
+foreach ($referer as $key){
+    $ref_counter++;
+}
+
+
+$referer = $referer[$ref_counter - 1];
+if($referer != 'index.php'){
+    exit;
+}
 echo '<script src="js/jquery.js" type="text/javascript"></script>';
 ?>
 
@@ -68,7 +80,6 @@ echo '<p>Казарма - Тренирай войници</p>';
 echo '<p>Максимум войници които можеш да тренираш на веднъж са 240</p>';
 echo '<p>Напиши колко войници искаш да тренираш и избери вид</p>';
 //echo '<p>Има три вида войници по сила това са - леки(10,10),тежки(15,15),елитни(25,25).<br> Във скобите е дадено атаката и защитата на единиците.<br> За леки единици се иззисгва казарма ниво 1,<br>За тежки единици се иззисгва казарма ниво 5,<br>За елитни единици се иззисгва казарма ниво 11</p>';
-//GET YOU KAZARMA LEVEL
 $sql_get_kazarma_level = "SELECT build_lv FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_id='1'";
 $get_kazarma_level = mysqli_query($dbc, $sql_get_kazarma_level);
 $get_kazarma_level_array = mysqli_fetch_assoc($get_kazarma_level);
