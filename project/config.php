@@ -24,8 +24,7 @@ mysqli_set_charset($dbc, 'utf8');
 
 function deletebuilding($dbc)
 {
-    //$dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
-    $sega = time();
+   $sega = time();
     $sql = "SELECT * FROM `building_now` WHERE `end_time` <'" . $sega . "'";
     $get_finished = mysqli_query($dbc, $sql);
     $get_finish_builing_n = mysqli_num_rows($get_finished);
