@@ -24,7 +24,6 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
                             armyid: armyid
                         }
                     }).done(function (data) {
-                        console.log(data != "Нямаш пари.");
                         if (data != "Нямаш пари.") {
                             window.location.href = "index.php";
                         }

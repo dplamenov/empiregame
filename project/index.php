@@ -18,7 +18,6 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
             $.ajax({
                 url: 'auto_refreshservertime.php',
             }).done(function (data) {
-                console.log(data);
                 $("#servertime").html("Server time " + data);
             });
         }
@@ -39,9 +38,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
                 window.location.reload(true);
 
             }).fail(function (er) {
-                console.log('1');
             }).always(function () {
-                // console.log('d');
             });
         });
     });
@@ -95,7 +92,7 @@ if (@$_SESSION['islogged'] === TRUE) {
     <script type="text/javascript"> $(document).ready(function () {
 
             function globalmap() {
-                console.log(1221);
+                console.log("global");
             }
 
 
@@ -103,7 +100,6 @@ if (@$_SESSION['islogged'] === TRUE) {
                 $.ajax({
                     url: 'auto_refreshservertime.php',
                 }).done(function (data) {
-                    console.log(data);
                     $("#servertime").html("Server time " + data);
                 });
             }
