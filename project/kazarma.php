@@ -1,16 +1,14 @@
 <?php
 session_start();
 include 'config.php';
-$referer = explode('/',@$_SERVER['HTTP_REFERER']);
+$referer = explode('/', @$_SERVER['HTTP_REFERER']);
 
 $ref_counter = 0;
-foreach ($referer as $key){
+foreach ($referer as $key) {
     $ref_counter++;
 }
-
-
 $referer = $referer[$ref_counter - 1];
-if($referer != 'index.php'){
+if (@$_SERVER['HTTP_REFERER'] == "") {
     exit;
 }
 echo '<script src="js/jquery.js" type="text/javascript"></script>';
@@ -75,7 +73,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
     </script>
 <?php
 
-echo '<p>Вашите пари:' . userdata($_SESSION['user']['user_id'], 'money',$dbc) . 'лева</p>';
+echo '<p>Вашите пари:' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . 'лева</p>';
 echo '<p>Казарма - Тренирай войници</p>';
 echo '<p>Максимум войници които можеш да тренираш на веднъж са 240</p>';
 echo '<p>Напиши колко войници искаш да тренираш и избери вид</p>';
@@ -97,13 +95,13 @@ echo '<div id="armynum">
 echo '<table border="1" id="army"><tr><td>Единица</td><td>Пари</td><td>Време</td><td>Тренирай</td></tr>';
 while ($army = mysqli_fetch_assoc($get_army_q)) {
     //table
-    if (userdata($_SESSION['user']['user_id'], 'money',$dbc) >= $army['money']) {
+    if (userdata($_SESSION['user']['user_id'], 'money', $dbc) >= $army['money']) {
         $link = '<a class="army' . $army['army_id'] . '" href="#">Тренирай</a>';
 
         $class = 'ok';
     } else {
         $link = 'Нямаш пари';
-//$link2 = $building['money']-$_SESSION['user']['money'].'<br>';
+        //$link2 = $building['money']-$_SESSION['user']['money'].'<br>';
     }
 
 
