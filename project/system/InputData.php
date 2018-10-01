@@ -4,6 +4,6 @@
 namespace system;
 
 
-class InputData extends Base
+class InputData
 {
 }

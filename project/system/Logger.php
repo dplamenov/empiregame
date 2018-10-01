@@ -1,7 +1,7 @@
 <?php
 
 namespace system;
-class Logger extends Base
+class Logger
 {
 
     private static $insance = null;

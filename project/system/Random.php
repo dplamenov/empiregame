@@ -2,7 +2,7 @@
 
 namespace system;
 
-class Random extends Base
+class Random
 {
     private $x;
     private $y;

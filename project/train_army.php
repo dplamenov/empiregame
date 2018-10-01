@@ -15,7 +15,6 @@ if (mysqli_num_rows($check_exist_army_q) == 1) {
         if(debug_mode == 'yes'){
             $end_time_army = $sega + 10;
         }
-
         $sql_train_army = "INSERT INTO `army_now`(`army_name`, `user_id`, `army_num`, `end_time`) VALUES ('" . $army_id . "','" . $_SESSION['user']['user_id'] . "','" . (int)$_POST['armynum'] . "','" . $end_time_army . "')";
 
         $cost_money = mysqli_fetch_assoc(mysqli_query($dbc, "SELECT `money` FROM army  WHERE `army_id` = " . $army_id))['money'] * $_POST['armynum'];

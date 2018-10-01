@@ -1,5 +1,8 @@
 <?php
 include 'config.php';
+if(!file_exists('database.php')){
+    header('Location: setup/index.php');
+}
 if (ob == 'yes') {
     ob_start();
 }
@@ -21,9 +24,10 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
                 $("#servertime").html("Server time " + data);
             });
         }
+
         setInterval(function () {
             refresh()
-        },1000);
+        }, 1000);
 
         $('#btn').click(function () {
 

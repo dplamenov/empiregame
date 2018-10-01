@@ -2,7 +2,7 @@
 
 namespace system;
 
-class DatabaseHelper extends Base
+class DatabaseHelper
 {
     private static $instance = null;
 
