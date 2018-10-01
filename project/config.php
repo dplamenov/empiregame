@@ -1,7 +1,7 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 spl_autoload_register(function (string $file) {
-	$extension = ".php";
+    $extension = ".php";
     include $file . $extension;
 
 });
@@ -9,7 +9,7 @@ mb_internal_encoding('UTF-8');
 
 define('ob', 'no', false);
 define('debug_mode', 'no', false); //IF == YES DEBUG MOD WORKING
-define('timezone','Europe/Sofia');
+define('timezone', 'Europe/Sofia');
 
 $__logfile = 'log.txt';
 file_put_contents($__logfile, "#WEB SERVER MUST BE SET TO NOT VIEW THIS FILE!!!" . PHP_EOL);
@@ -24,7 +24,7 @@ mysqli_set_charset($dbc, 'utf8');
 
 function deletebuilding($dbc)
 {
-   $sega = time();
+    $sega = time();
     $sql = "SELECT * FROM `building_now` WHERE `end_time` <'" . $sega . "'";
     $get_finished = mysqli_query($dbc, $sql);
     $get_finish_builing_n = mysqli_num_rows($get_finished);
@@ -106,7 +106,7 @@ function deletearmy($dbc)
 
 }
 
-function userdata(int $id, string $param,$dbc)
+function userdata(int $id, string $param, $dbc)
 {
     $g = mysqli_query($dbc, "SELECT * FROM users WHERE user_id='$id'");
     $r = mysqli_fetch_assoc($g);
