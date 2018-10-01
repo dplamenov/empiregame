@@ -1,13 +1,6 @@
 <?php
 session_start();
 include 'config.php';
-$referer = explode('/', @$_SERVER['HTTP_REFERER']);
-
-$ref_counter = 0;
-foreach ($referer as $key) {
-    $ref_counter++;
-}
-$referer = $referer[$ref_counter - 1];
 if (@$_SERVER['HTTP_REFERER'] == "") {
     exit;
 }
