@@ -9,7 +9,7 @@
         <div id="container">
             <h1>Setup</h1>
             <h2>Database:</h2>
-            <form>
+            <form action="index.php" method="post">
                 <label>Database host:</label>
                 <input name="database_host" value="127.0.0.1"/>
                 <br />
@@ -21,6 +21,8 @@
                 <br />
                 <label>Database name:</label>
                 <input name="database_name" value="game"/>
+
+                <button type="submit">Next</button>
             </form>
         </div>
     </body>
