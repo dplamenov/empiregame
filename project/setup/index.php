@@ -1,4 +1,8 @@
 <?php
+if(file_exists('database.php')){
+    header("Location: ../index.php");
+}
+
 if(isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST['password'])
 && isset($_POST['database_name'])){
 
@@ -6,7 +10,10 @@ if(isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST['
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
     $database_name = trim($_POST['database_name']);
+    $data = '<?php'.' '."mb_internal_encoding('UTF-8');".'$dbc = mysqli_connect("'.$database_host.'","'.$username.'","'.$password.'","'.$database_name.'");';
+    file_put_contents("database.php",$data);
 
+    header("Location: ../index.php");
 }
 ?>
 <!doctype html>

@@ -19,7 +19,8 @@ $__database = \system\DatabaseHelper::getInstance('localhost', 'digia_empire', '
 $__database->setCharset("utf8");
 date_default_timezone_set(timezone);
 
-$dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
+require_once 'setup/database.php';
+//$dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
 mysqli_set_charset($dbc, 'utf8');
 
 function deletebuilding($dbc)
