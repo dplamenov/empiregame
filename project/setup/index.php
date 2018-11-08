@@ -15,15 +15,16 @@ if(isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST['
     $data = '<?php'.' '."mb_internal_encoding('UTF-8');".'$dbc = mysqli_connect("'.$database_host.'","'.$username.'","'.$password.'","'.$database_name.'");';
     file_put_contents("database.php",$data);
 
-    $create_sql = file_get_contents('../sql.sql');
-    $create_sql = explode(';',$create_sql);
-
-    foreach ($create_sql as $sql){
-        mysqli_query($dbc,$sql);
+    if($dbc){
+        $create_sql = file_get_contents('../sql.sql');
+        $create_sql = explode(';',$create_sql);
+        foreach ($create_sql as $sql){
+            mysqli_query($dbc,$sql);
+        }
+        header("Location: ../index.php");
+    }else{
+        echo 'error';
     }
-
-
-    header("Location: ../index.php");
 }
 ?>
 <!doctype html>
