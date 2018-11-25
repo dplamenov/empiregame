@@ -21,7 +21,7 @@ class DatabaseHelper
         $this->setCharset("utf8");
     }
 
-    public static function getInstance(string $host, string $username, string $password, string $name, int $port = 3306)
+    public static function getInstance(string $host, string $username, string $password, string $name, int $port)
     {
         if (self::$instance == null) {
             self::$instance = new self($host, $username, $password, $name, $port);
