@@ -16,7 +16,7 @@ if(isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST['
     file_put_contents("database.php",$data);
 
     if($dbc){
-        $create_sql = file_get_contents('../sql.sql');
+        $create_sql = file_get_contents('sql.sql');
         $create_sql = explode(';',$create_sql);
         foreach ($create_sql as $sql){
             mysqli_query($dbc,$sql);
@@ -28,7 +28,7 @@ if(isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST['
 }
 ?>
 <!doctype html>
-<html>
+<html lang="bg">
     <head>
         <title>Setup</title>
     </head>

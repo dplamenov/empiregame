@@ -39,7 +39,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
                     pass: $('#pass').val()
                 },
                 type: 'post',
-            }).done(function (data) {
+            }).done(function () {
                 window.location.reload(true);
 
             }).fail(function (er) {
@@ -59,7 +59,7 @@ if (@$_SESSION['islogged'] === TRUE) {
 } else {
 
     ?>
-    <div class="header"><img scr="logo.png"></div>
+    <div class="header"><img alt="logo" src="logo.png"></div>
 
     <div class="info">
         <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
@@ -75,7 +75,7 @@ if (@$_SESSION['islogged'] === TRUE) {
         <div><input type="text" placeholder="Потребителско име" id="username"/></div>
         <div><input type="password" placeholder="Парола" id="pass"/></div>
         <div id="register">
-            <button type="button" id="btn" id="btn" href="#" class="btn btn-primary">Вход</button>
+            <button type="button" id="btn" href="#" class="btn btn-primary">Вход</button>
             <span style="color:white">или се</span>
             <button type="button" class="btn btn-primary"><a style="color:white" href="register.php">Регистрирай</a>
             </button>
@@ -90,7 +90,7 @@ if (@$_SESSION['islogged'] === TRUE) {
 <?php
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
 
@@ -230,6 +230,7 @@ if (isset($_GET['build'])) {
 
 <div id="header"><p>Здравей, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Изход</a>' ?></p>
     <div>
+
         <a href="settings.php">Настройки на профила</a>
     </div>
 </div>
@@ -238,7 +239,7 @@ if (isset($_GET['build'])) {
 </div>
 <div id="rightbar"><?php
     echo '<p>Вашите пари:  ' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . 'лева</p>';
-    echo 'XP   ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . '<br>';
+    echo '<p>XP: ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . 'xp</p><br>';
     echo @$is_now_build;
     ?>
 
