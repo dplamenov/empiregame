@@ -26,7 +26,7 @@
     <a href="index.php">Back</a>
     <p>User Id: <?=$user_id;?></p>
     <p>Username: <?=$username;?></p>
-    <p>Money: <?=$money;?></p>
+    <p>Money: <?=$money;?> лева</p>
     <p>XP: <?=$xp;?></p>
 
     <button style="border:0;background-color: indianred;padding: 7px"  id="deleteprofile" onclick="deleteprofile()" title="You will be redirect to another page">Delete your profile</button>

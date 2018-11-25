@@ -182,13 +182,25 @@ if (@$_SESSION['islogged'] === TRUE) {
             });
 
             $('#content').click(function () {
-                $('#rightbar').html('');
+                $.ajax({
+                    url: 'rightbar.php'
+                }).done(function (data) {
+                    $('#rightbar').html(data);
+                });
             });
             $('#header').click(function () {
-                $('#rightbar').html('');
+                $.ajax({
+                    url: 'rightbar.php'
+                }).done(function (data) {
+                    $('#rightbar').html(data);
+                });
             });
             $('#info').click(function () {
-                $('#rightbar').html('');
+                $.ajax({
+                    url: 'rightbar.php'
+                }).done(function (data) {
+                    $('#rightbar').html(data);
+                });
             });
 
         });</script>
