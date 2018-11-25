@@ -15,12 +15,10 @@ $__logfile = 'log.txt';
 file_put_contents($__logfile, "#WEB SERVER MUST BE SET TO NOT VIEW THIS FILE!!!" . PHP_EOL);
 $logger = system\Logger::getInstance($__logfile);
 
-$__database = \system\DatabaseHelper::getInstance('localhost', 'digia_empire', '21282128', 'digia_greatempire');
-$__database->setCharset("utf8");
+
 date_default_timezone_set(timezone);
 
 require_once 'setup/database.php';
-//$dbc = mysqli_connect('127.0.0.1', 'digia_empire', '21282128', 'digia_greatempire');
 mysqli_set_charset($dbc, 'utf8');
 
 function deletebuilding($dbc)
