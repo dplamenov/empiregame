@@ -24,7 +24,7 @@ VALUES
   (1, 40, 1, 1, 'Копиеносци', 20);
 INSERT INTO `army` (`army_level`, `money`, `time`, `army_id`, `army_name`, `give_xp`)
 VALUES
-  (2, 50, 1, 2, 'Копиеносци', 25);
+  (2, 50, 1, 2, 'Меченосци', 25);
 
 CREATE TABLE `army_now`
 (
