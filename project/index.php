@@ -59,7 +59,7 @@ if (@$_SESSION['islogged'] === TRUE) {
 } else {
 
     ?>
-    <div class="header"><img alt="logo" src="logo.png"></div>
+<div class="header"><h1 style="margin-top: 10px">Logo</h1></div>
 
     <div class="info">
         <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>

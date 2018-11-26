@@ -50,6 +50,11 @@ INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, 
 VALUES
   ('Казарма', 550, 1, 1, 'kazarma', '84,102,2,3');
 
+INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`)
+VALUES
+  ('Замък', 800, 5, 2, 'zamuk', '664,365,788,363,788,455,666,457');
+
+
 CREATE TABLE `building_now`
 (
   `user_id`       int(11) NOT NULL,
