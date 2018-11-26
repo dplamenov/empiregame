@@ -108,6 +108,17 @@ ALTER TABLE `users`
 
 ALTER TABLE `users`
   ADD `active` TINYINT NOT NULL DEFAULT '1' AFTER `xp`;
+
+ALTER TABLE `building`
+  ADD `shape` VARCHAR(15) NOT NULL AFTER `geo_location`;
+
+UPDATE `building`
+SET `shape` = 'rect'
+WHERE `building`.`building_id` = 1;
+
+UPDATE `building`
+SET `shape` = 'poly'
+WHERE `building`.`building_id` = 2;
 /*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;

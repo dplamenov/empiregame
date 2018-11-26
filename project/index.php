@@ -362,7 +362,7 @@ if (isset($_GET['build'])) {
         $sql_get_build_area = "SELECT * FROM building WHERE building_id='" . $get_users_build_area_array['building_id'] . "'";
         $get_build_area = mysqli_query($dbc, $sql_get_build_area);
         $get_build_area_array = mysqli_fetch_assoc($get_build_area);
-        echo '<area alt="" title="" id="' . $get_build_area_array['geo_id'] . '" href="#" shape="rect" coords="' . $get_build_area_array['geo_location'] . '" />';
+        echo '<area alt="" title="" id="' . $get_build_area_array['geo_id'] . '" href="#" shape="'.$get_build_area_array['shape'].'" coords="' . $get_build_area_array['geo_location'] . '" />';
     }
     ?>
     <?php
