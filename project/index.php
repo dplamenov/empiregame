@@ -59,7 +59,7 @@ if (@$_SESSION['islogged'] === TRUE) {
 } else {
 
     ?>
-<div class="header"><h1 style="margin-top: 10px">Logo</h1></div>
+    <div class="header"><h1 style="margin-top: 10px">Logo</h1></div>
 
     <div class="info">
         <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
@@ -109,7 +109,7 @@ if (@$_SESSION['islogged'] === TRUE) {
                 });
             }
 
-            function auto_refresh() {
+            function auto_refresh_army() {
                 $.ajax({
                     url: 'auto_refresharmy.php',
                     data: {
@@ -131,7 +131,38 @@ if (@$_SESSION['islogged'] === TRUE) {
                                     window.location.href = "refresh_helper.php";
 
                                 } else {
-                                    $("#" + i).html(data);
+                                    $("#army_" + i).html(data);
+                                }
+
+                            });
+                        }
+                    }
+                });
+            }
+
+            function auto_refresh_build() {
+                $.ajax({
+                    url: 'auto_refreshbuild.php',
+                    data: {
+                        getCount: true
+                    },
+                    type: 'post'
+                }).done(function (count) {
+                    if (count >= 1) {
+                        for (let i = 1; i <= count; i++) {
+
+                            $.ajax({
+                                url: 'auto_refreshbuild.php',
+                                data: {
+                                    id: i
+                                },
+                                type: 'post'
+                            }).done(function (data) {
+                                if (data == 1) {
+                                    window.location.href = "refresh_helper.php";
+
+                                } else {
+                                    $("#build_" + i).html(data);
                                 }
 
                             });
@@ -141,7 +172,8 @@ if (@$_SESSION['islogged'] === TRUE) {
             }
 
             setInterval(function () {
-                auto_refresh()
+                auto_refresh_army();
+                auto_refresh_build();
             }, 1000);
             setInterval(function () {
                 refresh();
@@ -218,6 +250,7 @@ if (isset($_GET['build'])) {
     $sega = time();
 
     $end_time = ($sega + $build_time * 60);
+
     if (mysqli_num_rows($check_exist_build) == 1) {
 
         $sql_get_users_now_build = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_name='" . $build_id . "' AND end_time > '" . $sega . "'";
@@ -274,7 +307,7 @@ if (isset($_GET['build'])) {
             $select_build_name_from_id = mysqli_query($dbc, $select_build_name_from_id_sql);
             $select_build_name_from_idarray = mysqli_fetch_assoc($select_build_name_from_id);
 
-            echo '<tr><td>' . $select_build_name_from_idarray['build_name'] . '</td><td>Ниво(Скоро)</td><td>' . date('H i s', $get_now_user_buildb['end_time']) . '</td></tr>';
+            echo '<tr><td>' . $select_build_name_from_idarray['build_name'] . '</td><td>Ниво(Скоро)</td><td id="build_'.$get_now_user_buildb['building_name'].'">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
         }
         echo '</table>';
     }
@@ -296,7 +329,7 @@ if (isset($_GET['build'])) {
             date_default_timezone_set('Europe/Sofia');
             $end_time = $army_now['end_time'] - time();
             $end_time = date("H:i:s", $end_time - 7200);
-            echo "<tr><td>" . $army_name . "</td><td>" . $army_now['army_num'] . "</td><td id='" . $army_now['army_name'] . "'>" . $end_time . "</td></tr>";
+            echo "<tr><td>" . $army_name . "</td><td>" . $army_now['army_num'] . "</td><td id='army_" . $army_now['army_name'] . "'>" . $end_time . "</td></tr>";
         }
 
         echo "</table>";
@@ -362,7 +395,7 @@ if (isset($_GET['build'])) {
         $sql_get_build_area = "SELECT * FROM building WHERE building_id='" . $get_users_build_area_array['building_id'] . "'";
         $get_build_area = mysqli_query($dbc, $sql_get_build_area);
         $get_build_area_array = mysqli_fetch_assoc($get_build_area);
-        echo '<area alt="" title="" id="' . $get_build_area_array['geo_id'] . '" href="#" shape="'.$get_build_area_array['shape'].'" coords="' . $get_build_area_array['geo_location'] . '" />';
+        echo '<area alt="" title="" id="' . $get_build_area_array['geo_id'] . '" href="#" shape="' . $get_build_area_array['shape'] . '" coords="' . $get_build_area_array['geo_location'] . '" />';
     }
     ?>
     <?php
