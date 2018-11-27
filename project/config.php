@@ -8,7 +8,7 @@ spl_autoload_register(function (string $file) {
 mb_internal_encoding('UTF-8');
 
 define('ob', 'no', false);
-define('debug_mode', 'yes', false); //IF == YES DEBUG MOD WORKING
+define('debug_mode', 'no', false); //IF == YES DEBUG MOD WORKING
 define('timezone', 'Europe/Sofia');
 
 $__logfile = 'log.txt';
