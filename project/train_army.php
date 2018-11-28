@@ -32,6 +32,7 @@ if (mysqli_num_rows($check_exist_army_q) == 1) {
 
     } else {
         echo 'Вече тренираш тази армия';
+
     }
 
 } else {
