@@ -5,8 +5,12 @@ namespace system;
 
 class Battle
 {
-    private function findOpponent()
+    private function _findOpponent()
     {
 
+    }
+
+    public function findOpponent(){
+        echo 'battle';
     }
 }
