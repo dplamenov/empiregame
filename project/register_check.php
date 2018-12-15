@@ -33,9 +33,11 @@ if (mb_strlen($user_pass) < 8) {
     $error[] = '<p>Паролата е прекалено къса.</p>';
 }
 
-if (mb_strlen($user_email) < 6) {
+if (mb_strlen($user_email) < 6 or !filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
     $error[] = '<p>Невалиден емайл</p>';
 }
+
+
 
 if (@count($error) > 0) {
     foreach ($error as $er) {
