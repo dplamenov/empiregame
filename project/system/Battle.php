@@ -12,5 +12,6 @@ class Battle
 
     public function findOpponent(){
         echo 'battle';
+        $this->_findOpponent();
     }
 }

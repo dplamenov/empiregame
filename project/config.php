@@ -121,3 +121,12 @@ function refresh($time, $url = "")
 {
     echo "<meta http-equiv=\"refresh\" content=\"" . $time . ";url=" . $url . "\">";
 }
+
+function addMoney(int $id, int $money, $dbc)
+{
+   mysqli_query($dbc, "UPDATE `users` SET `money`= ".$money." WHERE  `user_id`=" . $id );
+}
+function setMoney(int $id, int $money, $dbc)
+{
+   mysqli_query($dbc, "UPDATE `users` SET `money`= `money` + ".$money." WHERE  `user_id`=" . $id );
+}
