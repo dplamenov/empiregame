@@ -77,7 +77,6 @@ $kazarma_level = $get_kazarma_level_array['build_lv'];
 
 //echo '<pre>'.print_r($get_kazarma_level_array, true).'</pre>';
 $getarmy_sql = "SELECT * FROM army WHERE army_level<='" . $kazarma_level . "'";
-
 $get_army_q = mysqli_query($dbc, $getarmy_sql);
 
 echo '<div id="armynum">

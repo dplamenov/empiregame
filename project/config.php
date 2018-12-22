@@ -11,8 +11,8 @@ define('ob', 'no', false);
 define('debug_mode', 'no', false); //IF == YES DEBUG MOD WORKING
 define('timezone', 'Europe/Sofia');
 
-$__logfile = 'log.txt';
-file_put_contents($__logfile, "#WEB SERVER MUST BE SET TO NOT VIEW THIS FILE!!!" . PHP_EOL);
+$logfile = 'log.txt';
+file_put_contents($logfile, "#WEB SERVER MUST BE SET TO NOT VIEW THIS FILE!!!" . PHP_EOL);
 $logger = system\Logger::getInstance($__logfile);
 
 
@@ -23,8 +23,8 @@ mysqli_set_charset($dbc, 'utf8');
 
 function deletebuilding($dbc)
 {
-    $sega = time();
-    $sql = "SELECT * FROM `building_now` WHERE `end_time` <'" . $sega . "'";
+    $now_unix = time();
+    $sql = "SELECT * FROM `building_now` WHERE `end_time` <'" . $now_unix . "'";
     $get_finished = mysqli_query($dbc, $sql);
     $get_finish_builing_n = mysqli_num_rows($get_finished);
     if ($get_finish_builing_n >= 1) {
@@ -54,7 +54,7 @@ function deletebuilding($dbc)
                 $lv = mysqli_query($dbc, $sql_update_u_l);
             }
         }
-        $sql_delete = "DELETE FROM building_now WHERE `end_time` < '" . $sega . "'";
+        $sql_delete = "DELETE FROM building_now WHERE `end_time` < '" . $now_unix . "'";
 
         mysqli_query($dbc, $sql_delete);
     }
@@ -64,8 +64,8 @@ function deletebuilding($dbc)
 function deletearmy($dbc)
 {
 
-    $sega = time();
-    $sql = "SELECT * FROM army_now WHERE end_time <'" . $sega . "' AND user_id = '" . $_SESSION['user']['user_id'] . "'";
+    $now_unix = time();
+    $sql = "SELECT * FROM army_now WHERE end_time <'" . $now_unix . "' AND user_id = '" . $_SESSION['user']['user_id'] . "'";
     $get_finished_army = mysqli_query($dbc, $sql);
     $get_finish_army = mysqli_num_rows($get_finished_army);
     if ($get_finish_army >= 1) {
@@ -99,7 +99,7 @@ function deletearmy($dbc)
 
 
         }
-        $sql_delete = "DELETE FROM army_now WHERE `end_time` < '" . $sega . "'";
+        $sql_delete = "DELETE FROM army_now WHERE `end_time` < '" . $now_unix . "'";
         mysqli_query($dbc, $sql_delete);
     }
 
