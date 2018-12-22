@@ -8,7 +8,6 @@ echo '<p>Вашите пари: ' . userdata($_SESSION['user']['user_id'], 'mone
 echo '<p>Сграда Център</p><p>ВСИЧКИ ВРЕМЕНА СА В МИНУТИ</p>';
 echo '<table border="1"><tr><td>Име на сградата</td><td>Пари</td><td>Време</td><td>Построй</td></tr>';
 while ($building = mysqli_fetch_assoc($get_build_q)) {
-    //table
     if (userdata($_SESSION['user']['user_id'], 'money', $dbc) >= $building['money']) {
         $link = '<a href="?build=' . $building['building_id'] . '">Построй</a>';
 
