@@ -10,7 +10,6 @@ echo "Welcome, admin ";
 echo '<a href="logout.php">Log out</a>';
 
 echo "<h1>List of all users:</h1>";
-$get_all_user_sql = "SELECT * FROM `users`";
 $get_all_user = mysqli_query($dbc, $get_all_user_sql);
 echo '<table><tr><td>User id</td><td>Username</td><td>Real name</td><td>Email</td><td>Password</td><td>Money</td><td>Xp</td><td>Active</td></tr>';
 $user_count = 0;
@@ -33,8 +32,8 @@ while ($all_user = mysqli_fetch_assoc($get_all_user)) {
 echo '</table>';
 $build_count = 0;
 echo "<h1>List of all building:</h1>";
-$get_all_building_sql = "SELECT * FROM `building`";
-$get_all_building = mysqli_query($dbc, $get_all_building_sql);
+
+$get_all_building = mysqli_query($dbc, "SELECT * FROM `building`");
 echo '<table><tr><td>Building Name</td><td>Cost Money</td><td>Time in Minutes</td><td>Id</td><td>Geo Id</td><td>Geo Location</td></tr>';
 while ($all_building = mysqli_fetch_assoc($get_all_building)) {
     $build_count++;
