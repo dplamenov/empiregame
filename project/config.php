@@ -13,7 +13,7 @@ define('timezone', 'Europe/Sofia');
 
 $logfile = 'log.txt';
 file_put_contents($logfile, "#WEB SERVER MUST BE SET TO NOT VIEW THIS FILE!!!" . PHP_EOL);
-$logger = system\Logger::getInstance($__logfile);
+$logger = system\Logger::getInstance($logfile);
 
 
 date_default_timezone_set(timezone);
