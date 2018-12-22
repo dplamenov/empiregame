@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $form_set = true;
 }
 if ($form_set) {
-    if ($username == "admin" && $password == "2128") {
+    if ($username == "admin" && $password == "admin") {
         $_SESSION['is_log'] = true;
         header("Location: logged.php");
         exit;
