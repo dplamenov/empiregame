@@ -9,7 +9,7 @@ class Battle
 
     private function _findOpponent($dbc, int $user_id)
     {
-        $user_xp = "SELECT xp FROM users WHERE user_id = $user_id";
+        $user_xp = "SELECT `xp` FROM users WHERE `user_id` = $user_id";
         $user_xp = intval(mysqli_fetch_object(mysqli_query($dbc,$user_xp))->xp);
 
         $min_xp = $user_xp / 2;
@@ -20,7 +20,7 @@ class Battle
         $this->data['max_xp'] = $max_xp;
 
 
-        //return $this->data;
+        return $this->data;
 
 
     }
