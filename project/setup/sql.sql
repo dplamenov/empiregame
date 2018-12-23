@@ -119,6 +119,17 @@ WHERE `building`.`building_id` = 1;
 UPDATE `building`
 SET `shape` = 'poly'
 WHERE `building`.`building_id` = 2;
+
+CREATE TABLE `battle`
+(
+  `attacker` INT NOT NULL,
+  `defender` INT NOT NULL,
+  `result`   INT NOT NULL,
+  `start`    INT NOT NULL,
+  `end`      INT NOT NULL
+) ENGINE = InnoDB;
+
+
 /*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;

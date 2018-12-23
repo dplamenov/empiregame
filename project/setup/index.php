@@ -11,8 +11,8 @@ if (isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST[
     $password = trim($_POST['password']);
     $database_name = trim($_POST['database_name']);
 
-    if ($database_host == '127.0.0.1') {
-        $database_host = 'localhost';
+    if ($database_host == 'localhost') {
+        $database_host = '127.0.0.1';
     }
 
     $dbc = mysqli_connect($database_host, $username, $password, $database_name);
