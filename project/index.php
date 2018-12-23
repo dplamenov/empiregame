@@ -24,11 +24,13 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
 
 }
 
-echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">';
-echo '<link rel="stylesheet" href="css/style.css" />';
 
-echo '<script src="js/jquery.js" type="text/javascript"></script>';
 ?>
+<!DOCTYPE html>
+<html lang="bg">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css" />
+<script src="js/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -103,8 +105,7 @@ if (@$_SESSION['islogged'] === TRUE) {
 ?>
 <?php
 ?>
-<!DOCTYPE html>
-<html lang="bg">
+
 <head>
     <meta charset="UTF-8">
 
