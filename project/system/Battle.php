@@ -27,16 +27,14 @@ class Battle
             throw new \Exception('No suitable users found');
         }
 
-
-        return $users_toattack;
         return $this->data;
 
 
     }
 
-    public function findOpponent($dbc, $user_id)
+    public function battle($dbc, $user_id)
     {
 
-        echo $this->_findOpponent($dbc, $user_id);
+        $this->_findOpponent($dbc, $user_id);
     }
 }

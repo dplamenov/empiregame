@@ -15,7 +15,7 @@ if(isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1){
     $battle = new \system\Battle();
 
     try{
-        $battle->findOpponent($dbc,intval($_SESSION['user']['user_id']));
+        $battle->battle($dbc,intval($_SESSION['user']['user_id']));
     }catch (Exception $exception){
         echo '<script>alert("'.$exception->getMessage().'")
 window.location.href= "index.php"</script>';
