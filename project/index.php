@@ -11,15 +11,16 @@ if (ob == 'yes') {
 }
 session_start();
 
-if(isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1){
+if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
     $battle = new \system\Battle();
 
-    try{
-        $battle->battle($dbc,intval($_SESSION['user']['user_id']));
-    }catch (Exception $exception){
-        echo '<script>alert("'.$exception->getMessage().'")
-window.location.href= "index.php"</script>';
+    try {
+        $battle->battle($dbc, intval($_SESSION['user']['user_id']));
+    } catch (Exception $exception) {
+        echo '<script>alert("' . $exception->getMessage() . '")</script>';
+        echo '<script>window.location.href= "index.php"</script>';
     }
+
 
 }
 
@@ -251,8 +252,12 @@ if (@$_SESSION['islogged'] === TRUE) {
         });</script>
     <title></title>
 </head>
+
 <body>
+
 <?php
+
+
 if (isset($_GET['build'])) {
     $time = time();
     $build_id = (int)$_GET['build'];
@@ -303,6 +308,7 @@ if (isset($_GET['build'])) {
 
 </div>
 <div id="content">
+
     <img src="images/map.jpg" alt="" usemap="#Map"/><br>
     <div><img src="images/global.png"/></div>
     <?php
@@ -320,7 +326,7 @@ if (isset($_GET['build'])) {
             $select_build_name_from_id = mysqli_query($dbc, $select_build_name_from_id_sql);
             $select_build_name_from_idarray = mysqli_fetch_assoc($select_build_name_from_id);
 
-            echo '<tr><td>' . $select_build_name_from_idarray['build_name'] . '</td><td>Ниво(Скоро)</td><td id="build_'.$get_now_user_buildb['building_name'].'">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
+            echo '<tr><td>' . $select_build_name_from_idarray['build_name'] . '</td><td>Ниво(Скоро)</td><td id="build_' . $get_now_user_buildb['building_name'] . '">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
         }
         echo '</table>';
     }
