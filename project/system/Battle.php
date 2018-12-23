@@ -2,7 +2,6 @@
 
 namespace system;
 
-
 class Battle
 {
     private $data = array();
@@ -10,7 +9,7 @@ class Battle
     private function _findOpponent($dbc, int $user_id)
     {
         $user_xp = "SELECT `xp` FROM users WHERE `user_id` = $user_id";
-        $user_xp = intval(mysqli_fetch_object(mysqli_query($dbc,$user_xp))->xp);
+        $user_xp = intval(mysqli_fetch_object(mysqli_query($dbc, $user_xp))->xp);
 
         $min_xp = $user_xp / 2;
         $max_xp = $user_xp * 2;
@@ -20,12 +19,23 @@ class Battle
         $this->data['max_xp'] = $max_xp;
 
 
+        $users_toattack = "SELECT * FROM `users` WHERE `xp` > $min_xp and `xp` < $max_xp and `user_id` != $user_id";
+        $users_toattack = mysqli_query($dbc, $users_toattack);
+
+        $userscount =  mysqli_num_rows($users_toattack);
+        if($userscount == 0){
+            throw new \Exception('No suitable users found');
+        }
+
+
+        return $users_toattack;
         return $this->data;
 
 
     }
 
-    public function findOpponent($dbc, $user_id){
+    public function findOpponent($dbc, $user_id)
+    {
 
         echo $this->_findOpponent($dbc, $user_id);
     }

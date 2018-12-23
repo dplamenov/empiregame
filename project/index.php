@@ -13,7 +13,14 @@ session_start();
 
 if(isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1){
     $battle = new \system\Battle();
-    //$battle->findOpponent($dbc,intval($_SESSION['user']['user_id']));
+
+    try{
+        $battle->findOpponent($dbc,intval($_SESSION['user']['user_id']));
+    }catch (Exception $exception){
+        echo '<script>alert("'.$exception->getMessage().'")
+window.location.href= "index.php"</script>';
+    }
+
 }
 
 echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">';
