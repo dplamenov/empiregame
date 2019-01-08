@@ -19,7 +19,7 @@ class Battle
         $this->data['max_xp'] = $max_xp;
 
 
-        $users_toattack = "SELECT * FROM `users` WHERE `xp` > $min_xp and `xp` < $max_xp and `user_id` != $user_id";
+        $users_toattack = "SELECT * FROM `users` WHERE `xp` > $min_xp and `xp` < $max_xp and `user_id` != $user_id LIMIT 1";
         $users_toattack = mysqli_query($dbc, $users_toattack);
 
         $userscount =  mysqli_num_rows($users_toattack);
@@ -27,7 +27,8 @@ class Battle
             throw new \Exception('No suitable users found');
         }
 
-        return $this->data;
+        $attack = new Attack();
+        $attack->startAttack();
 
 
     }
