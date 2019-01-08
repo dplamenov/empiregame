@@ -26,9 +26,10 @@ class Battle
         if($userscount == 0){
             throw new \Exception('No suitable users found');
         }
+        $defender = mysqli_fetch_assoc($users_toattack)['user_id'];
 
         $attack = new Attack();
-        $attack->startAttack();
+        echo $attack->startAttack($user_id,$defender);
 
 
     }
