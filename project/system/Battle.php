@@ -22,14 +22,14 @@ class Battle
         $users_toattack = "SELECT * FROM `users` WHERE `xp` > $min_xp and `xp` < $max_xp and `user_id` != $user_id LIMIT 1";
         $users_toattack = mysqli_query($dbc, $users_toattack);
 
-        $userscount =  mysqli_num_rows($users_toattack);
-        if($userscount == 0){
+        $userscount = mysqli_num_rows($users_toattack);
+        if ($userscount == 0) {
             throw new \Exception('No suitable users found');
         }
         $defender = mysqli_fetch_assoc($users_toattack)['user_id'];
 
         $attack = new Attack();
-        echo $attack->startAttack($user_id,$defender);
+        echo $attack->startAttack($dbc, $user_id, $defender);
 
 
     }
