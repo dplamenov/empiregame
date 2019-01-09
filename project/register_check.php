@@ -38,7 +38,6 @@ if (mb_strlen($user_email) < 6 or !filter_var($user_email, FILTER_VALIDATE_EMAIL
 }
 
 
-
 if (@count($error) > 0) {
     foreach ($error as $er) {
         echo $er;

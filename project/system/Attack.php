@@ -29,7 +29,7 @@ class Attack
         } elseif ($user1_army < $user2_army) {
 
         }else{
-            
+
         }
 
 
