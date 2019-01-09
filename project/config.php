@@ -5,18 +5,24 @@ spl_autoload_register(function (string $file) {
     include $file . $extension;
 
 });
-mb_internal_encoding('UTF-8');
-
 define('ob', 'no', false);
 define('debug_mode', 'no', false); //IF == YES DEBUG MOD WORKING
 define('timezone', 'Europe/Sofia');
 
-$logfile = 'log.txt';
-file_put_contents($logfile, "#WEB SERVER MUST BE SET TO NOT VIEW THIS FILE!!!" . PHP_EOL);
-$logger = system\Logger::getInstance($logfile);
-
 
 date_default_timezone_set(timezone);
+
+require '../vendor/autoload.php';
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+// create a log channel
+$loggger = new Logger('Empiregame');
+$loggger->pushHandler(new StreamHandler('logfile.log', Logger::WARNING));
+
+mb_internal_encoding('UTF-8');
+
 
 require_once 'setup/database.php';
 mysqli_set_charset($dbc, 'utf8');
