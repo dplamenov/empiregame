@@ -3,7 +3,6 @@
 if (!file_exists('setup/database.php')) {
     header('Location: setup/index.php');
 }
-
 include 'config.php';
 
 if (ob == 'yes') {
