@@ -1,4 +1,6 @@
 # Empiregame
+Install composer and run 'composer install'
+
 Online empire(medieval) game php-based & mysql.
 <a href="https://github.com/dplamenov/empiregame/releases/tag/v1.2.2">Last Stable Release</a>
 
