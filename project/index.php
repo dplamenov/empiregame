@@ -46,7 +46,7 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
             refresh()
         }, 1000);
 
-        $('#btn').click(function () {
+        $('#login').click(function () {
 
             $.ajax({
                 url: 'login.php',
@@ -91,10 +91,12 @@ if (@$_SESSION['islogged'] === TRUE) {
         <div><input type="text" placeholder="Потребителско име" id="username"/></div>
         <div><input type="password" placeholder="Парола" id="pass"/></div>
         <div id="register">
-            <button type="button" id="btn" href="#" class="btn btn-primary">Вход</button>
-            <span style="color:white">или се</span>
-            <button type="button" class="btn btn-primary"><a style="color:white" href="register.php">Регистрирай</a>
-            </button>
+            <button type="button" id="login" href="#" class="btn btn-primary">Вход</button>
+            
+            <a id="registration" class="btn btn-primary" href="register.php">
+                Регистрирай        
+            </a>
+            
         </div>
 
     </div>
