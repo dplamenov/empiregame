@@ -46,7 +46,7 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
             refresh()
         }, 1000);
 
-        $('#login').click(function () {
+        $('#btn').click(function () {
 
             $.ajax({
                 url: 'login.php',
@@ -55,13 +55,9 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
                     pass: $('#pass').val()
                 },
                 type: 'post',
-            }).done(function (data) {      
-                if (data == 'error') {
-                    $('#error').text("Wrong login or password");
-                } else {
-                    window.location.reload(true);
-                }
-                
+            }).done(function () {
+                window.location.reload(true);
+
             }).fail(function (er) {
             }).always(function () {
             });
@@ -83,8 +79,6 @@ if (@$_SESSION['islogged'] === TRUE) {
 
     <div class="info">
         <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
-        <div id="error" class="alert-danger"></div>
-        
     </div>
     <div class="rightbar">
         <ul style="text-decoration: none">
@@ -93,17 +87,14 @@ if (@$_SESSION['islogged'] === TRUE) {
 
     </div>
     <div id="form">
-        
+
         <div><input type="text" placeholder="Потребителско име" id="username"/></div>
         <div><input type="password" placeholder="Парола" id="pass"/></div>
-        <div id="register">    
-            <a id="login" class="btn btn-primary" href="#">
-                Вход        
-            </a>
-            
-            <a id="registration" class="btn btn-primary" href="register.php">
-                Регистрирай        
-            </a>      
+        <div id="register">
+            <button type="button" id="btn" href="#" class="btn btn-primary">Вход</button>
+            <span style="color:white">или се</span>
+            <button type="button" class="btn btn-primary"><a style="color:white" href="register.php">Регистрирай</a>
+            </button>
         </div>
 
     </div>
