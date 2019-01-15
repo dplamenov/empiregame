@@ -17,7 +17,6 @@ require '../vendor/autoload.php';
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
-// create a log channel
 $loggger = new Logger('Empiregame');
 $loggger->pushHandler(new StreamHandler('logfile.log', Logger::WARNING));
 
