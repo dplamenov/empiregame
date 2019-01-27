@@ -19,91 +19,84 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
         echo '<script>alert("' . $exception->getMessage() . '")</script>';
         echo '<script>window.location.href= "index.php"</script>';
     }
-
-
 }
 
 include_once 'layout/header.php';
 ?>
+<meta charset="UTF-8">
+<script type="text/javascript">
+    $(document).ready(function () {
 
-    <meta charset="UTF-8">
+        function refresh() {
+            $.ajax({
+                url: 'auto_refreshservertime.php',
+            }).done(function (data) {
+                $("#servertime").html("Server time " + data);
+            });
+        }
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+        setInterval(function () {
+            refresh()
+        }, 1000);
 
-            function refresh() {
-                $.ajax({
-                    url: 'auto_refreshservertime.php',
-                }).done(function (data) {
-                    $("#servertime").html("Server time " + data);
-                });
-            }
+        $('#login').click(function () {
 
-            setInterval(function () {
-                refresh()
-            }, 1000);
+            $.ajax({
+                url: 'login.php',
+                data: {
+                    username: $('#username').val(),
+                    pass: $('#pass').val()
+                },
+                type: 'post',
+            }).done(function (data) {
+                if (data == 'error') {
+                    $('#error').text("Wrong login or password");
+                } else {
+                    window.location.reload(true);
+                }
 
-            $('#login').click(function () {
-
-                $.ajax({
-                    url: 'login.php',
-                    data: {
-                        username: $('#username').val(),
-                        pass: $('#pass').val()
-                    },
-                    type: 'post',
-                }).done(function (data) {
-                    if (data == 'error') {
-                        $('#error').text("Wrong login or password");
-                    } else {
-                        window.location.reload(true);
-                    }
-
-                }).fail(function (er) {
-                }).always(function () {
-                });
+            }).fail(function (er) {
+            }).always(function () {
             });
         });
+    });
+
+</script>
+<?php
+if (@$_SESSION['islogged'] === TRUE) {
+
+    deletebuilding($dbc);
+    deletearmy($dbc);
+    echo '<script src="js/javascript.js"></script>';
+
+} else {
+
+    include_once 'layout/loginform.php';
+    exit;
+}
+?>
 
 
-    </script>
-    <?php
-    if (@$_SESSION['islogged'] === TRUE) {
-
-        deletebuilding($dbc);
-        deletearmy($dbc);
-        echo '<script src="js/javascript.js"></script>';
-
-    } else {
-
-        include_once 'layout/loginform.php';
-        exit;
-    }
-    ?>
-
-
-    <title>Empire game</title>
+<title>Empire game</title>
 </head>
-
 <body>
 
 <?php
 
 
 if (isset($_GET['build'])) {
-    $time = time();
     $build_id = (int)$_GET['build'];
-    $check_exist_build_sql = "SELECT * FROM building WHERE building_id='" . $build_id . "'";
-    $check_exist_build = mysqli_query($dbc, $check_exist_build_sql);
-    $now_build = mysqli_fetch_assoc($check_exist_build);
+    $check_build_sql = "SELECT * FROM building WHERE building_id='" . $build_id . "'";
+    $check_build = mysqli_query($dbc, $check_build_sql);
+    $now_build = mysqli_fetch_assoc($check_build);
     $build_time = $now_build['time'];
-    $sega = time();
+    $time_now = time();
 
-    $end_time = ($sega + $build_time * 60);
+    $end_time = ($time_now + $build_time * 60);
 
-    if (mysqli_num_rows($check_exist_build) == 1) {
+    if (mysqli_num_rows($check_build) == 1) {
 
-        $sql_get_users_now_build = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_name='" . $build_id . "' AND end_time > '" . $sega . "'";
+        $sql_get_users_now_build = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_name='" . $build_id . "' AND end_time > '" . $time_now . "'";
         $get_users_now_build = mysqli_query($dbc, $sql_get_users_now_build);
         $num_rows = mysqli_num_rows($get_users_now_build);
         if ($num_rows == 0) {
@@ -187,8 +180,6 @@ if (isset($_GET['build'])) {
         echo "<br>";
 
 
-    } else {
-        //echo "<p>В момента не тренираш армия</p>";
     }
 
 
