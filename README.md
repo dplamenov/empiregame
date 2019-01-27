@@ -11,6 +11,8 @@ Username and password for admin panel('/admin') are 'admin' and 'admin'
 <a href="http://www.phptherightway.com">
     <img src="http://www.phptherightway.com/images/banners/vert-rect-240x400.png" alt="PHP: The Right Way"/>
 </a>
+<br>
+- This is my old code.
 
 # ToDo 
 Refactor Code
