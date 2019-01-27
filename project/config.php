@@ -36,11 +36,11 @@ function deletebuilding($dbc)
         while ($x = mysqli_fetch_assoc($get_finished)) {
             $get_build_id = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
 
-            $r2 = mysqli_query($dbc, $get_build_id);
-            $r2a = mysqli_fetch_assoc($r2);
-            $bid = $x['building_id'];
+            $get_build_id = mysqli_query($dbc, $get_build_id);
+            $r2a = mysqli_fetch_assoc($get_build_id);
+            $building_id = $x['building_id'];
             $userid = $x['user_id'];
-            $select_build_sql = "SELECT * FROM building WHERE building_id ='" . $bid . "'";
+            $select_build_sql = "SELECT * FROM building WHERE building_id ='" . $building_id . "'";
             $select_build_q = mysqli_query($dbc, $select_build_sql);
             $select_build_a = mysqli_fetch_assoc($select_build_q);
             $givexp = $select_build_a['give_xp'];
