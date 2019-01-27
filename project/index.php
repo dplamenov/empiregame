@@ -23,107 +23,13 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
 
 }
 
-
-?>
-<!DOCTYPE html>
-<html lang="bg">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-<link rel="stylesheet" href="css/style.css"/>
-<script src="js/jquery.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        function refresh() {
-            $.ajax({
-                url: 'auto_refreshservertime.php',
-            }).done(function (data) {
-                $("#servertime").html("Server time " + data);
-            });
-        }
-
-        setInterval(function () {
-            refresh()
-        }, 1000);
-
-        $('#login').click(function () {
-
-            $.ajax({
-                url: 'login.php',
-                data: {
-                    username: $('#username').val(),
-                    pass: $('#pass').val()
-                },
-                type: 'post',
-            }).done(function (data) {      
-                if (data == 'error') {
-                    $('#error').text("Wrong login or password");
-                } else {
-                    window.location.reload(true);
-                }
-                
-            }).fail(function (er) {
-            }).always(function () {
-            });
-        });
-    });
-
-
-</script>
-<?php
-if (@$_SESSION['islogged'] === TRUE) {
-
-    deletebuilding($dbc);
-    deletearmy($dbc);
-
-} else {
-
-    ?>
-    <div class="header"><h1 style="margin-top: 10px">Logo</h1></div>
-
-    <div class="info">
-        <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
-        <div id="error" class="alert-danger"></div>
-        
-    </div>
-    <div class="rightbar">
-        <ul style="text-decoration: none">
-
-        </ul>
-
-    </div>
-    <div id="form">
-        
-        <div><input type="text" placeholder="Потребителско име" id="username"/></div>
-        <div><input type="password" placeholder="Парола" id="pass"/></div>
-        <div id="register">    
-            <a id="login" class="btn btn-primary" href="#">
-                Вход        
-            </a>
-            
-            <a id="registration" class="btn btn-primary" href="register.php">
-                Регистрирай        
-            </a>      
-        </div>
-
-    </div>
-
-    <?php
-    exit;
-}
-?>
-<?php
+include_once 'layout/header.php';
 ?>
 
-<head>
     <meta charset="UTF-8">
 
-    <script type="text/javascript"> $(document).ready(function () {
-
-            function globalmap() {
-                console.log("global");
-            }
-
+    <script type="text/javascript">
+        $(document).ready(function () {
 
             function refresh() {
                 $.ajax({
@@ -133,134 +39,50 @@ if (@$_SESSION['islogged'] === TRUE) {
                 });
             }
 
-            function auto_refresh_army() {
-                $.ajax({
-                    url: 'auto_refresharmy.php',
-                    data: {
-                        getCount: true
-                    },
-                    type: 'post'
-                }).done(function (count) {
-                    if (count >= 1) {
-                        for (let i = 1; i <= count; i++) {
-
-                            $.ajax({
-                                url: 'auto_refresharmy.php',
-                                data: {
-                                    id: i
-                                },
-                                type: 'post'
-                            }).done(function (data) {
-                                if (data == 1) {
-                                    window.location.href = "refresh_helper.php";
-
-                                } else {
-                                    $("#army_" + i).html(data);
-                                }
-
-                            });
-                        }
-                    }
-                });
-            }
-
-            function auto_refresh_build() {
-                $.ajax({
-                    url: 'auto_refreshbuild.php',
-                    data: {
-                        getCount: true
-                    },
-                    type: 'post'
-                }).done(function (count) {
-                    if (count >= 1) {
-                        for (let i = 1; i <= count; i++) {
-
-                            $.ajax({
-                                url: 'auto_refreshbuild.php',
-                                data: {
-                                    id: i
-                                },
-                                type: 'post'
-                            }).done(function (data) {
-                                if (data == 1) {
-                                    window.location.href = "refresh_helper.php";
-
-                                } else {
-                                    $("#build_" + i).html(data);
-                                }
-
-                            });
-                        }
-                    }
-                });
-            }
-
             setInterval(function () {
-                auto_refresh_army();
-                auto_refresh_build();
+                refresh()
             }, 1000);
-            setInterval(function () {
-                refresh();
-            }, 1000);
-            $('#sgradacentur').click(function () {
+
+            $('#login').click(function () {
+
                 $.ajax({
-                    url: 'checkbuild.php'
-
+                    url: 'login.php',
+                    data: {
+                        username: $('#username').val(),
+                        pass: $('#pass').val()
+                    },
+                    type: 'post',
                 }).done(function (data) {
-                    $('#rightbar').html(data);
+                    if (data == 'error') {
+                        $('#error').text("Wrong login or password");
+                    } else {
+                        window.location.reload(true);
+                    }
 
-
+                }).fail(function (er) {
+                }).always(function () {
                 });
             });
+        });
 
-            $('#zamuk').click(function () {
-                $.ajax({
-                    url: 'zamuk.php'
-                }).done(function (data) {
-                    $('#rightbar').html(data);
-                });
-            });
 
-            $('#kazarma').click(function () {
-                $.ajax({
-                    url: 'kazarma.php'
-                }).done(function (data) {
-                    $('#rightbar').html(data);
-                });
-            });
+    </script>
+    <?php
+    if (@$_SESSION['islogged'] === TRUE) {
 
-            $('#dvorec').click(function () {
-                $.ajax({
-                    url: 'dvorec.php'
-                }).done(function (data) {
-                    $('#rightbar').html(data);
-                });
-            });
+        deletebuilding($dbc);
+        deletearmy($dbc);
+        echo '<script src="js/javascript.js"></script>';
 
-            $('#content').click(function () {
-                $.ajax({
-                    url: 'rightbar.php'
-                }).done(function (data) {
-                    $('#rightbar').html(data);
-                });
-            });
-            $('#header').click(function () {
-                $.ajax({
-                    url: 'rightbar.php'
-                }).done(function (data) {
-                    $('#rightbar').html(data);
-                });
-            });
-            $('#info').click(function () {
-                $.ajax({
-                    url: 'rightbar.php'
-                }).done(function (data) {
-                    $('#rightbar').html(data);
-                });
-            });
+    } else {
 
-        });</script>
-    <title></title>
+        include_once 'layout/loginform.php';
+        exit;
+    }
+    ?>
+
+
+    <title>Empire game</title>
 </head>
 
 <body>
