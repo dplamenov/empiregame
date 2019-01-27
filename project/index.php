@@ -70,13 +70,12 @@ if (@$_SESSION['islogged'] === TRUE) {
     echo '<script src="js/javascript.js"></script>';
 
 } else {
-
+    echo '</head>';
     include_once 'layout/loginform.php';
+
     exit;
 }
 ?>
-
-
 <title>Empire game</title>
 </head>
 <body>

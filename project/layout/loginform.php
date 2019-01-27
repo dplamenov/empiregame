@@ -1,4 +1,4 @@
-
+<title>Empiregame Login</title>
 <div class="header"><h1 style="margin-top: 10px">Logo</h1></div>
 
 <div class="info">
