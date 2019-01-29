@@ -50,7 +50,7 @@ include_once 'layout/header.php';
                 type: 'post',
             }).done(function (data) {
                 if (data == 'error') {
-                    $('#error').text("Wrong login or password");
+                    $('#error').text("Wrong username or password");
                 } else {
                     window.location.reload(true);
                 }
