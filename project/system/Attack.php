@@ -25,15 +25,27 @@ class Attack
             $user2_army += $money * $user2_id_army_r['count'];
         }
         if ($user1_army > $user2_army) {
-            echo 1;
+            $this->showAlert(1);
         } elseif ($user1_army < $user2_army) {
-
+            $this->showAlert(2);
         }
 
 
     }
 
-    private function showAlert(){
-
+    private function showAlert($i)
+    {
+        switch ($i) {
+            case 1:
+                echo "<div class=\"alert alert-success\" style=\"margin: 0\" role=\"alert\">
+  You win
+</div>";
+                break;
+            case 2:
+                echo "<div class=\"alert alert-danger\" style=\"margin: 0\" role=\"alert\">
+   You lose
+</div>";
+                break;
+        }
     }
 }
