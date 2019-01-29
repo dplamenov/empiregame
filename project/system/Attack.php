@@ -25,13 +25,15 @@ class Attack
             $user2_army += $money * $user2_id_army_r['count'];
         }
         if ($user1_army > $user2_army) {
-
+            echo 1;
         } elseif ($user1_army < $user2_army) {
-
-        }else{
 
         }
 
+
+    }
+
+    private function showAlert(){
 
     }
 }

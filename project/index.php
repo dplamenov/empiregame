@@ -24,6 +24,8 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
 include_once 'layout/header.php';
 ?>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -124,7 +126,8 @@ if (isset($_GET['build'])) {
 <div id="info">
     <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
 </div>
-<div id="rightbar"><?php
+<div id="rightbar">
+    <?php
     echo '<p>Вашите пари:  ' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . 'лева</p>';
     echo '<p>XP: ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . 'xp</p><br>';
     echo @$is_now_build;
