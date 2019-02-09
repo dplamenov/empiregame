@@ -10,6 +10,7 @@ echo "Welcome, admin ";
 echo '<a href="logout.php">Log out</a>';
 
 echo "<h1>List of all users:</h1>";
+$get_all_user_sql = "SELECT * FROM `users`";
 $get_all_user = mysqli_query($dbc, $get_all_user_sql);
 echo '<table><tr><td>User id</td><td>Username</td><td>Real name</td><td>Email</td><td>Password</td><td>Money</td><td>Xp</td><td>Active</td></tr>';
 $user_count = 0;
