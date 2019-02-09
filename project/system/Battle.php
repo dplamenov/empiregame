@@ -29,14 +29,13 @@ class Battle
         $defender = mysqli_fetch_assoc($users_toattack)['user_id'];
 
         $attack = new Attack();
-        echo $attack->startAttack($dbc, $user_id, $defender);
+        $attack->startAttack($dbc, $user_id, $defender);
 
 
     }
 
     public function battle($dbc, $user_id)
     {
-
         $this->_findOpponent($dbc, $user_id);
     }
 }
