@@ -11,8 +11,12 @@ define('timezone', 'Europe/Sofia');
 
 
 date_default_timezone_set(timezone);
+if (strpos($_SERVER['REQUEST_URI'], 'admin') !== false) {
+    include '../../vendor/autoload.php';
+}else{
+    include '../vendor/autoload.php';
+}
 
-require '../vendor/autoload.php';
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
