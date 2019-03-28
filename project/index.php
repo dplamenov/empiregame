@@ -120,7 +120,7 @@ if (isset($_GET['build'])) {
 <div id="header"><p>Здравей, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Изход</a>' ?></p>
     <div>
 
-        <a href="settings.php">Настройки на профила</a>
+        <a href="settings.php">Профил</a>
     </div>
 </div>
 <div id="info">
