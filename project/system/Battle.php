@@ -18,7 +18,6 @@ class Battle
         $this->data['mix_xp'] = $min_xp;
         $this->data['max_xp'] = $max_xp;
 
-
         $users_toattack = "SELECT * FROM `users` WHERE `xp` > $min_xp and `xp` < $max_xp and `user_id` != $user_id LIMIT 1";
         $users_toattack = mysqli_query($dbc, $users_toattack);
 

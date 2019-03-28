@@ -35,10 +35,10 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
 <div class="info"></div>
 <div class="rightbar"></div>
 <div id="form">
-    <div><input type="text" placeholder="Потребителско име" id="username"/></div>
-    <div><input type="password" placeholder="Парола" id="pass"/></div>
-    <div><input type="text" placeholder="Истинско име" id="realname"/></div>
-    <div><input type="text" placeholder="email" id="email"/></div>
+    <div><input type="text" placeholder="Username" id="username"/></div>
+    <div><input type="password" placeholder="Password" id="pass"/></div>
+    <div><input type="text" placeholder="Real name" id="realname"/></div>
+    <div><input type="text" placeholder="Email" id="email"/></div>
     <div id="register">
         <button id="btn">Регистирай се</button>
     </div>
