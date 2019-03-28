@@ -24,7 +24,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
             }).fail(function (er) {
                 console.log(er);
             })
-    });
+         });
     });
 
 

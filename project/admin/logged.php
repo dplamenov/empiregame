@@ -25,7 +25,7 @@ while ($all_user = mysqli_fetch_assoc($get_all_user)) {
         $active = "Error!";
     }
 
-    $all_user['pass'] = str_repeat("*", mb_strlen($all_user['pass']));
+    $all_user['pass'] = str_repeat("*", 8);
     echo '<tr><td>' . $all_user['user_id'] . '</td><td>' . $all_user['user_name'] . '</td><td>' . $all_user['real_name'] . '</td>
 <td>' . $all_user['email'] . '</td><td>' . $all_user['pass'] . '</td><td>' . $all_user['money'] . '</td><td>' . $all_user['xp'] . '</td>
 <td>' . $active . '</td></tr>';
