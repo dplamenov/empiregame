@@ -43,7 +43,7 @@ CREATE TABLE `building`
   `building_id`  int(11)                        NOT NULL,
   `geo_id`       varchar(50) CHARACTER SET utf8 NOT NULL,
   `geo_location` varchar(150)                   NOT NULL,
-  `shape` varchar(15)CHARACTER SET utf8 not null
+  `shape`        varchar(15) CHARACTER SET utf8 not null
 ) ENGINE = InnoDB ,
   DEFAULT CHARSET = utf8;
 
@@ -57,7 +57,7 @@ VALUES
 
 INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
 VALUES
-('house', 800, 1, 3, 'house', '613,161,712,99', 'rect');
+  ('house', 800, 1, 3, 'house', '613,161,712,99', 'rect');
 
 CREATE TABLE `building_now`
 (
@@ -76,61 +76,62 @@ CREATE TABLE `users`
   `email`     varchar(100)                   NOT NULL,
   `pass`      varchar(100)                   NOT NULL,
   `money`     int(11)                        NOT NULL,
-  `xp`        int(11)                        NOT NULL
+  `xp`        int(11)                        NOT NULL,
+  `people`    int(11)                        NOT NULL DEFAULT '50'
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-CREATE TABLE `users_building`
+CREATE TABLE ` users_building `
 (
-  `user_id`     int(11)                        NOT NULL,
-  `build_name`  varchar(50) CHARACTER SET utf8 NOT NULL,
-  `build_lv`    int(11)                        NOT NULL,
-  `building_id` int(11)                        NOT NULL
+  ` user_id `     int(11)                        NOT NULL,
+  ` build_name `  varchar(50) CHARACTER SET utf8 NOT NULL,
+  ` build_lv `    int(11)                        NOT NULL,
+  ` building_id ` int(11)                        NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-CREATE TABLE `user_army`
+CREATE TABLE ` user_army `
 (
-  `user_id`   int(11) NOT NULL,
-  `army_name` int(11) NOT NULL,
-  `count`     int(11) NOT NULL,
-  `lvl`       int(11) NOT NULL
+  ` user_id `   int(11) NOT NULL,
+  ` army_name ` int(11) NOT NULL,
+  ` count `     int(11) NOT NULL,
+  ` lvl `       int(11) NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-ALTER TABLE `army`
-  ADD PRIMARY KEY (`army_id`);
+ALTER TABLE ` army `
+  ADD PRIMARY KEY (` army_id `);
 
-ALTER TABLE `building`
-  ADD PRIMARY KEY (`building_id`);
+ALTER TABLE ` building `
+  ADD PRIMARY KEY (` building_id `);
 
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+ALTER TABLE ` users `
+  ADD PRIMARY KEY (` user_id `);
 
-ALTER TABLE `users`
-  CHANGE `user_id` `user_id` INT(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE ` users `
+  CHANGE ` user_id ` ` user_id ` INT(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `users`
-  ADD `active` TINYINT NOT NULL DEFAULT '1' AFTER `xp`;
+ALTER TABLE ` users `
+  ADD ` active ` TINYINT NOT NULL DEFAULT '1' AFTER ` xp `;
 
-ALTER TABLE `building`
-  ADD `shape` VARCHAR(15) NOT NULL AFTER `geo_location`;
+ALTER TABLE ` building `
+  ADD ` shape ` VARCHAR(15) NOT NULL AFTER ` geo_location `;
 
-UPDATE `building`
-SET `shape` = 'rect'
-WHERE `building`.`building_id` = 1;
+UPDATE ` building `
+SET ` shape ` = 'rect'
+WHERE ` building `.` building_id ` = 1;
 
-UPDATE `building`
-SET `shape` = 'poly'
-WHERE `building`.`building_id` = 2;
+UPDATE ` building `
+SET ` shape ` = 'poly'
+WHERE ` building `.` building_id ` = 2;
 
-CREATE TABLE `battle`
+CREATE TABLE ` battle `
 (
-  `attacker` INT NOT NULL,
-  `defender` INT NOT NULL,
-  `result`   INT NOT NULL,
-  `start`    INT NOT NULL,
-  `end`      INT NOT NULL
+  ` attacker ` INT NOT NULL,
+  ` defender ` INT NOT NULL,
+  ` result `   INT NOT NULL,
+  ` start `    INT NOT NULL,
+  ` end `      INT NOT NULL
 ) ENGINE = InnoDB;
 
 
