@@ -42,8 +42,9 @@ CREATE TABLE `building`
   `time`         int(11)                        NOT NULL,
   `building_id`  int(11)                        NOT NULL,
   `geo_id`       varchar(50) CHARACTER SET utf8 NOT NULL,
-  `geo_location` varchar(150)                   NOT NULL
-) ENGINE = InnoDB
+  `geo_location` varchar(150)                   NOT NULL,
+  `shape` varchar(15)CHARACTER SET utf8 not null
+) ENGINE = InnoDB ,
   DEFAULT CHARSET = utf8;
 
 INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`)
@@ -54,6 +55,9 @@ INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, 
 VALUES
   ('Замък', 800, 5, 2, 'zamuk', '664,365,788,363,788,455,666,457');
 
+INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`)
+VALUES
+('House', 800, 5, 2, 'house', '553,115,656,199');
 
 CREATE TABLE `building_now`
 (
