@@ -128,9 +128,9 @@ if (isset($_GET['build'])) {
 </div>
 <div id="rightbar" style="padding: 5px;">
     <?php
-    echo '<p>Your  пари:  ' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . 'лева</p>';
-    echo '<p>XP: ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . 'xp</p>';
-    echo '<p>XP: ' . userdata($_SESSION['user']['user_id'], 'people', $dbc) . 'xp</p><br>';
+    echo '<p>Your  money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . '</p>';
+    echo '<span style="display: block">XP: ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . 'xp</span>';
+    echo '<span>Population: ' . userdata($_SESSION['user']['user_id'], 'people', $dbc) . '</span><br>';
 
     echo @$is_now_build;
     ?>
