@@ -49,15 +49,15 @@ CREATE TABLE `building`
 
 INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
 VALUES
-  ('Казарма', 550, 1, 1, 'kazarma', '84,102,2,3', 'rect');
+  ('barrack', 550, 1, 1, 'barrack', '113,96,3,7', 'rect');
 
 INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
 VALUES
-  ('Замък', 800, 5, 2, 'zamuk', '664,365,788,363,788,455,666,457', 'poly');
+  ('castle', 800, 5, 2, 'castle', '668,367,774,441', 'rect');
 
 INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
 VALUES
-('House', 800, 1, 3, 'house', '553,115,656,199', 'rect');
+('house', 800, 1, 3, 'house', '613,161,712,99', 'rect');
 
 CREATE TABLE `building_now`
 (
