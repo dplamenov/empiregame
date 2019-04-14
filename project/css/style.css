@@ -84,3 +84,7 @@ body {
     color: red;
 
 }
+
+#build td{
+    padding-left: 5px;
+}

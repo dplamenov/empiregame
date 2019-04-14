@@ -126,10 +126,12 @@ if (isset($_GET['build'])) {
 <div id="info">
     <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
 </div>
-<div id="rightbar">
+<div id="rightbar" style="padding: 5px;">
     <?php
-    echo '<p>Вашите пари:  ' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . 'лева</p>';
-    echo '<p>XP: ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . 'xp</p><br>';
+    echo '<p>Your  пари:  ' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . 'лева</p>';
+    echo '<p>XP: ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . 'xp</p>';
+    echo '<p>XP: ' . userdata($_SESSION['user']['user_id'], 'people', $dbc) . 'xp</p><br>';
+
     echo @$is_now_build;
     ?>
 
