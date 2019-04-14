@@ -77,7 +77,8 @@ CREATE TABLE `users`
   `pass`      varchar(100)                   NOT NULL,
   `money`     int(11)                        NOT NULL,
   `xp`        int(11)                        NOT NULL,
-  `people`    int(11)                        NOT NULL DEFAULT '50'
+  `people`    int(11)                        NOT NULL DEFAULT '50',
+  `lastlogin` varchar(80)                    NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
