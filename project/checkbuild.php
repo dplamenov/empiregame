@@ -3,17 +3,17 @@ session_start();
 include 'config.php';
 $getbuild_sql = "SELECT * FROM building";
 $get_build_q = mysqli_query($dbc, $getbuild_sql);
-echo '<p>Вашите пари: ' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . 'лева</p>';
+echo '<p>Your money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . '</p>';
 
-echo '<p>Сграда Център</p><p>ВСИЧКИ ВРЕМЕНА СА В МИНУТИ</p>';
-echo '<table border="1"><tr><td>Име на сградата</td><td>Пари</td><td>Време</td><td>Построй</td></tr>';
+echo '<p>Town hall</p>';
+echo '<table border="1"><tr><td>Name</td><td>Money</td><td>Време</td><td>Построй</td></tr>';
 while ($building = mysqli_fetch_assoc($get_build_q)) {
     if (userdata($_SESSION['user']['user_id'], 'money', $dbc) >= $building['money']) {
-        $link = '<a href="?build=' . $building['building_id'] . '">Построй</a>';
+        $link = '<a href="?build=' . $building['building_id'] . '">Build</a>';
         $class = 'ok';
     } else {
         $link = 'Нямаш пари';
     }
-    echo '<tr><td>' . ucfirst($building['build_name']) . '</td><td>' . $building['money'] . ' Лева</td><td>' . $building['time'] . ' Min</td><td>' . $link . @$link2 . '</td></tr>';
+    echo '<tr><td>' . ucfirst($building['build_name']) . '</td><td>$' . $building['money'] . '</td><td>' . $building['time'] . ' Min</td><td>' . $link . @$link2 . '</td></tr>';
 }
 echo '</table>';
