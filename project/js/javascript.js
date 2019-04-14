@@ -82,7 +82,7 @@ $(document).ready(function () {
     setInterval(function () {
         refresh();
     }, 1000);
-    $('#sgradacentur').click(function () {
+    $('#townhall').click(function () {
         $.ajax({
             url: 'checkbuild.php'
 
@@ -93,7 +93,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#zamuk').click(function () {
+    $('#castle').click(function () {
         $.ajax({
             url: 'zamuk.php'
         }).done(function (data) {
@@ -109,7 +109,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#kazarma').click(function () {
+    $('#barrack').click(function () {
         $.ajax({
             url: 'kazarma.php'
         }).done(function (data) {
@@ -117,7 +117,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#dvorec').click(function () {
+    $('#palace').click(function () {
         $.ajax({
             url: 'dvorec.php'
         }).done(function (data) {
