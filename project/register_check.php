@@ -50,8 +50,8 @@ if (@count($error) > 0) {
     $user_email = mysqli_real_escape_string($dbc, trim($user_email));
     $user_pass = mysqli_real_escape_string($dbc, trim($user_pass));
 
-
-    $sql_to_register = "INSERT INTO `users`(`user_name`, `real_name`, `email`, `pass`, `money`) VALUES ('" . $user_name . "','" . $user_realname . "','" . $user_email . "','" . $user_pass . "' , 680)";
+    $now = time();
+    $sql_to_register = "INSERT INTO `users`(`user_name`, `real_name`, `email`, `pass`, `money`, `lastlogin`) VALUES ('" . $user_name . "','" . $user_realname . "','" . $user_email . "','" . $user_pass . "' , 680, $now)";
     mysqli_query($dbc, $sql_to_register);
 
     $users = mysqli_query($dbc, "SELECT * FROM users WHERE pass='" . $user_pass . "' AND user_name='" . $user_name . "'");
