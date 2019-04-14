@@ -101,6 +101,14 @@ $(document).ready(function () {
         });
     });
 
+    $('#house').click(function () {
+        $.ajax({
+            url: 'house.php'
+        }).done(function (data) {
+            $('#rightbar').html(data);
+        });
+    });
+
     $('#kazarma').click(function () {
         $.ajax({
             url: 'kazarma.php'
