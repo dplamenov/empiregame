@@ -155,7 +155,7 @@ if (isset($_GET['build'])) {
             $select_build_name_from_id = mysqli_query($dbc, $select_build_name_from_id_sql);
             $select_build_name_from_idarray = mysqli_fetch_assoc($select_build_name_from_id);
 
-            echo '<tr><td>' . $select_build_name_from_idarray['build_name'] . '</td><td>Ниво(Скоро)</td><td id="build_' . $get_now_user_buildb['building_name'] . '">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
+            echo '<tr><td>' . ucfirst($select_build_name_from_idarray['build_name']) . '</td><td>Ниво(Скоро)</td><td id="build_' . $get_now_user_buildb['building_name'] . '">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
         }
         echo '</table>';
     }
@@ -191,15 +191,15 @@ if (isset($_GET['build'])) {
     $user_build_data_r = mysqli_query($dbc, $user_build_data);
     if (mysqli_num_rows($user_build_data_r) >= 1) {
         echo '<br>';
-        echo '<span>Твоите сгради</span>';
-        echo '<table border="1">';
-        echo '<tr><td>Сграда</td><td>Ниво</td></tr>';
+        echo '<span>Your building</span>';
+        echo '<table border="1" id="ready_build">';
+        echo '<tr><td>Build</td><td>Level</td></tr>';
 
         while ($xv = mysqli_fetch_assoc($user_build_data_r)) {
             $get_build_name_by_id_sql = "SELECT * FROM building WHERE building_id='" . $xv['building_id'] . "' ";
             $xva = mysqli_query($dbc, $get_build_name_by_id_sql);
             $xvaa = mysqli_fetch_assoc($xva);
-            echo '<tr><td>' . $xvaa['build_name'] . '</td><td>' . $xv['build_lv'] . '</td></tr>';
+            echo '<tr><td>' . ucfirst($xvaa['build_name']) . '</td><td>' . $xv['build_lv'] . '</td></tr>';
         }
         echo '</table>';
     }
