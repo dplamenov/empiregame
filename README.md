@@ -14,10 +14,11 @@ Username and password for admin panel('/admin') are 'admin' and 'admin'
 <br>
 - This is my old code.
 
-# ToDo 
-Refactor Code
-1. Population of people
-2. People working
-3. New build for work
-4. People in kingdom will pay taxes
-5. Better design
+# ToDo
+1. Translate to English
+2. Refactor Code
+3. Population of people
+4. People working
+5. New build for work
+6. People in kingdom will pay taxes
+7. Better design
