@@ -9,7 +9,6 @@ if (ob == 'yes') {
     ob_start();
 }
 session_start();
-
 if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
     $battle = new \system\Battle();
 
@@ -59,6 +58,7 @@ include_once 'layout/header.php';
 
             }).fail(function (er) {
             }).always(function () {
+                console.log(data);
             });
         });
     });
