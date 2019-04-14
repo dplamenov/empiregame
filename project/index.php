@@ -230,7 +230,7 @@ if (isset($_GET['build'])) {
 </div>
 
 <map name="Map" id="Map">
-    <area alt="" title="" id="sgradacentur" href="#" shape="rect" coords="307,351,226,272"/>
+    <area alt="" title="" id="townhall" href="#" shape="rect" coords="377,264,274,216"/>
     <?php
     deletebuilding($dbc);
     $sql_get_users_build_area = "SELECT * FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
