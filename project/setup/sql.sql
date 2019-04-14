@@ -47,17 +47,17 @@ CREATE TABLE `building`
 ) ENGINE = InnoDB ,
   DEFAULT CHARSET = utf8;
 
-INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`)
+INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
 VALUES
-  ('Казарма', 550, 1, 1, 'kazarma', '84,102,2,3');
+  ('Казарма', 550, 1, 1, 'kazarma', '84,102,2,3', 'rect');
 
-INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`)
+INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
 VALUES
-  ('Замък', 800, 5, 2, 'zamuk', '664,365,788,363,788,455,666,457');
+  ('Замък', 800, 5, 2, 'zamuk', '664,365,788,363,788,455,666,457', 'poly');
 
-INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`)
+INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
 VALUES
-('House', 800, 5, 2, 'house', '553,115,656,199');
+('House', 800, 5, 2, 'house', '553,115,656,199', 'rect');
 
 CREATE TABLE `building_now`
 (
