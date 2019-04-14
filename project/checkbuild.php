@@ -14,6 +14,6 @@ while ($building = mysqli_fetch_assoc($get_build_q)) {
     } else {
         $link = 'Нямаш пари';
     }
-    echo '<tr><td>' . ucfirst($building['build_name']) . '</td><td>' . $building['money'] . ' Лева</td><td>' . $building['time'] . ' Мин</td><td>' . $link . @$link2 . '</td></tr>';
+    echo '<tr><td>' . ucfirst($building['build_name']) . '</td><td>' . $building['money'] . ' Лева</td><td>' . $building['time'] . ' Min</td><td>' . $link . @$link2 . '</td></tr>';
 }
 echo '</table>';
