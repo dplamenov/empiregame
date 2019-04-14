@@ -10,11 +10,10 @@ echo '<table border="1"><tr><td>Име на сградата</td><td>Пари</t
 while ($building = mysqli_fetch_assoc($get_build_q)) {
     if (userdata($_SESSION['user']['user_id'], 'money', $dbc) >= $building['money']) {
         $link = '<a href="?build=' . $building['building_id'] . '">Построй</a>';
-
         $class = 'ok';
     } else {
         $link = 'Нямаш пари';
     }
-    echo '<tr><td>' . $building['build_name'] . '</td><td>' . $building['money'] . ' Лева</td><td>' . $building['time'] . ' Мин</td><td>' . $link . @$link2 . '</td></tr>';
+    echo '<tr><td>' . ucfirst($building['build_name']) . '</td><td>' . $building['money'] . ' Лева</td><td>' . $building['time'] . ' Мин</td><td>' . $link . @$link2 . '</td></tr>';
 }
 echo '</table>';
