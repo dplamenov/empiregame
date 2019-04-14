@@ -57,7 +57,7 @@ VALUES
 
 INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
 VALUES
-('House', 800, 5, 2, 'house', '553,115,656,199', 'rect');
+('House', 800, 1, 3, 'house', '553,115,656,199', 'rect');
 
 CREATE TABLE `building_now`
 (
