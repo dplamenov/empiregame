@@ -50,15 +50,15 @@ CREATE TABLE `building`
 
 INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`, `give_xp`)
 VALUES
-  ('barrack', 550, 1, 1, 'barrack', '113,96,3,7', 'rect');
+  ('barrack', 550, 1, 1, 'barrack', '113,96,3,7', 'rect', 100);
 
 INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`, `give_xp`)
 VALUES
-  ('castle', 800, 5, 2, 'castle', '668,367,774,441', 'rect');
+  ('castle', 800, 5, 2, 'castle', '668,367,774,441', 'rect', 500);
 
 INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`, `give_xp`)
 VALUES
-  ('house', 800, 1, 3, 'house', '613,161,712,99', 'rect');
+  ('house', 800, 1, 3, 'house', '613,161,712,99', 'rect', 60);
 
 CREATE TABLE `building_now`
 (
