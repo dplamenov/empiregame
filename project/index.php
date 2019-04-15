@@ -117,10 +117,10 @@ if (isset($_GET['build'])) {
 }
 ?>
 
-<div id="header"><p>Здравей, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Изход</a>' ?></p>
+<div id="header"><p>Hello, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Изход</a>' ?></p>
     <div>
 
-        <a href="settings.php">Профил</a>
+        <a href="settings.php">Profile</a>
     </div>
 </div>
 <div id="info">
@@ -146,7 +146,7 @@ if (isset($_GET['build'])) {
     $sql_get_now_user_build = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $get_now_user_build = mysqli_query($dbc, $sql_get_now_user_build);
     if (mysqli_num_rows($get_now_user_build) >= 1) {
-        echo '<p>Сега строиш</p>';
+        echo '<p>You are building:</p>';
         echo '<table>';
         echo '<table border="1">';
         echo '<tr><td>Сграда</td><td>Ниво(Скоро)</td><td>Ще бъде готово в</td></tr>';
