@@ -48,15 +48,15 @@ CREATE TABLE `building`
 ) ENGINE = InnoDB ,
   DEFAULT CHARSET = utf8;
 
-INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
+INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`, `give_xp`)
 VALUES
   ('barrack', 550, 1, 1, 'barrack', '113,96,3,7', 'rect');
 
-INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
+INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`, `give_xp`)
 VALUES
   ('castle', 800, 5, 2, 'castle', '668,367,774,441', 'rect');
 
-INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`)
+INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, `geo_location`, `shape`, `give_xp`)
 VALUES
   ('house', 800, 1, 3, 'house', '613,161,712,99', 'rect');
 
