@@ -6,7 +6,6 @@ $user_pass = $_POST['pass'];
 $users = mysqli_query($dbc, "SELECT * FROM users WHERE pass='" . $user_pass . "' AND user_name='" . $user_name . "' AND active = 1");
 
 $row = mysqli_fetch_assoc($users);
-$last_login = $row['lastlogin'];
 $_SESSION['user']['user_name'] = $row['user_name'];
 $_SESSION['user']['user_id'] = $row['user_id'];
 $_SESSION['user']['xp'] = $row['xp'];
