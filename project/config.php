@@ -48,7 +48,7 @@ function deletebuilding($dbc)
             $select_build_q = mysqli_query($dbc, $select_build_sql);
             $select_build_a = mysqli_fetch_assoc($select_build_q);
             $givexp = $select_build_a['give_xp'];
-            mysqli_query($dbc, "UPDATE users SET xp  = xp +'" . $givexp . "' WHERE user_id='" . $userid . "'");
+            mysqli_query($dbc, "UPDATE users SET xp  = xp + '" . $givexp . "' WHERE user_id='" . $userid . "'");
             $countub = mysqli_query($dbc, "SELECT * FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND  building_id='" . $r2a['building_name'] . "'");
             if (mysqli_num_rows($countub) == 0) {
                 $select_build_lv = "INSERT INTO users_building (user_id,building_id,build_lv) VALUES ('" . $_SESSION['user']['user_id'] . "','" . $r2a['building_name'] . "','1')";

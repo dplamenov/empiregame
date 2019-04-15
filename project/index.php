@@ -110,7 +110,7 @@ if (isset($_GET['build'])) {
             refresh(0, "./");
         } else {
 
-            $is_now_build = '<p>Вече строиш</p>';
+            $is_now_build = '<p>Already build</p>';
             unset($_GET);
         }
     }
@@ -155,7 +155,7 @@ if (isset($_GET['build'])) {
             $select_build_name_from_id = mysqli_query($dbc, $select_build_name_from_id_sql);
             $select_build_name_from_idarray = mysqli_fetch_assoc($select_build_name_from_id);
 
-            echo '<tr><td>' . ucfirst($select_build_name_from_idarray['build_name']) . '</td><td>Ниво(Скоро)</td><td id="build_' . $get_now_user_buildb['building_name'] . '">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
+            echo '<tr><td>' . ucfirst($select_build_name_from_idarray['build_name']) . '</td><td>Level (Soon)</td><td id="build_' . $get_now_user_buildb['building_name'] . '">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
         }
         echo '</table>';
     }
@@ -166,7 +166,7 @@ if (isset($_GET['build'])) {
 
     if (mysqli_num_rows($get_now_user_army) >= 1) {
         echo "<br>";
-        echo "<span>Сега тренираш</span>";
+        echo "<span>Now train</span>";
         echo '<table>';
         echo '<table border="1">';
         echo '<tr><td>Army</td><td>Count</td><td>Will be ready after:</td></tr>';
