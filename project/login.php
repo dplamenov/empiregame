@@ -12,9 +12,11 @@ $_SESSION['user']['xp'] = $row['xp'];
 $_SESSION['user']['money'] = $row['money'];
 
 $lastlogin = $row['lastlogin'];
-$days = abs(time() - $lastlogin) / 60 / 60 / 24;
+$hours = abs(time() - $lastlogin) / 60 / 60;
 mysqli_query($dbc, "UPDATE `users` SET `lastlogin`=  " . time(). " WHERE `user_id` = " . $row['user_id']);
-mysqli_query($dbc, "UPDATE `users` SET `money`=  " . $days * 500 . " WHERE `user_id` = " . $row['user_id']);
+if($hours >= 1){
+    mysqli_query($dbc, "UPDATE `users` SET `money`=  " . $hours * 50 . " WHERE `user_id` = " . $row['user_id']);
+}
 if (mysqli_num_rows($users) == 1) {
     $_SESSION['islogged'] = true;
     echo 'window.location.reload(true); ';
