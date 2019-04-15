@@ -42,7 +42,7 @@ function deletebuilding($dbc)
 
             $get_build_id = mysqli_query($dbc, $get_build_id);
             $r2a = mysqli_fetch_assoc($get_build_id);
-            $building_id = $x['building_id'];
+            $building_id = $x['building_name'];
             $userid = $x['user_id'];
             $select_build_sql = "SELECT * FROM building WHERE building_id ='" . $building_id . "'";
             $select_build_q = mysqli_query($dbc, $select_build_sql);
