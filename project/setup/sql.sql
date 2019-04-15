@@ -43,7 +43,8 @@ CREATE TABLE `building`
   `building_id`  int(11)                        NOT NULL,
   `geo_id`       varchar(50) CHARACTER SET utf8 NOT NULL,
   `geo_location` varchar(150)                   NOT NULL,
-  `shape`        varchar(15) CHARACTER SET utf8 not null
+  `shape`        varchar(15) CHARACTER SET utf8 NOT NULL,
+  `give_xp`      int(11)                        NOT NULL
 ) ENGINE = InnoDB ,
   DEFAULT CHARSET = utf8;
 
