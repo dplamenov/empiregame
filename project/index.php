@@ -149,7 +149,7 @@ if (isset($_GET['build'])) {
         echo '<p>You are building:</p>';
         echo '<table>';
         echo '<table border="1">';
-        echo '<tr><td>Сграда</td><td>Ниво(Скоро)</td><td>Ще бъде готово в</td></tr>';
+        echo '<tr><td>Build</td><td>Level (Soon)</td><td>Will be ready after:</td></tr>';
         while ($get_now_user_buildb = mysqli_fetch_assoc($get_now_user_build)) {
             $select_build_name_from_id_sql = "SELECT * FROM building WHERE building_id='" . $get_now_user_buildb['building_name'] . "'";
             $select_build_name_from_id = mysqli_query($dbc, $select_build_name_from_id_sql);
@@ -166,11 +166,10 @@ if (isset($_GET['build'])) {
 
     if (mysqli_num_rows($get_now_user_army) >= 1) {
         echo "<br>";
-        //echo "<br>";
         echo "<span>Сега тренираш</span>";
         echo '<table>';
         echo '<table border="1">';
-        echo '<tr><td>Армия</td><td>Брой</td><td>Остава още</td></tr>';
+        echo '<tr><td>Army</td><td>Count</td><td>Will be ready after:</td></tr>';
         $counter = 0;
         while ($army_now = mysqli_fetch_assoc($get_now_user_army)) {
             $army_name = mysqli_fetch_assoc(mysqli_query($dbc, "SELECT `army_name` FROM `army` WHERE `army_id` = " . $army_now['army_name']))['army_name'];
@@ -210,9 +209,9 @@ if (isset($_GET['build'])) {
     $user_army_data = "SELECT * FROM user_army WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $user_army_data_r = mysqli_query($dbc, $user_army_data);
     if (mysqli_num_rows($user_army_data_r) >= 1) {
-        echo '<span>Твоята армия</span>';
+        echo '<span>Your armu</span>';
         echo '<table border="1">';
-        echo '<tr><td>Армия</td><td>Брой</td></tr>';
+        echo '<tr><td>Army</td><td>Count</td></tr>';
 
         while ($xv = mysqli_fetch_assoc($user_army_data_r)) {
 
@@ -246,7 +245,7 @@ if (isset($_GET['build'])) {
     ?>
     <?php
     if (isset($_GET['army'])) {
-        echo 'Тренираш армия';
+        echo 'You are training army.';
     }
     ?>
 </map>
