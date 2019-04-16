@@ -156,7 +156,9 @@ if (isset($_GET['build'])) {
             $select_build_name_from_id = mysqli_query($dbc, $select_build_name_from_id_sql);
             $select_build_name_from_idarray = mysqli_fetch_assoc($select_build_name_from_id);
 
-            echo '<tr><td>' . ucfirst($select_build_name_from_idarray['build_name']) . '</td><td>Level (Soon)</td><td id="build_' . $get_now_user_buildb['building_name'] . '">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
+            $level = mysqli_query($dbc, "SELECT build_lv FROM users_building WHERE user_id = " . $_SESSION['user']['user_id'] . " and building_id = " .  $get_now_user_buildb['building_name']);
+            $level = mysqli_fetch_assoc($level)['build_lv'] + 1;
+            echo '<tr><td>' . ucfirst($select_build_name_from_idarray['build_name']) . '</td><td>'.$level.'</td><td id="build_' . $get_now_user_buildb['building_name'] . '">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
         }
         echo '</table>';
     }

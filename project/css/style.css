@@ -1,6 +1,7 @@
 body {
     padding: 0px;
     margin: 0px;
+    height: 100%;
 }
 
 #header {
@@ -32,9 +33,9 @@ body {
 }
 
 #content {
-    background-color: aquamarine;
 
 
+    height: 100%;
 }
 
 .header {
