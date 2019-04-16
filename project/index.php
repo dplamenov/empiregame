@@ -210,7 +210,7 @@ if (isset($_GET['build'])) {
     $user_army_data = "SELECT * FROM user_army WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $user_army_data_r = mysqli_query($dbc, $user_army_data);
     if (mysqli_num_rows($user_army_data_r) >= 1) {
-        echo '<span>Your armu</span>';
+        echo '<span>Your army</span>';
         echo '<table border="1">';
         echo '<tr><td>Army</td><td>Count</td></tr>';
 

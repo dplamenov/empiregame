@@ -20,7 +20,7 @@ body {
 #rightbar {
     background-color: lightcoral;
     width: 20%;
-    height: 91vh;
+
     float: right;
     text-decoration: none;
 
@@ -33,7 +33,7 @@ body {
 
 #content {
     background-color: aquamarine;
-    height: 91vh;
+
 
 }
 
