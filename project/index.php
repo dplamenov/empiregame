@@ -118,7 +118,7 @@ if (isset($_GET['build'])) {
 }
 ?>
 
-<div id="header"><p>Hello, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Изход</a>' ?></p>
+<div id="header"><p>Hello, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Log out</a>' ?></p>
     <div>
 
         <a href="settings.php">Profile</a>
