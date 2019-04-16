@@ -108,6 +108,7 @@ if (isset($_GET['build'])) {
             mysqli_query($dbc, $add_build_sql);
             unset($_GET['build_id']);
             refresh(0, "./");
+
         } else {
 
             $is_now_build = '<p>Already build</p>';
