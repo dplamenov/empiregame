@@ -80,7 +80,7 @@ if (@$_SESSION['islogged'] === TRUE) {
 ?>
 <title>Empire game</title>
 </head>
-<body>
+<body style=" background: #cccccc;">
 
 <?php
 
@@ -137,7 +137,7 @@ if (isset($_GET['build'])) {
     ?>
 
 </div>
-<div id="content">
+<div id="content" style="padding-bottom: auto">
 
     <img src="images/map.jpg" alt="" usemap="#Map"/><br>
     <div><img src="images/global.png"/></div>

@@ -2,6 +2,7 @@ body {
     padding: 0px;
     margin: 0px;
     height: 100%;
+
 }
 
 #header {
@@ -34,8 +35,9 @@ body {
 
 #content {
 
-
+    background: #cccccc;
     height: 100%;
+    padding-bottom: 100px;
 }
 
 .header {
