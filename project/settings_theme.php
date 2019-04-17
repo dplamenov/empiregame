@@ -1,7 +1,7 @@
 <script type="text/javascript">
     function changepassword() {
         let div = document.getElementById("change_password");
-        div.style.visibility = "visible";
+        div.style.display = "block";
         document.getElementById("btn_changepassword").style.visibility = "hidden";
     }
 
@@ -34,7 +34,7 @@
     Change password
 </button>
 
-<div id="change_password" style="visibility: hidden">
+<div id="change_password" style="display: none">
     <h2>Change password</h2>
     <form method="post" action="settings.php">
         <input style="background:#cccccc;padding: 5px;border: 1px solid white" type="password" name="oldpassword"
@@ -49,5 +49,8 @@
     </form>
 </div>
 
+<br><br><button style="border:0;background-color: darkgreen;padding: 7px" title="Stop attack on my village for week ($10000)">
+    Stop attack
+</button>
 
 </body>
