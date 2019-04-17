@@ -146,6 +146,11 @@ CREATE TABLE IF NOT EXISTS `levels`
   `give_xp`    INT NOT NULL,
   PRIMARY KEY (`level_id`)
 ) ENGINE = InnoDB;
+
+INSERT INTO `levels` (`level_id`, `from_xp`, `to_xp`, `give_money`, `give_xp`)
+VALUES ('1', '1', '99', '0', '0'),
+       ('2', '100', '199', '100', '50');
+
 /*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
