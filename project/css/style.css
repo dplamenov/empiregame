@@ -20,9 +20,8 @@ body {
 }
 
 #rightbar {
-    background-color: lightcoral;
+    border-left: black solid 0.1px;
     width: 20%;
-
     float: right;
     text-decoration: none;
 

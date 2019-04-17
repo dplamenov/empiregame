@@ -127,7 +127,7 @@ if (isset($_GET['build'])) {
 <div id="info">
     <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
 </div>
-<div id="rightbar" style="padding: 5px;">
+<div id="rightbar" style="padding: 5px;height: 400px;">
     <?php
     echo '<p>Your  money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . '</p>';
     echo '<span style="display: block">XP: ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . 'xp</span>';
