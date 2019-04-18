@@ -147,4 +147,8 @@ $(document).ready(function () {
         });
     });
 
+    $('#attack_button').click(function () {
+        let specific_user = document.getElementById('specific_user').value;
+        console.log(specific_user);
+    });
 });

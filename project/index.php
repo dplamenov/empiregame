@@ -73,6 +73,7 @@ if (@$_SESSION['islogged'] === TRUE) {
 
 } else {
     echo '</head>';
+    
     include_once 'layout/loginform.php';
 
     exit;
