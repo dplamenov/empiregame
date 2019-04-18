@@ -73,7 +73,7 @@ if (@$_SESSION['islogged'] === TRUE) {
 
 } else {
     echo '</head>';
-    
+
     include_once 'layout/loginform.php';
 
     exit;
@@ -147,8 +147,8 @@ if (isset($_GET['build'])) {
     <?php
 
 
-    $sql_get_now_user_build = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
-    $get_now_user_build = mysqli_query($dbc, $sql_get_now_user_build);
+    $user_building = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
+    $get_now_user_build = mysqli_query($dbc, $user_building);
     if (mysqli_num_rows($get_now_user_build) >= 1) {
         echo '<p>You are building:</p>';
         echo '<table>';
@@ -200,11 +200,11 @@ if (isset($_GET['build'])) {
         echo '<table border="1" id="ready_build">';
         echo '<tr><td>Build</td><td>Level</td></tr>';
 
-        while ($xv = mysqli_fetch_assoc($user_build_data_r)) {
-            $get_build_name_by_id_sql = "SELECT * FROM building WHERE building_id='" . $xv['building_id'] . "' ";
-            $xva = mysqli_query($dbc, $get_build_name_by_id_sql);
-            $xvaa = mysqli_fetch_assoc($xva);
-            echo '<tr><td>' . ucfirst($xvaa['build_name']) . '</td><td>' . $xv['build_lv'] . '</td></tr>';
+        while ($u_army = mysqli_fetch_assoc($user_build_data_r)) {
+            $get_build_name_by_id = "SELECT * FROM building WHERE building_id='" . $u_army['building_id'] . "' ";
+            $get_build_name_by_id = mysqli_query($dbc, $get_build_name_by_id);
+            $build = mysqli_fetch_assoc($get_build_name_by_id);
+            echo '<tr><td>' . ucfirst($build['build_name']) . '</td><td>' . $u_army['build_lv'] . '</td></tr>';
         }
         echo '</table>';
     }
@@ -212,20 +212,20 @@ if (isset($_GET['build'])) {
     echo "<br>";
 
 
-    $user_army_data = "SELECT * FROM user_army WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
-    $user_army_data_r = mysqli_query($dbc, $user_army_data);
-    if (mysqli_num_rows($user_army_data_r) >= 1) {
+    $user_army = "SELECT * FROM user_army WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
+    $user_army = mysqli_query($dbc, $user_army);
+    if (mysqli_num_rows($user_army) >= 1) {
         echo '<span>Your army</span>';
         echo '<table border="1">';
         echo '<tr><td>Army</td><td>Count</td></tr>';
 
-        while ($xv = mysqli_fetch_assoc($user_army_data_r)) {
+        while ($u_army = mysqli_fetch_assoc($user_army)) {
 
-            $get_build_name_by_id_sql = "SELECT * FROM army WHERE army_id='" . $xv['army_name'] . "' ";
-            $xva = mysqli_query($dbc, $get_build_name_by_id_sql);
+            $armyname = "SELECT * FROM army WHERE army_id='" . $u_army['army_name'] . "' ";
+            $xva = mysqli_query($dbc, $armyname);
             $xvaa = mysqli_fetch_assoc($xva);
-            $all_user_army[][$xvaa['army_id']] = $xv['count'];
-            echo '<tr><td>' . $xvaa['army_name'] . '</td><td>' . $xv['count'] . '</td></tr>';
+            $all_user_army[][$xvaa['army_id']] = $u_army['count'];
+            echo '<tr><td>' . $xvaa['army_name'] . '</td><td>' . $u_army['count'] . '</td></tr>';
         }
 
 
