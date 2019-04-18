@@ -1,5 +1,4 @@
 <?php
-
 if (!file_exists('setup/database.php')) {
     header('Location: setup/index.php');
 }
@@ -19,7 +18,6 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
         echo '<script>window.location.href= "index.php"</script>';
     }
 }
-
 include_once 'layout/header.php';
 ?>
 <meta charset="UTF-8">
@@ -35,7 +33,6 @@ include_once 'layout/header.php';
                 $("#servertime").html("Server time " + data);
             });
         }
-
         setInterval(function () {
             refresh()
         }, 1000);
@@ -73,9 +70,7 @@ if (@$_SESSION['islogged'] === TRUE) {
 
 } else {
     echo '</head>';
-
     include_once 'layout/loginform.php';
-
     exit;
 }
 ?>
@@ -118,7 +113,6 @@ if (isset($_GET['build'])) {
     }
 }
 ?>
-
 <div id="header"><p>Hello, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Log out</a>' ?></p>
     <div>
 
@@ -130,10 +124,10 @@ if (isset($_GET['build'])) {
 </div>
 <div id="rightbar" style="padding: 5px;height: 400px;">
     <?php
-    $level = mysqli_query($dbc, "SELECT * FROM `levels` WHERE ". userdata($_SESSION['user']['user_id'], 'xp', $dbc) ." BETWEEN from_xp and to_xp");
+    $level = mysqli_query($dbc, "SELECT * FROM `levels` WHERE " . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . " BETWEEN from_xp and to_xp");
     $level = mysqli_fetch_assoc($level)['level_id'];
     echo '<p>Your  money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . '</p>';
-    echo '<span style="display: block">Level '.$level.' / XP: ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . 'xp</span>';
+    echo '<span style="display: block">Level ' . $level . ' / XP: ' . userdata($_SESSION['user']['user_id'], 'xp', $dbc) . 'xp</span>';
     echo '<span>Population: ' . userdata($_SESSION['user']['user_id'], 'people', $dbc) . '</span><br>';
 
     echo @$is_now_build;
@@ -145,7 +139,6 @@ if (isset($_GET['build'])) {
     <img src="images/map.jpg" alt="" usemap="#Map"/><br>
     <div><img src="images/global.png"/></div>
     <?php
-
 
     $user_building = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $get_now_user_build = mysqli_query($dbc, $user_building);
@@ -159,9 +152,9 @@ if (isset($_GET['build'])) {
             $select_build_name_from_id = mysqli_query($dbc, $select_build_name_from_id_sql);
             $select_build_name_from_idarray = mysqli_fetch_assoc($select_build_name_from_id);
 
-            $level = mysqli_query($dbc, "SELECT build_lv FROM users_building WHERE user_id = " . $_SESSION['user']['user_id'] . " and building_id = " .  $get_now_user_buildb['building_name']);
+            $level = mysqli_query($dbc, "SELECT build_lv FROM users_building WHERE user_id = " . $_SESSION['user']['user_id'] . " and building_id = " . $get_now_user_buildb['building_name']);
             $level = mysqli_fetch_assoc($level)['build_lv'] + 1;
-            echo '<tr><td>' . ucfirst($select_build_name_from_idarray['build_name']) . '</td><td>'.$level.'</td><td id="build_' . $get_now_user_buildb['building_name'] . '">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
+            echo '<tr><td>' . ucfirst($select_build_name_from_idarray['build_name']) . '</td><td>' . $level . '</td><td id="build_' . $get_now_user_buildb['building_name'] . '">' . date('H:i:s', $get_now_user_buildb['end_time'] - time() - 7200) . '</td></tr>';
         }
         echo '</table>';
     }
@@ -188,9 +181,7 @@ if (isset($_GET['build'])) {
         echo "</table>";
         echo "<br>";
 
-
     }
-
 
     $user_build_data = "SELECT * FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
     $user_build_data_r = mysqli_query($dbc, $user_build_data);
@@ -222,8 +213,8 @@ if (isset($_GET['build'])) {
         while ($u_army = mysqli_fetch_assoc($user_army)) {
 
             $armyname = "SELECT * FROM army WHERE army_id='" . $u_army['army_name'] . "' ";
-            $xva = mysqli_query($dbc, $armyname);
-            $xvaa = mysqli_fetch_assoc($xva);
+            $armyname = mysqli_query($dbc, $armyname);
+            $xvaa = mysqli_fetch_assoc($armyname);
             $all_user_army[][$xvaa['army_id']] = $u_army['count'];
             echo '<tr><td>' . $xvaa['army_name'] . '</td><td>' . $u_army['count'] . '</td></tr>';
         }
