@@ -149,6 +149,14 @@ $(document).ready(function () {
 
     $('#attack_button').click(function () {
         let specific_user = document.getElementById('specific_user').value;
-        console.log(specific_user);
+        if(specific_user.length < 4){
+            let html = $('#rightbar') . html();
+            document.getElementById('rightbar') . innerHTML = '<p style="text-align: center; font-weight: bold; color: red;font-size: 17px">Error </p>' + html;
+        }
+        $.ajax({
+            url: 'attack.php'
+        }).done(function (data) {
+            $('#rightbar').html(data);
+        });
     });
 });
