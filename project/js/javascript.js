@@ -152,11 +152,17 @@ $(document).ready(function () {
         if(specific_user.length < 4){
             let html = $('#rightbar') . html();
             document.getElementById('rightbar') . innerHTML = '<p style="text-align: center; font-weight: bold; color: red;font-size: 17px">Error </p>' + html;
+        }else{
+            $.ajax({
+                url: 'attack.php',
+                data: {
+                    user : specific_user
+                },
+                method: "post"
+            }).done(function (data) {
+                console.log(data);
+            });
         }
-        $.ajax({
-            url: 'attack.php'
-        }).done(function (data) {
-            $('#rightbar').html(data);
-        });
+
     });
 });
