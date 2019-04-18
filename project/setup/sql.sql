@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `levels`
 
 INSERT INTO `levels` (`level_id`, `from_xp`, `to_xp`, `give_money`, `give_xp`)
 VALUES ('1', '1', '99', '0', '0'),
-       ('2', '100', '199', '100', '50');
+       ('2', '100', '199', '100', '5');
 
 /*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
