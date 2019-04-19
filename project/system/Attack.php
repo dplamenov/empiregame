@@ -42,7 +42,7 @@ class Attack
     {
         switch ($i) {
             case 1:
-                echo "<div class=\"alert alert-success\" style=\"margin: 0\" role=\"alert\">
+                echo "<script>battle()</script><div class=\"alert alert-success\" style=\"margin: 0\" role=\"alert\">
   You win
 </div>";
                 break;

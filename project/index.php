@@ -11,6 +11,7 @@ session_start();
 if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
     $battle = new \system\Battle();
 
+    echo '<script src="js/battle.js"></script>';
     try {
         $battle->battle($dbc, intval($_SESSION['user']['user_id']));
     } catch (Exception $exception) {
