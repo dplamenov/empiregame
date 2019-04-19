@@ -12,4 +12,10 @@ echo '<button type="button" class="btn btn-danger" style="margin-left: auto; mar
 <input type="text" name="user" id="specific_user"/>
 <button type="button" class="btn btn-danger" id="attack_button">Attack</button>
 </div>
+<?php
+$your_battle = mysqli_query($dbc, "SELECT * FROM battle WHERE attacker = ".$_SESSION['user']['user_id']." or defender = " . $_SESSION['user']['user_id']);
+if(mysqli_num_rows($your_battle) > 0){
+    echo '<p>Your last battle</p>';
+}
+?>
 
