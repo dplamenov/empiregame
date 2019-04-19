@@ -25,7 +25,7 @@ class Attack
             $user2_army += $money * $user2_id_army_r['count'];
         }
         $end = time();
-        //ToDo insert into table battle result from batle
+
         if ($user1_army > $user2_army) {
             mysqli_query($dbc, "INSERT INTO battle (attacker, defender, result, start, end) VALUES ('" . $user1_id . "', '" . $user2_id . "', 1, " . $start . ", " . $end . ")");
             $this->showAlert(1);
