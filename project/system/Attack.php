@@ -31,6 +31,7 @@ class Attack
             $this->showAlert(1);
 
         } elseif ($user1_army <= $user2_army) {
+            mysqli_query($dbc, "INSERT INTO battle (attacker, defender, result, start, end) VALUES ('" . $user1_id . "', '" . $user2_id . "', 1, " . $start . ", " . $end . ")");
             $this->showAlert(2);
         }
 
