@@ -95,7 +95,7 @@ $(document).ready(function () {
 
     $('#castle').click(function () {
         $.ajax({
-            url: 'zamuk.php'
+            url: 'castle.php'
         }).done(function (data) {
             $('#rightbar').html(data);
         });
