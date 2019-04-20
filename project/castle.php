@@ -1,6 +1,9 @@
 <?php
 session_start();
 include 'config.php';
+if (@$_SERVER['HTTP_REFERER'] == "") {
+    exit;
+}
 echo '<script src="js/javascript.js" type="text/javascript"></script>';
 echo '<div>';
 //echo '<p>Вашите пари: ' . userdata($_SESSION['user']['user_id'], 'money',$dbc) . 'лева</p>';
