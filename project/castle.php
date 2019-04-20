@@ -16,6 +16,13 @@ echo '<button type="button" class="btn btn-danger" style="margin-left: auto; mar
 $your_battle = mysqli_query($dbc, "SELECT * FROM battle WHERE attacker = ".$_SESSION['user']['user_id']." or defender = " . $_SESSION['user']['user_id']);
 if(mysqli_num_rows($your_battle) > 0){
     echo '<p>Your last battle</p>';
+    echo '<table>';
+    echo '<tr><th>Attacker</th><th>Defender</th><th>Result</th><th>Info</th></tr>';
+    while($battle = mysqli_fetch_assoc($your_battle)){
+
+    }
+
+    echo '</table>';
 }
 ?>
 
