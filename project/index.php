@@ -21,6 +21,9 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
 }
 include_once 'layout/header.php';
 ?>
+<div id="error">
+
+</div>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">

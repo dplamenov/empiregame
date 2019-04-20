@@ -160,7 +160,7 @@ $(document).ready(function () {
                 },
                 method: "post"
             }).done(function (data) {
-                console.log(data);
+
             });
         }
 
