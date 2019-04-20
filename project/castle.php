@@ -31,7 +31,7 @@ if(mysqli_num_rows($your_battle) > 0){
                 $result = 'Lose';
                 break;
         }
-        echo '<tr><td>'.$attacker.'</td><td>'.$defender.'</td></tr>';
+        echo '<tr><td>'.$attacker.'</td><td>'.$defender.'</td><td>'.$result.'</td></tr>';
     }
 
     echo '</table>';
