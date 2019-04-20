@@ -160,7 +160,12 @@ $(document).ready(function () {
                 },
                 method: "post"
             }).done(function (data) {
-
+                let error = document.getElementById('error');
+                error.innerHTML = data;
+                setTimeout(
+                    function() {
+                        window.location.href = 'index.php';
+                    }, 3000);
             });
         }
 
