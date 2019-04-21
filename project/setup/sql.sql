@@ -83,49 +83,45 @@ CREATE TABLE `users`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-CREATE TABLE ` users_building `
+CREATE TABLE `users_building`
 (
-  ` user_id `     int(11)                        NOT NULL,
-  ` build_name `  varchar(50) CHARACTER SET utf8 NOT NULL,
-  ` build_lv `    int(11)                        NOT NULL,
-  ` building_id ` int(11)                        NOT NULL
+  `user_id`     int(11)                        NOT NULL,
+  `build_name`  varchar(50) CHARACTER SET utf8 NOT NULL,
+  `build_lv`    int(11)                        NOT NULL,
+  `building_id` int(11)                        NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
 CREATE TABLE ` user_army `
 (
-  ` user_id `   int(11) NOT NULL,
-  ` army_name ` int(11) NOT NULL,
-  ` count `     int(11) NOT NULL,
-  ` lvl `       int(11) NOT NULL
+  `user_id`   int(11) NOT NULL,
+  `army_name` int(11) NOT NULL,
+  `count`     int(11) NOT NULL,
+  `lvl`       int(11) NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-ALTER TABLE ` army `
-  ADD PRIMARY KEY (` army_id `);
+ALTER TABLE `army`
+  ADD PRIMARY KEY (`army_id`);
 
-ALTER TABLE ` building `
-  ADD PRIMARY KEY (` building_id `);
+ALTER TABLE `building`
+  ADD PRIMARY KEY (`building_id`);
 
-ALTER TABLE ` users `
-  ADD PRIMARY KEY (` user_id `);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
 
-ALTER TABLE ` users `
+ALTER TABLE `users`
   CHANGE ` user_id ` ` user_id ` INT(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE ` users `
-  ADD ` active ` TINYINT NOT NULL DEFAULT '1' AFTER ` xp `;
+ALTER TABLE `users`
+  ADD ` active ` TINYINT NOT NULL DEFAULT '1' AFTER  `xp`;
 
-ALTER TABLE ` building `
-  ADD ` shape ` VARCHAR(15) NOT NULL AFTER ` geo_location `;
+ALTER TABLE `building`
+  ADD ` shape ` VARCHAR(15) NOT NULL AFTER `geo_location`;
 
-UPDATE ` building `
-SET ` shape ` = 'rect'
-WHERE ` building `.` building_id ` = 1;
-
-UPDATE ` building `
-SET ` shape ` = 'poly'
-WHERE ` building `.` building_id ` = 2;
+UPDATE `building`
+SET `shape` = 'rect'
+WHERE `building`.`building_id` = 1;
 
 CREATE TABLE ` battle `
 (

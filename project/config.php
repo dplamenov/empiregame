@@ -82,10 +82,10 @@ function deletearmy($dbc)
             $get_army_id = "SELECT * FROM army_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
 
             $getarmy = mysqli_query($dbc, $get_army_id);
-            $army = mysqli_fetch_assoc($getarmy);
-            $army_name = $army_['army_name'];
-            $count = $army_['army_num'];
-            $userid = $army_['user_id'];
+            $_army = mysqli_fetch_assoc($getarmy);
+            $army_name = $_army['army_name'];
+            $count = $_army['army_num'];
+            $userid = $_army['user_id'];
 
             $select_army_sql = "SELECT * FROM army WHERE army_id ='" . $army_name . "'";
             $select_army_q = mysqli_query($dbc, $select_army_sql);
