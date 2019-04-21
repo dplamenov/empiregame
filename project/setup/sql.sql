@@ -92,7 +92,7 @@ CREATE TABLE `users_building`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-CREATE TABLE ` user_army `
+CREATE TABLE `user_army`
 (
   `user_id`   int(11) NOT NULL,
   `army_name` int(11) NOT NULL,
