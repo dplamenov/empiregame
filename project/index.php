@@ -217,7 +217,7 @@ if (isset($_GET['build'])) {
     if (mysqli_num_rows($user_army) >= 1) {
         echo '<span>Your army</span>';
         echo '<table border="1">';
-        echo '<tr><td>Army</td><td>Count</td></tr>';
+        echo '<tr><td>Army</td><td>Count</td><td>Level</td></tr>';
 
         while ($u_army = mysqli_fetch_assoc($user_army)) {
 
@@ -225,7 +225,7 @@ if (isset($_GET['build'])) {
             $armyname = mysqli_query($dbc, $armyname);
             $xvaa = mysqli_fetch_assoc($armyname);
             $all_user_army[][$xvaa['army_id']] = $u_army['count'];
-            echo '<tr><td>' . $xvaa['army_name'] . '</td><td>' . $u_army['count'] . '</td></tr>';
+            echo '<tr><td>' . $xvaa['army_name'] . '</td><td>' . $u_army['count'] . '</td><td>'.$u_army['lvl'].'</td></tr>';
         }
 
 
