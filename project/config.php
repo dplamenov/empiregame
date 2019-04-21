@@ -99,7 +99,7 @@ function deletearmy($dbc)
             $sql_army_of_user = "SELECT * FROM `user_army` WHERE `user_id` = '" . $_SESSION['user']['user_id'] . "' AND `army_name` = '" . $r2aa['army_name'] . "'";
             $army_of_user = mysqli_query($dbc, $sql_army_of_user);
             if (mysqli_num_rows($army_of_user) == 0) {
-                $insert_army = "INSERT INTO user_army (user_id,army_name,count) VALUES ('" . $_SESSION['user']['user_id'] . "','" . $r2aa['army_name'] . "','" . $count . "')";
+                $insert_army = "INSERT INTO user_army (user_id,army_name,count,lvl) VALUES ('" . $_SESSION['user']['user_id'] . "','" . $r2aa['army_name'] . "','" . $count . "', 1)";
                 mysqli_query($dbc, $insert_army);
             } else {
                 $insert_army = "UPDATE `user_army` SET `count` = `count` + " . $count . " WHERE `army_name` = " . $r2aa['army_name'] . " AND `user_id` = " . $_SESSION['user']['user_id'];
