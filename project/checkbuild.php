@@ -9,7 +9,13 @@ echo '<p>Town hall</p>';
 echo '<table id="build" border="1" style="width: 100%;"><tr><td>Name</td><td>Money</td><td>Time</td><td>Build</td></tr>';
 while ($building = mysqli_fetch_assoc($get_build_q)) {
     if (userdata($_SESSION['user']['user_id'], 'money', $dbc) >= $building['money']) {
-        $link = '<a href="?build=' . $building['building_id'] . '">Build</a>';
+        $ifbuildexists = mysqli_query($dbc, "SELECT * FROM `users_building` WHERE user_id = " . $_SESSION['user']['user_id'] . " and building_id = " . $building['building_id']);
+        if(mysqli_num_rows($ifbuildexists) > 0){
+            $link = '<a href="?build=' . $building['building_id'] . '">Upgrade</a>';
+        }else{
+            $link = '<a href="?build=' . $building['building_id'] . '">Build</a>';
+        }
+
         $class = 'ok';
     } else {
         $link = 'No money';
