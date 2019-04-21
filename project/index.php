@@ -70,10 +70,12 @@ if (@$_SESSION['islogged'] === TRUE) {
 
     deletebuilding($dbc);
     deletearmy($dbc);
+    echo '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />';
     echo '<script src="js/javascript.js"></script>';
 
-} else {
+} else {echo '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>';
     echo '</head>';
+
     include_once 'layout/loginform.php';
     exit;
 }
