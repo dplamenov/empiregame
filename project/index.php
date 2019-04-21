@@ -155,7 +155,7 @@ if (isset($_GET['build'])) {
         echo '<p>You are building:</p>';
         echo '<table>';
         echo '<table border="1">';
-        echo '<tr><td>Build</td><td>Level (Soon)</td><td>Will be ready after:</td></tr>';
+        echo '<tr><td>Build</td><td>Level</td><td>Will be ready after:</td></tr>';
         while ($get_now_user_buildb = mysqli_fetch_assoc($get_now_user_build)) {
             $select_build_name_from_id_sql = "SELECT * FROM building WHERE building_id='" . $get_now_user_buildb['building_name'] . "'";
             $select_build_name_from_id = mysqli_query($dbc, $select_build_name_from_id_sql);
