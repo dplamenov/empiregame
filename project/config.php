@@ -13,7 +13,7 @@ define('timezone', 'Europe/Sofia');
 date_default_timezone_set(timezone);
 if (strpos($_SERVER['REQUEST_URI'], 'admin') !== false) {
     include '../../vendor/autoload.php';
-}else{
+} else {
     include '../vendor/autoload.php';
 }
 
@@ -63,7 +63,7 @@ function deletebuilding($dbc)
                 $lv = mysqli_query($dbc, $sql_update_u_l);
             }
         }
-        $sql_delete = "DELETE FROM building_now WHERE `end_time` < '" . $now_unix . "'";
+        $sql_delete = "DELETE FROM building_now WHERE `end_time` < '" . $now_unix . "' and `user_id` = " . $_SESSION['user']['user_id'];
 
         mysqli_query($dbc, $sql_delete);
     }
@@ -108,7 +108,7 @@ function deletearmy($dbc)
 
 
         }
-        $sql_delete = "DELETE FROM army_now WHERE `end_time` < '" . $now_unix . "'";
+        $sql_delete = "DELETE FROM army_now WHERE `end_time` < " . $now_unix . " and `user_id` = " . $_SESSION['user']['user_id'];
         mysqli_query($dbc, $sql_delete);
     }
 
