@@ -111,25 +111,22 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 ALTER TABLE `users`
-  CHANGE ` user_id ` ` user_id ` INT(11) NOT NULL AUTO_INCREMENT;
+  CHANGE `user_id` `user_id` INT(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `users`
-  ADD ` active ` TINYINT NOT NULL DEFAULT '1' AFTER  `xp`;
-
-ALTER TABLE `building`
-  ADD ` shape ` VARCHAR(15) NOT NULL AFTER `geo_location`;
+  ADD `active` TINYINT NOT NULL DEFAULT '1' AFTER  `xp`;
 
 UPDATE `building`
 SET `shape` = 'rect'
 WHERE `building`.`building_id` = 1;
 
-CREATE TABLE ` battle `
+CREATE TABLE `battle`
 (
-  ` attacker ` INT NOT NULL,
-  ` defender ` INT NOT NULL,
-  ` result `   INT NOT NULL,
-  ` start `    INT NOT NULL,
-  ` end `      INT NOT NULL
+  `attacker` INT NOT NULL,
+  `defender` INT NOT NULL,
+  `result`   INT NOT NULL,
+  `start`    INT NOT NULL,
+  `end`      INT NOT NULL
 ) ENGINE = InnoDB;
 
 
