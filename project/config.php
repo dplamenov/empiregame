@@ -75,19 +75,19 @@ function deletearmy($dbc)
 
     $now_unix = time();
     $sql = "SELECT * FROM army_now WHERE end_time <'" . $now_unix . "' AND user_id = '" . $_SESSION['user']['user_id'] . "'";
-    $get_finished_army = mysqli_query($dbc, $sql);
-    $get_finish_army = mysqli_num_rows($get_finished_army);
+    $finished_army = mysqli_query($dbc, $sql);
+    $get_finish_army = mysqli_num_rows($finished_army);
     if ($get_finish_army >= 1) {
-        while ($x = mysqli_fetch_assoc($get_finished_army)) {
+        while ($x = mysqli_fetch_assoc($finished_army)) {
             $get_army_id = "SELECT * FROM army_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
 
-            $r2a = mysqli_query($dbc, $get_army_id);
-            $r2aa = mysqli_fetch_assoc($r2a);
-            $bida = $x['army_name'];
+            $getarmy = mysqli_query($dbc, $get_army_id);
+            $army = mysqli_fetch_assoc($getarmy);
+            $army_name = $x['army_name'];
             $count = $x['army_num'];
             $userid = $x['user_id'];
 
-            $select_army_sql = "SELECT * FROM army WHERE army_id ='" . $bida . "'";
+            $select_army_sql = "SELECT * FROM army WHERE army_id ='" . $army_name . "'";
             $select_army_q = mysqli_query($dbc, $select_army_sql);
             $select_army_a = mysqli_fetch_assoc($select_army_q);
 
@@ -96,13 +96,13 @@ function deletearmy($dbc)
             mysqli_query($dbc, $give_xp_to_user);
 
 
-            $sql_army_of_user = "SELECT * FROM `user_army` WHERE `user_id` = '" . $_SESSION['user']['user_id'] . "' AND `army_name` = '" . $r2aa['army_name'] . "'";
+            $sql_army_of_user = "SELECT * FROM `user_army` WHERE `user_id` = '" . $_SESSION['user']['user_id'] . "' AND `army_name` = '" . $army['army_name'] . "'";
             $army_of_user = mysqli_query($dbc, $sql_army_of_user);
             if (mysqli_num_rows($army_of_user) == 0) {
-                $insert_army = "INSERT INTO user_army (user_id,army_name,count,lvl) VALUES ('" . $_SESSION['user']['user_id'] . "','" . $r2aa['army_name'] . "','" . $count . "', 1)";
+                $insert_army = "INSERT INTO user_army (user_id,army_name,count,lvl) VALUES ('" . $_SESSION['user']['user_id'] . "','" . $army['army_name'] . "','" . $count . "', 1)";
                 mysqli_query($dbc, $insert_army);
             } else {
-                $insert_army = "UPDATE `user_army` SET `count` = `count` + " . $count . " WHERE `army_name` = " . $r2aa['army_name'] . " AND `user_id` = " . $_SESSION['user']['user_id'];
+                $insert_army = "UPDATE `user_army` SET `count` = `count` + " . $count . " WHERE `army_name` = " . $army['army_name'] . " AND `user_id` = " . $_SESSION['user']['user_id'];
                 mysqli_query($dbc, $insert_army);
             }
 
