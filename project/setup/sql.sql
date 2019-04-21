@@ -147,6 +147,9 @@ CREATE TABLE IF NOT EXISTS `levels`
   PRIMARY KEY (`level_id`)
 ) ENGINE = InnoDB;
 
+ALTER TABLE `user_army`
+  CHANGE `lvl` `lvl` INT(11) NOT NULL DEFAULT '1';
+
 INSERT INTO `levels` (`level_id`, `from_xp`, `to_xp`, `give_money`, `give_xp`)
 VALUES ('1', '1', '99', '0', '0'),
        ('2', '100', '199', '100', '5'),
