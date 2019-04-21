@@ -73,7 +73,8 @@ if (@$_SESSION['islogged'] === TRUE) {
     echo '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />';
     echo '<script src="js/javascript.js"></script>';
 
-} else {echo '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>';
+} else {
+    echo '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>';
     echo '</head>';
 
     include_once 'layout/loginform.php';
