@@ -66,9 +66,9 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
 <?php
 
 echo '<p>Your Money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . '</p>';
-echo '<p>Казарма - Тренирай войници</p>';
+echo '<p>Barrack - train soldiers</p>';
 echo '<p>Максимум войници които можеш да тренираш на веднъж са 240</p>';
-echo '<p>Напиши колко войници искаш да тренираш и избери вид</p>';
+echo '<p>Write how many soldiers you want to train and choose a look</p>';
 //echo '<p>Има три вида войници по сила това са - леки(10,10),тежки(15,15),елитни(25,25).<br> Във скобите е дадено атаката и защитата на единиците.<br> За леки единици се иззисгва казарма ниво 1,<br>За тежки единици се иззисгва казарма ниво 5,<br>За елитни единици се иззисгва казарма ниво 11</p>';
 $sql_get_kazarma_level = "SELECT build_lv FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_id='1'";
 $get_kazarma_level = mysqli_query($dbc, $sql_get_kazarma_level);
