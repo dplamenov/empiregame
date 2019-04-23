@@ -57,7 +57,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
                     });
 
                 } else {
-                    $('#er').html('Невалиден брой армия');
+                    $('#er').html('Invalid army count');
                 }
             });
         });
@@ -69,10 +69,10 @@ echo '<p>Your Money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) 
 echo '<p>Barrack - train soldiers</p>';
 echo '<p>The maximum number of soldiers you can train at one time is 240</p>';
 echo '<p>Write how many soldiers you want to train and choose a look</p>';
-$sql_get_kazarma_level = "SELECT build_lv FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_id='1'";
-$get_kazarma_level = mysqli_query($dbc, $sql_get_kazarma_level);
-$get_kazarma_level_array = mysqli_fetch_assoc($get_kazarma_level);
-$kazarma_level = $get_kazarma_level_array['build_lv'];
+$barrack_level = "SELECT build_lv FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_id='1'";
+$barrack_level = mysqli_query($dbc, $barrack_level);
+$barrack_level = mysqli_fetch_assoc($barrack_level);
+$kazarma_level = $barrack_level['build_lv'];
 $getarmy_sql = "SELECT * FROM army WHERE army_level<='" . $kazarma_level . "'";
 $get_army_q = mysqli_query($dbc, $getarmy_sql);
 
