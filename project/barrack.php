@@ -69,34 +69,28 @@ echo '<p>Your Money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) 
 echo '<p>Barrack - train soldiers</p>';
 echo '<p>Максимум войници които можеш да тренираш на веднъж са 240</p>';
 echo '<p>Write how many soldiers you want to train and choose a look</p>';
-//echo '<p>Има три вида войници по сила това са - леки(10,10),тежки(15,15),елитни(25,25).<br> Във скобите е дадено атаката и защитата на единиците.<br> За леки единици се иззисгва казарма ниво 1,<br>За тежки единици се иззисгва казарма ниво 5,<br>За елитни единици се иззисгва казарма ниво 11</p>';
 $sql_get_kazarma_level = "SELECT build_lv FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_id='1'";
 $get_kazarma_level = mysqli_query($dbc, $sql_get_kazarma_level);
 $get_kazarma_level_array = mysqli_fetch_assoc($get_kazarma_level);
 $kazarma_level = $get_kazarma_level_array['build_lv'];
-
-//echo '<pre>'.print_r($get_kazarma_level_array, true).'</pre>';
 $getarmy_sql = "SELECT * FROM army WHERE army_level<='" . $kazarma_level . "'";
 $get_army_q = mysqli_query($dbc, $getarmy_sql);
 
 echo '<div id="armynum">
-  <input id="army_num"type="text" placeholder="Брой войници / 240" />
+  <input id="army_num" type="text" placeholder="Брой войници / 240" />
 </div>';
 
 echo '<table border="1" id="army"><tr><td>Единица</td><td>Пари</td><td>Време</td><td>Тренирай</td></tr>';
 while ($army = mysqli_fetch_assoc($get_army_q)) {
-    //table
     if (userdata($_SESSION['user']['user_id'], 'money', $dbc) >= $army['money']) {
         $link = '<a class="army' . $army['army_id'] . '" href="#">Тренирай</a>';
-
         $class = 'ok';
     } else {
         $link = 'Нямаш пари';
-        //$link2 = $building['money']-$_SESSION['user']['money'].'<br>';
     }
 
 
-    echo '<tr><td>' . $army['army_name'] . '</td><td>' . $army['money'] . ' Лева</td><td>' . $army['time'] . ' Мин</td><td>' . $link . @$link2 . '</td></tr>';
+    echo '<tr><td>' . $army['army_name'] . '</td><td>' . $army['money'] . ' Лева</td><td>' . $army['time'] . ' Мин</td><td>' . $link . '</td></tr>';
 }
 echo '</table>';
 echo '<div id="er"></div>';
