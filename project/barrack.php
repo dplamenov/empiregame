@@ -80,7 +80,7 @@ echo '<div id="armynum">
   <input id="army_num" type="text" placeholder="Count" />
 </div>';
 
-echo '<table border="1" id="army"><tr><td>Type</td><td>Money</td><td>Time</td><td>Train</td></tr>';
+echo '<table border="1" id="army" style="width: 100%"><tr><td>Type</td><td>Money</td><td>Time</td><td>Train</td></tr>';
 while ($army = mysqli_fetch_assoc($get_army_q)) {
     if (userdata($_SESSION['user']['user_id'], 'money', $dbc) >= $army['money']) {
         $link = '<a class="army' . $army['army_id'] . '" href="#">Train</a>';
