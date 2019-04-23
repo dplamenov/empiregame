@@ -19,22 +19,22 @@ if (mysqli_num_rows($check_exist_army_q) == 1) {
 
         $cost_money = mysqli_fetch_assoc(mysqli_query($dbc, "SELECT `money` FROM army  WHERE `army_id` = " . $army_id))['money'] * $_POST['armynum'];
         if (userdata($_SESSION['user']['user_id'], 'money', $dbc) <= $cost_money) {
-            echo 'Нямаш пари.';
+            echo 'No money';
 
         } else {
             mysqli_query($dbc, "UPDATE `users` SET `money` = `money` - '" . $cost_money . "'  WHERE `user_id` = " . $_SESSION['user']['user_id']);
             if (mysqli_query($dbc, $sql_train_army)) {
-                echo "Командата е приета.";
+                echo "Command is accepted.";
 
                 unset($_GET['army']);
             }
         }
 
     } else {
-        echo 'Вече тренираш тази армия';
+        echo 'You had already trained that army';
 
     }
 
 } else {
-    echo 'Възникна грешка презареди!';
+    echo 'Some Error! Refresh';
 }
