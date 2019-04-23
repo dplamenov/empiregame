@@ -92,7 +92,7 @@ body {
     padding-left: 4px;
 }
 
-#army td{
+#army td, #ready_army td{
     padding: 2px;
     padding-left: 4px;
 }

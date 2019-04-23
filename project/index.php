@@ -146,7 +146,7 @@ if (isset($_GET['build'])) {
 <div id="content" style="padding-bottom: auto">
 
     <img src="images/map.jpg" alt="" usemap="#Map"/><br>
-    <div><img src="images/global.png"/></div>
+    <div><img src="images/global.png" alt=""/></div>
     <?php
 
     $user_building = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
@@ -192,15 +192,14 @@ if (isset($_GET['build'])) {
 
     }
 
-    $user_build_data = "SELECT * FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
-    $user_build_data_r = mysqli_query($dbc, $user_build_data);
-    if (mysqli_num_rows($user_build_data_r) >= 1) {
+    $user_build_data = mysqli_query($dbc, "SELECT * FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "'");
+    if (mysqli_num_rows($user_build_data) >= 1) {
         echo '<br>';
         echo '<span>Your building</span>';
         echo '<table border="1" id="ready_build">';
         echo '<tr><td>Build</td><td>Level</td></tr>';
 
-        while ($u_army = mysqli_fetch_assoc($user_build_data_r)) {
+        while ($u_army = mysqli_fetch_assoc($user_build_data)) {
             $get_build_name_by_id = "SELECT * FROM building WHERE building_id='" . $u_army['building_id'] . "' ";
             $get_build_name_by_id = mysqli_query($dbc, $get_build_name_by_id);
             $build = mysqli_fetch_assoc($get_build_name_by_id);
@@ -216,16 +215,15 @@ if (isset($_GET['build'])) {
     $user_army = mysqli_query($dbc, $user_army);
     if (mysqli_num_rows($user_army) >= 1) {
         echo '<span>Your army</span>';
-        echo '<table border="1">';
+        echo '<table border="1" id="ready_army">';
         echo '<tr><td>Army</td><td>Count</td><td>Level</td></tr>';
 
         while ($u_army = mysqli_fetch_assoc($user_army)) {
 
             $armyname = "SELECT * FROM army WHERE army_id='" . $u_army['army_name'] . "' ";
             $armyname = mysqli_query($dbc, $armyname);
-            $xvaa = mysqli_fetch_assoc($armyname);
-            $all_user_army[][$xvaa['army_id']] = $u_army['count'];
-            echo '<tr><td>' . $xvaa['army_name'] . '</td><td>' . $u_army['count'] . '</td><td>'.$u_army['lvl'].'</td></tr>';
+            $army_name = mysqli_fetch_assoc($armyname);
+            echo '<tr><td>' . $army_name['army_name'] . '</td><td>' . $u_army['count'] . '</td><td>'.$u_army['lvl'].'</td></tr>';
         }
 
 
