@@ -77,20 +77,20 @@ $getarmy_sql = "SELECT * FROM army WHERE army_level<='" . $kazarma_level . "'";
 $get_army_q = mysqli_query($dbc, $getarmy_sql);
 
 echo '<div id="armynum">
-  <input id="army_num" type="text" placeholder="Брой войници / 240" />
+  <input id="army_num" type="text" placeholder="Count" />
 </div>';
 
-echo '<table border="1" id="army"><tr><td>T</td><td>Пари</td><td>Време</td><td>Тренирай</td></tr>';
+echo '<table border="1" id="army"><tr><td>Type</td><td>Money</td><td>Time</td><td>Train</td></tr>';
 while ($army = mysqli_fetch_assoc($get_army_q)) {
     if (userdata($_SESSION['user']['user_id'], 'money', $dbc) >= $army['money']) {
-        $link = '<a class="army' . $army['army_id'] . '" href="#">Тренирай</a>';
+        $link = '<a class="army' . $army['army_id'] . '" href="#">Train</a>';
         $class = 'ok';
     } else {
-        $link = 'Нямаш пари';
+        $link = 'No money';
     }
 
 
-    echo '<tr><td>' . $army['army_name'] . '</td><td>' . $army['money'] . ' Лева</td><td>' . $army['time'] . ' Мин</td><td>' . $link . '</td></tr>';
+    echo '<tr><td>' . $army['army_name'] . '</td><td>$' . $army['money'] . '</td><td>' . $army['time'] . '</td><td>' . $link . '</td></tr>';
 }
 echo '</table>';
 echo '<div id="er"></div>';
