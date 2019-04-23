@@ -111,7 +111,7 @@ $(document).ready(function () {
 
     $('#barrack').click(function () {
         $.ajax({
-            url: 'kazarma.php'
+            url: 'barrack.php'
         }).done(function (data) {
             $('#rightbar').html(data);
         });
