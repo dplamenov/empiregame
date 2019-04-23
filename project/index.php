@@ -216,14 +216,15 @@ if (isset($_GET['build'])) {
     if (mysqli_num_rows($user_army) >= 1) {
         echo '<span>Your army</span>';
         echo '<table border="1" id="ready_army">';
-        echo '<tr><td>Army</td><td>Count</td><td>Level</td></tr>';
+        echo '<tr><td>Army</td><td>Count</td><td>Level</td><td>Upgrade</td><td>Delete</td></tr>';
 
         while ($u_army = mysqli_fetch_assoc($user_army)) {
 
             $armyname = "SELECT * FROM army WHERE army_id='" . $u_army['army_name'] . "' ";
             $armyname = mysqli_query($dbc, $armyname);
             $army_name = mysqli_fetch_assoc($armyname);
-            echo '<tr><td>' . $army_name['army_name'] . '</td><td>' . $u_army['count'] . '</td><td>'.$u_army['lvl'].'</td></tr>';
+            echo '<tr><td>' . $army_name['army_name'] . '</td><td>' . $u_army['count'] . '</td><td>'.$u_army['lvl'].'</td>
+<td>Upgrade</td><td>Delete</td></tr>';
         }
 
 
