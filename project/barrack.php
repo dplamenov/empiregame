@@ -67,7 +67,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
 
 echo '<p>Your Money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . '</p>';
 echo '<p>Barrack - train soldiers</p>';
-echo '<p>Максимум войници които можеш да тренираш на веднъж са 240</p>';
+echo '<p>The maximum number of soldiers you can train at one time is 240</p>';
 echo '<p>Write how many soldiers you want to train and choose a look</p>';
 $sql_get_kazarma_level = "SELECT build_lv FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_id='1'";
 $get_kazarma_level = mysqli_query($dbc, $sql_get_kazarma_level);
@@ -80,7 +80,7 @@ echo '<div id="armynum">
   <input id="army_num" type="text" placeholder="Брой войници / 240" />
 </div>';
 
-echo '<table border="1" id="army"><tr><td>Единица</td><td>Пари</td><td>Време</td><td>Тренирай</td></tr>';
+echo '<table border="1" id="army"><tr><td>T</td><td>Пари</td><td>Време</td><td>Тренирай</td></tr>';
 while ($army = mysqli_fetch_assoc($get_army_q)) {
     if (userdata($_SESSION['user']['user_id'], 'money', $dbc) >= $army['money']) {
         $link = '<a class="army' . $army['army_id'] . '" href="#">Тренирай</a>';
