@@ -24,7 +24,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
                             armyid: armyid
                         }
                     }).done(function (data) {
-                        if (data != "Нямаш пари.") {
+                        if (data != "No money.") {
                             window.location.href = "index.php";
                         }
 
@@ -33,7 +33,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
 
 
                 } else {
-                    $('#er').html('Невалиден брой армия');
+                    $('#er').html('Invalid army count');
                 }
 
             });
@@ -49,7 +49,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
                             armyid: armyid
                         }
                     }).done(function (data) {
-                        if (data != "Нямаш пари.") {
+                        if (data != "No money.") {
                             window.location.href = "index.php";
                         }
 
@@ -65,7 +65,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
     </script>
 <?php
 
-echo '<p>Вашите пари:' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . 'лева</p>';
+echo '<p>Your Money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . '</p>';
 echo '<p>Казарма - Тренирай войници</p>';
 echo '<p>Максимум войници които можеш да тренираш на веднъж са 240</p>';
 echo '<p>Напиши колко войници искаш да тренираш и избери вид</p>';
