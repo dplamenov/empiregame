@@ -72,8 +72,8 @@ echo '<p>Write how many soldiers you want to train and choose a look</p>';
 $barrack_level = "SELECT build_lv FROM users_building WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND building_id='1'";
 $barrack_level = mysqli_query($dbc, $barrack_level);
 $barrack_level = mysqli_fetch_assoc($barrack_level);
-$kazarma_level = $barrack_level['build_lv'];
-$getarmy_sql = "SELECT * FROM army WHERE army_level<='" . $kazarma_level . "'";
+$barrack_level = $barrack_level['build_lv'];
+$getarmy_sql = "SELECT * FROM army WHERE army_level<='" . $barrack_level . "'";
 $get_army_q = mysqli_query($dbc, $getarmy_sql);
 
 echo '<div id="armynum">
