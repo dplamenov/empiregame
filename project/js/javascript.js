@@ -168,6 +168,9 @@ $(document).ready(function () {
                     }, 3000);
             });
         }
-
     });
 });
+
+function delete_army(army_id) {
+    console.log(army_id);
+}

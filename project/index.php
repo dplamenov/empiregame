@@ -224,7 +224,7 @@ if (isset($_GET['build'])) {
             $armyname = mysqli_query($dbc, $armyname);
             $army_name = mysqli_fetch_assoc($armyname);
             echo '<tr><td>' . $army_name['army_name'] . '</td><td>' . $u_army['count'] . '</td><td>'.$u_army['lvl'].'</td>
-<td>Upgrade</td><td>Delete</td></tr>';
+<td>Upgrade</td><td onclick="delete_army('.$u_army['army_id'].')">Delete</tr>';
         }
 
 
