@@ -114,7 +114,7 @@ ALTER TABLE `users`
   CHANGE `user_id` `user_id` INT(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `users`
-  ADD `active` TINYINT NOT NULL DEFAULT '1' AFTER  `xp`;
+  ADD `active` TINYINT NOT NULL DEFAULT '1' AFTER `xp`;
 
 UPDATE `building`
 SET `shape` = 'rect'
@@ -142,6 +142,10 @@ CREATE TABLE IF NOT EXISTS `levels`
 
 ALTER TABLE `user_army`
   CHANGE `lvl` `lvl` INT(11) NOT NULL DEFAULT '1';
+
+ALTER TABLE `user_army`
+  ADD `army_id` INT NOT NULL AUTO_INCREMENT FIRST,
+  ADD PRIMARY KEY (`army_id`);
 
 INSERT INTO `levels` (`level_id`, `from_xp`, `to_xp`, `give_money`, `give_xp`)
 VALUES ('1', '1', '99', '0', '0'),
