@@ -116,10 +116,6 @@ ALTER TABLE `users`
 ALTER TABLE `users`
   ADD `active` TINYINT NOT NULL DEFAULT '1' AFTER `xp`;
 
-UPDATE `building`
-SET `shape` = 'rect'
-WHERE `building`.`building_id` = 1;
-
 CREATE TABLE `battle`
 (
   `attacker` INT NOT NULL,
