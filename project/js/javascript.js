@@ -172,5 +172,13 @@ $(document).ready(function () {
 });
 
 function delete_army(army_id) {
-    console.log(army_id);
+    $.ajax({
+        url: 'delete_army.php',
+        data: {
+            army : army_id
+        },
+        method: "post"
+    }).done(function (data) {
+        console.log(data);
+    });
 }
