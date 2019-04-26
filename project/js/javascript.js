@@ -182,3 +182,7 @@ function delete_army(army_id) {
         window.location.href = 'index.php';
     });
 }
+
+function upgrade_army() {
+    
+}
