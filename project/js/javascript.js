@@ -183,6 +183,14 @@ function delete_army(army_id) {
     });
 }
 
-function upgrade_army() {
-    
+function upgrade_army(army_id) {
+    $.ajax({
+        url: 'upgrade_army.php',
+        data: {
+            army : army_id
+        },
+        method: "post"
+    }).done(function (data) {
+        window.location.href = 'index.php';
+    });
 }
