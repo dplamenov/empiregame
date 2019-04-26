@@ -149,6 +149,16 @@ VALUES ('1', '1', '99', '0', '0'),
        ('3', '200', '299', '200', '20'),
        ('4', '300', '399', '300', '30');
 
+CREATE TABLE IF NOT EXISTS `upgrade_army`
+(
+  `army_id`   INT NOT NULL AUTO_INCREMENT,
+  `army_name` INT NOT NULL,
+  `start`     INT NOT NULL,
+  `end`       INT NOT NULL,
+  `level`     INT NOT NULL,
+  PRIMARY KEY (`army_id`)
+) ENGINE = InnoDB;
+
 /*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
