@@ -7,4 +7,5 @@ $army = mysqli_fetch_assoc($army);
 $price = mysqli_query($dbc, "SELECT * FROM army WHERE army_id = " . $army['army_name']);
 $price = mysqli_fetch_assoc($price)['money'];
 $total_price = $price * $army['count'];
-echo $total_price;
+addMoney($_SESSION['user']['user_id'], $total_price, $dbc);
+mysqli_query($dbc, "DELETE FROM user_army WHERE army_id = " . $army_id);
