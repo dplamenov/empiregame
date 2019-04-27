@@ -241,6 +241,10 @@ if (isset($_GET['build'])) {
             $_army = mysqli_query($dbc, $_army);
             $army_name = mysqli_fetch_assoc($_army)['army_name'];
 
+            $end_time = $army['end'] - time();
+            $end_time = date("H:i:s", $end_time - 7200);
+            echo '<tr><td>' . $army_name . '</td><td>' . $army['count'] . '</td><td>'.$army['level'].'</td><td>'. $end_time .'</td>
+</tr>';
 
         }
 
