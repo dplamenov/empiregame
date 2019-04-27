@@ -233,7 +233,7 @@ if (isset($_GET['build'])) {
     $upgrade_army = mysqli_query($dbc, "SELECT * FROM upgrade_army LEFT JOIN user_army ON user_army.army_name = upgrade_army.army_name WHERE user_army.user_id = " . $_SESSION['user']['user_id']);
     if(mysqli_num_rows($upgrade_army) >= 1){
         echo '<span>You upgrade that army:</span>';
-        echo '<table border="1">';
+        echo '<table border="1" id="upgrade_army">';
         echo '<tr><td>Army</td><td>Count</td><td>Level</td><td>Will be ready after:</td></tr>';
         while ($army = mysqli_fetch_assoc($upgrade_army)) {
 
