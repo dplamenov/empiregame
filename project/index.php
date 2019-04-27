@@ -235,7 +235,14 @@ if (isset($_GET['build'])) {
         echo '<span>You upgrade that army:</span>';
         echo '<table border="1">';
         echo '<tr><td>Army</td><td>Count</td><td>Level</td><td>Will be ready after:</td></tr>';
+        while ($army = mysqli_fetch_assoc($upgrade_army)) {
 
+            $_army = "SELECT * FROM army WHERE army_id='" . $army['army_name'] . "' ";
+            $_army = mysqli_query($dbc, $_army);
+            $army_name = mysqli_fetch_assoc($_army)['army_name'];
+
+
+        }
 
         echo '</table>';
     }
