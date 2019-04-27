@@ -191,6 +191,6 @@ function upgrade_army(army_id) {
         },
         method: "post"
     }).done(function (data) {
-        console.log(data);
+        window.location.href = 'index.php';
     });
 }
