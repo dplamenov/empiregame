@@ -243,7 +243,7 @@ if (isset($_GET['build'])) {
 
             $end_time = $army['end'] - time();
             $end_time = date("H:i:s", $end_time - 7200);
-            echo '<tr><td>' . $army_name . '</td><td>' . $army['count'] . '</td><td>'.$army['level'].'</td><td>'. $end_time .'</td>
+            echo '<tr><td>' . $army_name . '</td><td>' . $army['count'] . '</td><td>'.$army['level'].'</td><td id="_army_upgrade">'. $end_time .'</td>
 </tr>';
 
         }

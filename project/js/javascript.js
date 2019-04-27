@@ -75,6 +75,10 @@ $(document).ready(function () {
         });
     }
 
+    function auto_refresh_upgrade_army() {
+
+    }
+
     setInterval(function () {
         auto_refresh_army();
         auto_refresh_build();
@@ -149,21 +153,21 @@ $(document).ready(function () {
 
     $('#attack_button').click(function () {
         let specific_user = document.getElementById('specific_user').value;
-        if(specific_user.length < 4){
-            let html = $('#rightbar') . html();
-            document.getElementById('rightbar') . innerHTML = '<p style="text-align: center; font-weight: bold; color: red;font-size: 17px">Error </p>' + html;
-        }else{
+        if (specific_user.length < 4) {
+            let html = $('#rightbar').html();
+            document.getElementById('rightbar').innerHTML = '<p style="text-align: center; font-weight: bold; color: red;font-size: 17px">Error </p>' + html;
+        } else {
             $.ajax({
                 url: 'attack.php',
                 data: {
-                    user : specific_user
+                    user: specific_user
                 },
                 method: "post"
             }).done(function (data) {
                 let error = document.getElementById('error');
                 error.innerHTML = data;
                 setTimeout(
-                    function() {
+                    function () {
                         window.location.href = 'index.php';
                     }, 3000);
             });
@@ -175,7 +179,7 @@ function delete_army(army_id) {
     $.ajax({
         url: 'delete_army.php',
         data: {
-            army : army_id
+            army: army_id
         },
         method: "post"
     }).done(function (data) {
@@ -187,7 +191,7 @@ function upgrade_army(army_id) {
     $.ajax({
         url: 'upgrade_army.php',
         data: {
-            army : army_id
+            army: army_id
         },
         method: "post"
     }).done(function (data) {
