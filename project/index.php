@@ -230,7 +230,7 @@ if (isset($_GET['build'])) {
 
         echo '</table>';
     }
-
+    $upgrade_army = mysqli_query($dbc, "SELECT * FROM upgrade_army LEFT JOIN user_army ON user_army.army_name = upgrade_army.army_name WHERE user_army.user_id = " . $_SESSION['user']['user_id']);
     ?>
     <div id="text"></div>
 </div>
