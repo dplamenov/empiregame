@@ -76,12 +76,13 @@ $(document).ready(function () {
     }
 
     function auto_refresh_upgrade_army() {
-
+        
     }
 
     setInterval(function () {
         auto_refresh_army();
         auto_refresh_build();
+        auto_refresh_upgrade_army;
     }, 1000);
     setInterval(function () {
         refresh();
