@@ -8,4 +8,4 @@ $army = mysqli_fetch_assoc($army);
 $start = time();
 $end = $start + ($user_army['count'] * $army['time'] * 60);
 $level = $user_army['lvl'] + 1;
-mysqli_query($dbc, "INSERT INTO upgrade_army (army_name, start, end, level) VALUES (".$user_army['army_name'].", ".$start.", ".$end.", ".$level.")");
+mysqli_query($dbc, "INSERT INTO upgrade_army (army_name, start, end, level, user_id) VALUES (".$user_army['army_name'].", ".$start.", ".$end.", ".$level.", ".$_SESSION['user']['user_id'].")");
