@@ -143,6 +143,9 @@ ALTER TABLE `user_army`
   ADD `army_id` INT NOT NULL AUTO_INCREMENT FIRST,
   ADD PRIMARY KEY (`army_id`);
 
+ALTER TABLE `upgrade_army`
+  ADD `user_id` INT NOT NULL AFTER `level`;
+
 INSERT INTO `levels` (`level_id`, `from_xp`, `to_xp`, `give_money`, `give_xp`)
 VALUES ('1', '1', '99', '0', '0'),
        ('2', '100', '199', '100', '5'),
