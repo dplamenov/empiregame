@@ -114,6 +114,11 @@ function deletearmy($dbc)
 
 }
 
+function upgrade_army($dbc)
+{
+
+}
+
 function userdata(int $id, string $param, $dbc)
 {
     $g = mysqli_query($dbc, "SELECT * FROM users WHERE user_id='$id'");
