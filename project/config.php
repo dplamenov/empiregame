@@ -121,7 +121,6 @@ function upgrade_army($dbc)
         while($army = mysqli_fetch_assoc($upgrade_army)){
             $level = $army['level'];
             $army_id = $army['army_id'];
-            //echo "UPDATE `user_army` SET lvl = $level WHERE army_id = $army_id AND user_id = " . $_SESSION['user']['user_id'];
             mysqli_query($dbc, "UPDATE `user_army` SET lvl = $level WHERE army_id = $army_id AND user_id = " . $_SESSION['user']['user_id']);
         }
     }
