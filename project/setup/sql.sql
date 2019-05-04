@@ -154,12 +154,11 @@ VALUES ('1', '1', '99', '0', '0'),
 
 CREATE TABLE IF NOT EXISTS `upgrade_army`
 (
-  `army_id`   INT NOT NULL AUTO_INCREMENT,
+  `army_id`   INT NOT NULL ,
   `army_name` INT NOT NULL,
   `start`     INT NOT NULL,
   `end`       INT NOT NULL,
-  `level`     INT NOT NULL,
-  PRIMARY KEY (`army_id`)
+  `level`     INT NOT NULL
 ) ENGINE = InnoDB;
 
 /*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
