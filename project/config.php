@@ -119,7 +119,9 @@ function upgrade_army($dbc)
     $upgrade_army = mysqli_query($dbc, "SELECT * FROM upgrade_army WHERE  `end` <'" . $now . "' `user_id` AND  = '" . $_SESSION['user']['user_id'] . "'");
     if(mysqli_num_rows($upgrade_army) >= 1){
         while($army = mysqli_fetch_assoc($upgrade_army)){
-            //ToDo level up
+            $level = $army['level'];
+            $army_id = $army['army_id'];
+            mysqli_query($dbc, "UPDATE `user_army` SET lvl = $level WHERE army_id = $army_id AND user_id = " . $_SESSION['user']['user_id']);
         }
     }
 
