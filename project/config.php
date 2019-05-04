@@ -116,7 +116,7 @@ function deletearmy($dbc)
 function upgrade_army($dbc)
 {
     $now = time();
-    $upgrade_army = mysqli_query($dbc, "SELECT * FROM upgrade_army WHERE  `end` <'" . $now . "' `user_id` AND  = '" . $_SESSION['user']['user_id'] . "'");
+    $upgrade_army = mysqli_query($dbc, "SELECT * FROM upgrade_army WHERE  `end` < " . $now . " AND `user_id`   = '" . $_SESSION['user']['user_id'] . "'");
     if(mysqli_num_rows($upgrade_army) >= 1){
         while($army = mysqli_fetch_assoc($upgrade_army)){
             $level = $army['level'];
