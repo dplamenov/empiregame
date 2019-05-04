@@ -106,7 +106,6 @@ function deletearmy($dbc)
                 mysqli_query($dbc, $insert_army);
             }
 
-
         }
         $sql_delete = "DELETE FROM army_now WHERE `end_time` < " . $now_unix . " and `user_id` = " . $_SESSION['user']['user_id'];
         mysqli_query($dbc, $sql_delete);
@@ -118,6 +117,12 @@ function upgrade_army($dbc)
 {
     $now = time();
     $upgrade_army = mysqli_query($dbc, "SELECT * FROM upgrade_army WHERE  `end` <'" . $now . "' `user_id` AND  = '" . $_SESSION['user']['user_id'] . "'");
+    if(mysqli_num_rows($upgrade_army) >= 1){
+        while($army = mysqli_fetch_assoc($upgrade_army)){
+            //ToDo level up
+        }
+    }
+
 }
 
 function userdata(int $id, string $param, $dbc)
