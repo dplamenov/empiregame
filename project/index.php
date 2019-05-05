@@ -20,7 +20,7 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
     }
 }
 //ToDo Remove when auto refresh will be ready,
-
+upgrade_army($dbc);
 include_once 'layout/header.php';
 ?>
 <div id="error">
