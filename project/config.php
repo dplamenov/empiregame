@@ -124,6 +124,7 @@ function upgrade_army($dbc)
             mysqli_query($dbc, "UPDATE `user_army` SET lvl = $level WHERE army_id = $army_id AND user_id = " . $_SESSION['user']['user_id']);
         }
     }
+    mysqli_query($dbc, "DELETE FROM army_now WHERE `end_time` < " . $now . " and `user_id` = " . $_SESSION['user']['user_id']);
 
 }
 
