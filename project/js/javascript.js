@@ -222,7 +222,8 @@ function upgrade_army(army_id) {
         },
         method: "post"
     }).done(function (data) {
-        if(data == false){
+        console.log(data);
+        if(data == 1){
             $.ajax({
                 url: 'upgrade_army.php',
                 data: {

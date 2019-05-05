@@ -1,8 +1,9 @@
 <?php
 session_start();
 include 'config.php';
-$result = mysqli_query($dbc, "SELECT * FROM upgrade_army WHERE user_id = " . $_SESSION['user']['user_id']. " and army_name = " . $_POST['army']);
-if(mysqli_num_rows($result) == 1){
-    return true;
+$army = mysqli_query($dbc, "SELECT * FROM `user_army` WHERE army_id = " .  $_POST['army']);
+$army = mysqli_fetch_assoc($army)['army_name'];
+$result = mysqli_query($dbc, "SELECT * FROM `upgrade_army` WHERE user_id = " . $_SESSION['user']['user_id']. " and army_name = " . $army);
+if(mysqli_num_rows($result) == 0){
+    echo 1;
 }
-return false;
