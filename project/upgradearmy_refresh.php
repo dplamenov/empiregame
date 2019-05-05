@@ -7,14 +7,16 @@ function getCount($dbc): int
     return mysqli_num_rows($count);
 }
 
-function upgrade($dbc, $user, $id): string
+function upgrade($dbc, $user, $id)
 {
     $army = mysqli_query($dbc, "SELECT * FROM upgrade_army WHERE user_id = '" . $user . "' and army_name = " . $id . " ORDER BY `end` DESC");
     $a = mysqli_fetch_assoc($army);
     if (date("H:i:s", $a['end'] - time() - 7200 ) == "00:00:00") {
         return 1;
     }
-
+    $result['date'] = date("H:i:s", $a['end'] - time() - 7200);
+    $result['id'] = $a['army_id'];
+    return json_encode($result);
 
 }
 
