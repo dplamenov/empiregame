@@ -92,13 +92,11 @@ $(document).ready(function () {
                         },
                         type: 'post'
                     }).done(function (data) {
-                        console.log(data);
                         if (data == 1) {
                             window.location.href = "refresh_helper.php";
-
                         } else {
-                            console.log("#_army_upgrade" + i);
-                            $("#_army_upgrade" + i).html(data);
+                            let data_ = JSON.parse(data);
+                            $("#_army_upgrade" +  data_.id).html(data_.date);
                         }
 
                     });
