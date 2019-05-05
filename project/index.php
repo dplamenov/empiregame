@@ -19,8 +19,7 @@ if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
         echo '<script>window.location.href= "index.php"</script>';
     }
 }
-//ToDo Remove when auto refresh will be ready,
-upgrade_army($dbc);
+
 include_once 'layout/header.php';
 ?>
 <div id="error">
