@@ -82,8 +82,28 @@ $(document).ready(function () {
                 getCount: true
             },
             type: 'post'
-        }).done(function (result) {
-            console.log(result);
+        }).done(function (count) {
+            if (count >= 1) {
+                for (let i = 1; i <= count; i++) {
+                    $.ajax({
+                        url: 'upgradearmy_refresh.php',
+                        data: {
+                            id: i
+                        },
+                        type: 'post'
+                    }).done(function (data) {
+                        console.log(data);
+                        if (data == 1) {
+                            window.location.href = "refresh_helper.php";
+
+                        } else {
+                            console.log("#_army_upgrade" + i);
+                            $("#_army_upgrade" + i).html(data);
+                        }
+
+                    });
+                }
+            }
         });
     }
 
