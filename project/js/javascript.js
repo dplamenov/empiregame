@@ -76,7 +76,15 @@ $(document).ready(function () {
     }
 
     function auto_refresh_upgrade_army() {
-        console.log(2);
+        $.ajax({
+            url: 'upgradearmy_refresh.php',
+            data: {
+                getCount: true
+            },
+            type: 'post'
+        }).done(function (result) {
+            console.log(result);
+        });
     }
 
     setInterval(function () {
