@@ -225,8 +225,13 @@ if (isset($_GET['build'])) {
             $armyname = "SELECT * FROM army WHERE army_id='" . $u_army['army_name'] . "' ";
             $armyname = mysqli_query($dbc, $armyname);
             $army_name = mysqli_fetch_assoc($armyname);
-            echo '<tr><td>' . $army_name['army_name'] . '</td><td>' . $u_army['count'] . '</td><td>'.$u_army['lvl'].'</td>
-<td onclick="upgrade_army('.$u_army['army_id'].')">Upgrade</td><td onclick="delete_army('.$u_army['army_id'].')">Delete</tr>';
+            if($u_army['level'] == 10){
+                $result = '<td>Max Level</td>';
+            }else{
+                $result = '<td onclick="upgrade_army('.$u_army['army_id'].')">Upgrade</td>';
+            }
+            echo '<tr><td>' . $army_name['army_name'] . '</td><td>' . $u_army['count'] . '</td><td>'.$u_army['lvl'].'</td>'.$result.
+                '<td onclick="delete_army('.$u_army['army_id'].')">Delete</tr>';
         }
 
 
