@@ -57,6 +57,8 @@ class Attack
 
     private function checkCastle($dbc, $defender)
     {
-
+        $r = mysqli_query($dbc, "SELECT * FROM users_building WHERE `building_id` = 2 and " . $defender);
+        if(mysqli_num_rows($r) != 1){
+        }
     }
 }
