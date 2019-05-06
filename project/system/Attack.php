@@ -6,7 +6,9 @@ class Attack
 {
     public function startAttack($dbc, int $attack, int $defender)
     {
-        $this->checkCastle($dbc, $defender);
+        if(!$this->checkCastle($dbc, $defender)){
+            throw new \Exception('No suitable users found');
+        }
         $user1_id = $attack;
         $user2_id = $defender;
         $user1_army = 0;
@@ -57,8 +59,10 @@ class Attack
 
     private function checkCastle($dbc, $defender)
     {
-        $r = mysqli_query($dbc, "SELECT * FROM users_building WHERE `building_id` = 2 and " . $defender);
+        $r = mysqli_query($dbc, "SELECT * FROM users_building WHERE `building_id` = 2 and user_id =  " . $defender);
         if(mysqli_num_rows($r) != 1){
+            return false;
         }
+        return true;
     }
 }
