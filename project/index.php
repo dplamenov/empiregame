@@ -225,7 +225,7 @@ if (isset($_GET['build'])) {
             $armyname = "SELECT * FROM army WHERE army_id='" . $u_army['army_name'] . "' ";
             $armyname = mysqli_query($dbc, $armyname);
             $army_name = mysqli_fetch_assoc($armyname);
-            if($u_army['level'] == 10){
+            if($u_army['lvl'] == 10){
                 $result = '<td>Max Level</td>';
             }else{
                 $result = '<td onclick="upgrade_army('.$u_army['army_id'].')">Upgrade</td>';
