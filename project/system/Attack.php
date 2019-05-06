@@ -15,14 +15,14 @@ class Attack
         while ($user1_id_army_r = mysqli_fetch_assoc($user1_id_army)) {
             $money = mysqli_query($dbc, "SELECT money FROM `army` WHERE `army_id` = " . $user1_id_army_r['army_name']);
             $money = mysqli_fetch_assoc($money)['money'];
-            $user1_army += $money * $user1_id_army_r['count'];
+            $user1_army += $money * $user1_id_army_r['count'] * $user1_id_army_r['level'];
 
         }
         $user2_id_army = mysqli_query($dbc, "SELECT * FROM `user_army` WHERE `user_id` = " . $user2_id);
         while ($user2_id_army_r = mysqli_fetch_assoc($user2_id_army)) {
             $money = mysqli_query($dbc, "SELECT money FROM `army` WHERE `army_id` = " . $user2_id_army_r['army_name']);
             $money = mysqli_fetch_assoc($money)['money'];
-            $user2_army += $money * $user2_id_army_r['count'];
+            $user2_army += $money * $user2_id_army_r['count'] * $user2_id_army_r['level'];
         }
         $end = time();
 
