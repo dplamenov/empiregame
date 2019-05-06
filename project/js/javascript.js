@@ -96,7 +96,7 @@ $(document).ready(function () {
                             window.location.href = "refresh_helper.php";
                         } else {
                             let data_ = JSON.parse(data);
-                            $("#_army_upgrade" +  data_.id).html(data_.date);
+                            $("#_army_upgrade" + data_.id).html(data_.date);
                         }
 
                     });
@@ -191,13 +191,20 @@ $(document).ready(function () {
                 },
                 method: "post"
             }).done(function (data) {
+                let data_ = JSON.parse(data);
+                if (data_.code == 1) {
+                    console.log(data);
+                    let error = document.getElementById('error');
+                    error.innerHTML = data_.exception;
+                } else {
+                    let error = document.getElementById('error');
+                    error.innerHTML = data;
 
-                let error = document.getElementById('error');
-                error.innerHTML = data;
+                }
                 setTimeout(
                     function () {
                         window.location.href = 'index.php';
-                    }, 3000);
+                    }, 1000);
             });
         }
     });
@@ -224,7 +231,7 @@ function upgrade_army(army_id) {
         method: "post"
     }).done(function (data) {
         console.log(data);
-        if(data == 1){
+        if (data == 1) {
             $.ajax({
                 url: 'upgrade_army.php',
                 data: {
