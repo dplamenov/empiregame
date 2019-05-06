@@ -6,6 +6,7 @@ class Attack
 {
     public function startAttack($dbc, int $attack, int $defender)
     {
+        $this->checkCastle($dbc, $defender);
         $user1_id = $attack;
         $user2_id = $defender;
         $user1_army = 0;
@@ -52,5 +53,10 @@ class Attack
 </div>";
                 break;
         }
+    }
+
+    private function checkCastle($dbc, $defender)
+    {
+
     }
 }
