@@ -191,6 +191,7 @@ $(document).ready(function () {
                 },
                 method: "post"
             }).done(function (data) {
+
                 let error = document.getElementById('error');
                 error.innerHTML = data;
                 setTimeout(
