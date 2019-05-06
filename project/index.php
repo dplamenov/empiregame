@@ -71,6 +71,7 @@ if (@$_SESSION['islogged'] === TRUE) {
 
     deletebuilding($dbc);
     deletearmy($dbc);
+    upgrade_army($dbc);
     echo '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />';
     echo '<link rel="apple-touch-icon" href="apple.png">';
     echo '<script src="js/javascript.js"></script>';
