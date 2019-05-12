@@ -16,30 +16,31 @@ echo '<button type="button" class="btn btn-danger" style="margin-left: auto; mar
 <button type="button" class="btn btn-danger" id="attack_button">Attack</button>
 </div>
 <?php
-$your_battle = mysqli_query($dbc, "SELECT * FROM battle WHERE attacker = ".$_SESSION['user']['user_id']." or defender = " . $_SESSION['user']['user_id']);
-if(mysqli_num_rows($your_battle) > 0){
+$your_battle = mysqli_query($dbc, "SELECT * FROM battle WHERE attacker = " . $_SESSION['user']['user_id'] . " or defender = " . $_SESSION['user']['user_id']);
+if (mysqli_num_rows($your_battle) > 0) {
     echo '<p>Your last battle</p>';
     echo '<table>';
     echo '<tr><th>Attacker</th><th>Defender</th><th>Result</th><th>Info</th></tr>';
-    while($battle = mysqli_fetch_assoc($your_battle)){
+    while ($battle = mysqli_fetch_assoc($your_battle)) {
         $attacker = mysqli_query($dbc, "SELECT * FROM users where user_id = " . $battle['attacker']);
         $attacker = mysqli_fetch_assoc($attacker);
         $defender = mysqli_query($dbc, "SELECT * FROM users where user_id = " . $battle['defender']);
         $defender = mysqli_fetch_assoc($defender);
-        if($battle['result'] == 1 && $attacker['user_id'] == $_SESSION['user']['user_id']){
+        if ($battle['result'] == 1 && $attacker['user_id'] == $_SESSION['user']['user_id']) {
             $result = 'Win';
-        }elseif ($battle['result'] == 2 && $attacker['user_id'] == $_SESSION['user']['user_id']){
+        } elseif ($battle['result'] == 2 && $attacker['user_id'] == $_SESSION['user']['user_id']) {
             $result = 'Lose';
-        }elseif ($battle['result'] == 1 && $defender['user_id'] == $_SESSION['user']['user_id']){
+        } elseif ($battle['result'] == 1 && $defender['user_id'] == $_SESSION['user']['user_id']) {
             $result = 'Lose';
-        }elseif ($battle['result'] == 2 && $defender['user_id'] == $_SESSION['user']['user_id']){
+        } elseif ($battle['result'] == 2 && $defender['user_id'] == $_SESSION['user']['user_id']) {
             $result = 'Win';
         }
-        echo '<tr><td>'.$attacker['user_name'].'</td><td>'.$defender['user_name'].'</td><td>'.$result.'</td></tr>';
+        echo '<tr><td>' . $attacker['user_name'] . '</td><td>' . $defender['user_name'] . '</td><td>' . $result . '</td></tr>';
     }
 
     echo '</table>';
 }
 ?>
 <hr>
-<p>Spy</p>
+<p style="text-align: center;font-size: 22px;margin-top: 0">Spy</p>
+
