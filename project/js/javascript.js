@@ -248,5 +248,14 @@ function upgrade_army(army_id) {
 
 function checkUser() {
     let user = document.getElementById('user').value;
-
+    $.ajax({
+        url: 'checkUser.php',
+        data: {
+            username: user
+        },
+        method: "post"
+    }).done(function (data) {
+        console.log(data);
+        //window.location.href = 'index.php';
+    });
 }
