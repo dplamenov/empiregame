@@ -43,4 +43,6 @@ if (mysqli_num_rows($your_battle) > 0) {
 ?>
 <hr>
 <p style="text-align: center;font-size: 22px;margin-top: 0">Spy</p>
-
+<span>Display info of user:</span>
+<input type="text" id="user"/>
+<button type="button" class="btn btn-info" >Check User</button>

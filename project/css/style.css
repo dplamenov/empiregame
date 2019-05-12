@@ -9,7 +9,7 @@ body {
     background-color: lightblue;
     height: 90px;
     float: left;
-    width: 80%;
+    width: 70%;
 
 }
 
@@ -21,7 +21,7 @@ body {
 
 #rightbar {
     border-left: black solid 0.1px;
-    width: 20%;
+    width: 30%;
     float: right;
     text-decoration: none;
 
