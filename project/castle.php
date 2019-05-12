@@ -41,4 +41,5 @@ if(mysqli_num_rows($your_battle) > 0){
     echo '</table>';
 }
 ?>
-
+<hr>
+<p>Spy</p>
