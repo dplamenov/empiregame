@@ -245,3 +245,8 @@ function upgrade_army(army_id) {
     });
 
 }
+
+function checkUser() {
+    let user = document.getElementById('user').value;
+    console.log(user);
+}
