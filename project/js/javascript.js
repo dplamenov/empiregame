@@ -255,7 +255,6 @@ function spyUser() {
         },
         method: "post"
     }).done(function (data) {
-        console.log(data);
         $('#rightbar').html(data);
     });
 }
