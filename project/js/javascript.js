@@ -246,10 +246,10 @@ function upgrade_army(army_id) {
 
 }
 
-function checkUser() {
+function spyUser() {
     let user = document.getElementById('user').value;
     $.ajax({
-        url: 'checkUser.php',
+        url: 'spyUser.php',
         data: {
             username: user
         },
