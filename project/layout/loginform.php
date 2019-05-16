@@ -14,15 +14,15 @@
 </div>
 <div id="form">
 
-    <div><input type="text" placeholder="Потребителско име" id="username"/></div>
-    <div><input type="password" placeholder="Парола" id="pass"/></div>
+    <div><input type="text" placeholder="Username" id="username"/></div>
+    <div><input type="password" placeholder="Password" id="pass"/></div>
     <div id="register">
         <a id="login" class="btn btn-primary" href="#">
-            Вход
+            Log in
         </a>
 
         <a id="registration" class="btn btn-primary" href="register.php">
-            Регистрирай
+            Register
         </a>
     </div>
 
