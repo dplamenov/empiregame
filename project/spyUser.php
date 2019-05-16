@@ -10,4 +10,6 @@ while($army_ = mysqli_fetch_assoc($army)){
     $army_count += $army_['count'];
 }
 ?>
-<p>Username</p>
+<p style="font-weight: bold; text-align: center;font-size: 22px">Spy result</p>
+<p>Username: <?=$user['user_name']?></p>
+<p>Army count: <?=$army_count?></p>
