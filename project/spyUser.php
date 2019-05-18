@@ -9,7 +9,10 @@ $army_count = 0;
 while($army_ = mysqli_fetch_assoc($army)){
     $army_count += $army_['count'];
 }
+$castle_level = mysqli_query($dbc, "SELECT * FROM users_building WHERE building_id = 2 and user_id = " . $user['user_id']);
+$castle_level = mysqli_fetch_assoc($castle_level)['build_lv'];
 ?>
 <p style="font-weight: bold; text-align: center;font-size: 22px">Spy result</p>
 <p>Username: <?=$user['user_name']?></p>
 <p>Army count: <?=$army_count?></p>
+<p>Castle Level: <?=$castle_level?></p>
