@@ -1,4 +1,7 @@
 # Empiregame
+
+Rewrite code of game with laravel is on `project_laravel` directory
+
 Install composer and run 'composer install' under home directory not project directory
 
 Online empire(medieval) game php-based & mysql.
