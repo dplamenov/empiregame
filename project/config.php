@@ -29,7 +29,7 @@ mb_internal_encoding('UTF-8');
 
 require_once 'setup/database.php';
 $database = new PDODatabase(new PDO($dsn, $db_username, $db_password));
-
+mysqli_set_charset($dbc, 'utf8');
 function deletebuilding($dbc)
 {
     $now_unix = time();
