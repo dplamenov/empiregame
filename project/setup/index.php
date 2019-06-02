@@ -16,7 +16,7 @@ if (isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST[
     }
 
     $dbc = mysqli_connect($database_host, $username, $password, $database_name);
-    $data = '<?php' . ' ' . "mb_internal_encoding('UTF-8');" . '$dbc = mysqli_connect("' . $database_host . '","' . $username . '","' . $password . '","' . $database_name . '");';
+    $data = '<?php' . ' ' . "mb_internal_encoding('UTF-8');" . '$dsn = "mysql:host='.$database_host.';dbname='.$database_name.'";' . '$db_username = '.$username.'; $db_password = '.$password.';';
     file_put_contents("database.php", $data);
 
     if ($dbc) {

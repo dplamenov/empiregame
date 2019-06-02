@@ -8,7 +8,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION = @@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE TABLE `army`
+CREATE TABLE IF NOT EXISTS `army`
 (
   `army_level` int(11)                        NOT NULL,
   `money`      int(11)                        NOT NULL,
@@ -26,7 +26,7 @@ INSERT INTO `army` (`army_level`, `money`, `time`, `army_id`, `army_name`, `give
 VALUES
   (2, 50, 1, 2, 'Меченосци', 25);
 
-CREATE TABLE `army_now`
+CREATE TABLE IF NOT EXISTS `army_now`
 (
   `user_id`   int(11) NOT NULL,
   `army_name` int(11) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `army_now`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-CREATE TABLE `building`
+CREATE TABLE IF NOT EXISTS `building`
 (
   `build_name`   varchar(50) CHARACTER SET utf8 NOT NULL,
   `money`        int(11)                        NOT NULL,
@@ -60,7 +60,7 @@ INSERT INTO `building` (`build_name`, `money`, `time`, `building_id`, `geo_id`, 
 VALUES
   ('house', 800, 1, 3, 'house', '613,161,712,99', 'rect', 60);
 
-CREATE TABLE `building_now`
+CREATE TABLE IF NOT EXISTS `building_now`
 (
   `user_id`       int(11) NOT NULL,
   `building_name` int(11) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE `users`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-CREATE TABLE `users_building`
+CREATE TABLE IF NOT EXISTS `users_building`
 (
   `user_id`     int(11)                        NOT NULL,
   `build_name`  varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `users_building`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-CREATE TABLE `user_army`
+CREATE TABLE IF NOT EXISTS `user_army`
 (
   `user_id`   int(11) NOT NULL,
   `army_name` int(11) NOT NULL,
@@ -116,7 +116,7 @@ ALTER TABLE `users`
 ALTER TABLE `users`
   ADD `active` TINYINT NOT NULL DEFAULT '1' AFTER `xp`;
 
-CREATE TABLE `battle`
+CREATE TABLE IF NOT EXISTS `battle`
 (
   `attacker` INT NOT NULL,
   `defender` INT NOT NULL,
