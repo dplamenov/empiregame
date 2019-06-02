@@ -19,7 +19,7 @@ Username and password for admin panel('/admin') are 'admin' and 'admin'
 
 # ToDo
 1. Translate to English
-2. Refactor Code
+2. Refactor Code and start use PDO
 3. Population of people
 4. People working
 5. New build for work
