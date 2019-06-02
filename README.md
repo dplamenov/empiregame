@@ -1,11 +1,11 @@
 # Empiregame
+USE ONLY <a href="https://github.com/dplamenov/empiregame/releases/tag/v1.4.0">Last Stable Release</a>
 
 Rewrite code of game with laravel is on `project_laravel` directory
 
 Install composer and run 'composer install' under home directory not project directory
 
 Online empire(medieval) game php-based & mysql.
-<a href="https://github.com/dplamenov/empiregame/releases/tag/v1.4.0">Last Stable Release</a>
 
 Language of game is bulgarian.
 
