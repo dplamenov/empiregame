@@ -17,7 +17,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'admin') !== false) {
     include '../vendor/autoload.php';
 }
 
-
+use Database\PDODatabase;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
@@ -28,7 +28,7 @@ mb_internal_encoding('UTF-8');
 
 
 require_once 'setup/database.php';
-mysqli_set_charset($dbc, 'utf8');
+$database = new PDODatabase(new PDO($dsn, $db_username, $db_password));
 
 function deletebuilding($dbc)
 {
