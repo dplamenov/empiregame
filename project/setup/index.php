@@ -31,6 +31,7 @@ if (isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST[
         echo 'error';
     }
 }
+
 ?>
 <!doctype html>
 <html lang="bg">

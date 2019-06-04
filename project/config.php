@@ -2,7 +2,12 @@
 declare(strict_types=1);
 spl_autoload_register(function (string $file) {
     $extension = ".php";
-    include $file . $extension;
+    if(strpos($file, 'Database\\') !== false){
+        include 'system/'. $file . $extension;
+    }else{
+        include $file . $extension;
+    }
+
 
 });
 define('ob', 'no', false);
@@ -21,8 +26,8 @@ use Database\PDODatabase;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
-$loggger = new Logger('Empiregame');
-$loggger->pushHandler(new StreamHandler('logfile.log', Logger::WARNING));
+$logger = new Logger('Empiregame');
+$logger->pushHandler(new StreamHandler('logfile.log', Logger::WARNING));
 
 mb_internal_encoding('UTF-8');
 
