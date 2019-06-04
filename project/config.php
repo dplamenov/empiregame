@@ -60,7 +60,7 @@ function deletebuilding($dbc)
                 $lva['build_lv'];
                 $sql_update_u_l = "UPDATE users_building SET build_lv  = build_lv +'1' WHERE user_id='" . $userid . "'";
 
-                $lv = mysqli_query($dbc, $sql_update_u_l);
+                mysqli_query($dbc, $sql_update_u_l);
             }
         }
         $sql_delete = "DELETE FROM building_now WHERE `end_time` < '" . $time . "' and `user_id` = " . $_SESSION['user']['user_id'];
