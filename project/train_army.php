@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'config.php';
-$sega = time();
+$now = time();
 $army_id = (int)$_POST['armyid'];
 $sql_check_exist_army = "SELECT * FROM army WHERE army_id='" . $army_id . "'";
 $check_exist_army_q = mysqli_query($dbc, $sql_check_exist_army);
@@ -13,7 +13,7 @@ if (mysqli_num_rows($check_exist_army_q) == 1) {
         $army_time_train = $check_exist_army_array['time'] * 60;
         $end_time_army = time() + ($army_time_train * (int)$_POST['armynum']);
         if (debug_mode == 'yes') {
-            $end_time_army = $sega + 10;
+            $end_time_army = $now + 10;
         }
         $sql_train_army = "INSERT INTO `army_now`(`army_name`, `user_id`, `army_num`, `end_time`) VALUES ('" . $army_id . "','" . $_SESSION['user']['user_id'] . "','" . (int)$_POST['armynum'] . "','" . $end_time_army . "')";
 
