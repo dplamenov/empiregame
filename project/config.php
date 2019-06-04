@@ -130,9 +130,8 @@ function upgrade_army($dbc)
 
 function userdata(int $id, string $param, $dbc)
 {
-    $g = mysqli_query($dbc, "SELECT * FROM users WHERE user_id='$id'");
-    $r = mysqli_fetch_assoc($g);
-    return $r[$param];
+    $query = mysqli_query($dbc, "SELECT * FROM users WHERE user_id='$id'");
+    return mysqli_fetch_assoc($query)[$param];
 
 }
 
