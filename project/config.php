@@ -29,6 +29,7 @@ use Monolog\Handler\StreamHandler;
 $logger = new Logger('Empiregame');
 $logger->pushHandler(new StreamHandler('logfile.log', Logger::WARNING));
 
+mb_internal_encoding('UTF-8');
 require_once 'setup/database.php';
 $database = new PDODatabase(new PDO($dsn, $db_username, $db_password));
 mysqli_set_charset($dbc, 'utf8');

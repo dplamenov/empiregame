@@ -9,7 +9,7 @@ if (ob == 'yes') {
 
 $user = new \system\DTO\UserDTO();
 
-mb_internal_encoding('UTF-8');
+
 session_start();
 if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
     $battle = new \system\Battle();
