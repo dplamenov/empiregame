@@ -119,15 +119,22 @@ function deletearmy($dbc)
 function upgrade_army($dbc)
 {
     $now = time();
-    $upgrade_army = mysqli_query($dbc, "SELECT * FROM upgrade_army WHERE  `end` < " . $now . " AND `user_id`   = '" . $_SESSION['user']['user_id'] . "'");
+    $upgrade_army = mysqli_query($dbc, "SELECT * FROM upgrade_army WHERE  `end` < " . $now);
     if(mysqli_num_rows($upgrade_army) >= 1){
         while($army = mysqli_fetch_assoc($upgrade_army)){
-            $level = $army['level'];
-            $army_id = $army['army_id'];
-            mysqli_query($dbc, "UPDATE `user_army` SET lvl = $level WHERE army_id = $army_id AND user_id = " . $_SESSION['user']['user_id']);
+
+            $army_name = $army['army_id'];
+            $user_army = mysqli_query($dbc, 'SELECT * FROM user_army WHERE army_name = ' . $army_name . ' and user_id = ' . $_SESSION['user']['user_id']);
+            while($army_ = mysqli_fetch_assoc($user_army)){
+                $level = $army['level'];
+                $army_id = $army['army_id'];
+                mysqli_query($dbc, "UPDATE `user_army` SET lvl = $level WHERE army_id = $army_id AND user_id = " . $_SESSION['user']['user_id']);
+                mysqli_query($dbc, "DELETE FROM upgrade_army WHERE `army_id` = " . $army_id);
+            }
+
         }
     }
-    mysqli_query($dbc, "DELETE FROM upgrade_army WHERE `end` < " . $now . " and `user_id` = " . $_SESSION['user']['user_id']);
+
 
 }
 

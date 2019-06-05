@@ -9,7 +9,6 @@ if (ob == 'yes') {
 
 $user = new \system\DTO\UserDTO();
 
-
 session_start();
 if (isset($_GET['find_opponent']) and $_GET['find_opponent'] == 1) {
     $battle = new \system\Battle();

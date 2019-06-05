@@ -9,4 +9,4 @@ mysqli_query($dbc, "UPDATE `users` SET `money` = `money` - " . $army['money'] . 
 $start = time();
 $end = $start + ($user_army['count'] * $army['time'] * 60);
 $level = $user_army['lvl'] + 1;
-mysqli_query($dbc, "INSERT INTO upgrade_army (army_id, army_name, start, end, level, user_id) VALUES (".$_POST['army'].",".$user_army['army_name'].", ".$start.", ".$end.", ".$level.", ".$_SESSION['user']['user_id'].")");
+mysqli_query($dbc, "INSERT INTO upgrade_army (army_id, army_name, start, end, level) VALUES (".$_POST['army'].",".$user_army['army_name'].", ".$start.", ".$end.", ".$level.")");
