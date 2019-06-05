@@ -6,3 +6,5 @@
 <link rel="stylesheet" href="css/style.css"/>
 <script src="js/jquery.js" type="text/javascript"></script>
     <script src="js/jquery-ui.js" type="text/javascript"></script>
+    <title><?php echo $title;?></title>
+</head>

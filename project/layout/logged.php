@@ -1,7 +1,3 @@
-
-
-<img src="images/map.jpg" alt="" usemap="#Map"/><br>
-<div><img src="images/global.png" alt=""/></div>
 <?php
 
 $user_building = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
@@ -112,9 +108,7 @@ if(mysqli_num_rows($upgrade_army) >= 1){
 }
 ?>
 <div id="text"></div>
-</div>
-
-<map name="Map" id="Map">
+    <map name="Map" id="Map">
     <area alt="" title="" id="townhall" href="#" shape="rect" coords="377,264,274,216"/>
     <?php
     deletebuilding($dbc);
