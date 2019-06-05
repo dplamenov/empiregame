@@ -44,4 +44,13 @@ class UserRepository
 
     }
 
+    public function check(string $username)
+    {
+        $stm = $this->db->query('SELECT * FROM `users` WHERE username = :username');
+        $result = $stm->execute([
+            'username' => $username
+        ]);
+        return $result->getOne(UserDTO::class);
+    }
+
 }
