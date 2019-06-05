@@ -33,5 +33,15 @@ class UserRepository
         return $this->db->lastInsertId();
     }
 
+    public function getOne(int $user_id)
+    {
+        $stm = $this->db->query('SELECT * FROM `users` WHERE user_id = :user_id');
+        $result = $stm->execute([
+            'user_id' => $user_id
+        ]);
+
+        return $result->getOne(UserDTO::class);
+
+    }
 
 }
