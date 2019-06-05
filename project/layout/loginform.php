@@ -3,7 +3,7 @@
 
 <div class="info">
     <div id="servertime">Server time <?php echo date('H:i:s'); ?></div>
-    <div id="error" class="alert-danger"></div>
+    <div id="error_login" class="alert-danger"></div>
 
 </div>
 <div class="rightbar">
