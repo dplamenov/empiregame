@@ -31,6 +31,9 @@ $logger->pushHandler(new StreamHandler('logfile.log', Logger::WARNING));
 
 mb_internal_encoding('UTF-8');
 require_once 'setup/database.php';
+/**
+ * @var $database PDODatabase
+ */
 $database = new PDODatabase(new PDO($dsn, $db_username, $db_password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]));
 
 mysqli_set_charset($dbc, 'utf8');

@@ -32,10 +32,20 @@ class UserService
 
     public function register(UserDTO $userDTO, $confirm_password)
     {
-        if($userDTO->getPass() == $confirm_password){
+        if ($userDTO->getPass() == $confirm_password) {
             return $this->userRepository->insert($userDTO);
         }
         throw new \Exception('Confirm password must be matched password');
+
+    }
+
+    public function findById(int $user_id)
+    {
+
+    }
+
+    public function findByUsername(string $username)
+    {
 
     }
 }
