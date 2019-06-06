@@ -1,8 +1,8 @@
 <?php
 session_start();
-$v = '1';
+
 include 'config.php';
-//$error=array();
+
 $user_name = trim($_POST['username']);
 $user_pass = trim($_POST['pass']);
 $user_realname = trim($_POST['realname']);
@@ -51,18 +51,16 @@ if (@count($error) > 0) {
     $user_pass = mysqli_real_escape_string($dbc, trim($user_pass));
 
     $now = time();
-    $sql_to_register = "INSERT INTO `users`(`user_name`, `real_name`, `email`, `pass`, `money`, `lastlogin`) VALUES ('" . $user_name . "','" . $user_realname . "','" . $user_email . "','" . $user_pass . "' , 680, $now)";
+
+    $userService = new \system\Service\UserService(new \system\Repository\UserRepository($database));
+    $dataBinder = new \system\DataBinding;
+    $user = $userService->register($dataBinder->bind($_POST, \system\DTO\UserDTO::class), $_POST['pass']);
+    echo '<pre>' . print_r($user, true) . '</pre>';
+    /*
+     *
+     * $sql_to_register = "INSERT INTO `users`(`user_name`, `real_name`, `email`, `pass`, `money`, `lastlogin`) VALUES ('" . $user_name . "','" . $user_realname . "','" . $user_email . "','" . $user_pass . "' , 680, $now)";
     mysqli_query($dbc, $sql_to_register);
 
-    $users = mysqli_query($dbc, "SELECT * FROM users WHERE pass='" . $user_pass . "' AND user_name='" . $user_name . "'");
-    $row = mysqli_fetch_assoc($users);
+    */
 
-
-    $_SESSION['islogged'] = true;
-    $_SESSION['user']['user_name'] = $row['user_name'];
-    $_SESSION['user']['user_id'] = $row['user_id'];
-    $_SESSION['user']['xp'] = $row['xp'];
-    $_SESSION['user']['money'] = $row['money'];
-    $v = '0';
-    echo ' You register successfully -><a href="index.php">Click on me to play</a> ';
 }

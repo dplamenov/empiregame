@@ -32,6 +32,6 @@ class UserService
 
     public function register(UserDTO $userDTO, $confirm_password)
     {
-
+        return $userDTO;
     }
 }
