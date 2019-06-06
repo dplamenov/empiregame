@@ -41,11 +41,11 @@ class UserService
 
     public function findById(int $user_id)
     {
-
+        return $this->userRepository->getOne($user_id);
     }
 
     public function findByUsername(string $username)
     {
-
+        return $this->userRepository->getOneByUsername($username);
     }
 }

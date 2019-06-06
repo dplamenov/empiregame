@@ -53,4 +53,15 @@ class UserRepository
         return $result->getOne(UserDTO::class);
     }
 
+    public function getOneByUsername(string $username)
+    {
+        $stm = $this->db->query('SELECT * FROM `users` WHERE user_name = :username');
+
+        $result = $stm->execute([
+            'username' => $username
+        ]);
+
+        return $result->getOne(UserDTO::class);
+    }
+
 }
