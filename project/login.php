@@ -20,6 +20,6 @@ $stm->execute([
 ]);
 
 if ($hours >= 1) {
-    mysqli_query($dbc, "UPDATE `users` SET `money`=  `money` + " . $hours * 50 . " WHERE `user_id` = " . $user->getUserId());
+    mysqli_query($dbc, "UPDATE `users` SET `money `=  `money` + " . $hours * 50 . " WHERE `user_id` = " . $user->getUserId());
 }
 $_SESSION['islogged'] = true;
