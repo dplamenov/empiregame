@@ -3,9 +3,9 @@ session_start();
 
 include 'config.php';
 
-$user_name = trim($_POST['username']);
+$user_name = trim($_POST['user_name']);
 $user_pass = trim($_POST['pass']);
-$user_realname = trim($_POST['realname']);
+$user_realname = trim($_POST['real_name']);
 $user_email = trim($_POST['email']);
 
 $sql_to_check_email = "SELECT * FROM users WHERE email='" . $user_email . "'";

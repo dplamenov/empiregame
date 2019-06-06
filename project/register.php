@@ -11,9 +11,9 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
             $.ajax({
                 url: 'register_check.php',
                 data: {
-                    username: $('#username').val(),
+                    user_name: $('#username').val(),
                     pass: $('#pass').val(),
-                    realname: $('#realname').val(),
+                    real_name: $('#realname').val(),
                     email: $('#email').val()
                 },
                 type: 'post',
