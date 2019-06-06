@@ -21,7 +21,7 @@ class UserRepository
                 (:user_name, :real_name, :email, :pass)');
 
         $stm->execute([
-            'usernmae' => $user->getUserName(),
+            'user_name' => $user->getUserName(),
             'real_name' => $user->getRealName(),
             'email' => $user->getEmail(),
             'pass' => $user->getPass(),
