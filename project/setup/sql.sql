@@ -76,10 +76,10 @@ CREATE TABLE `users`
   `real_name` varchar(80)                    NOT NULL,
   `email`     varchar(100)                   NOT NULL,
   `pass`      varchar(100)                   NOT NULL,
-  `money`     int(11)                        NOT NULL,
+  `money`     int(11)                        NOT NULL DEFAULT 680,
   `xp`        int(11)                        NOT NULL,
   `people`    int(11)                        NOT NULL DEFAULT '50',
-  `lastlogin` varchar(80)                    NOT NULL
+  `lastlogin` varchar(80)                    NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 

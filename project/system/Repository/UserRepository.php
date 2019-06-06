@@ -17,16 +17,14 @@ class UserRepository
 
     public function insert(UserDTO $user)
     {
-        $stm = $this->db->query('INSERT INTO users (user_name, real_name, email, pass, money, lastlogin) VALUES 
-                (:user_name, :real_name, :email, :pass, :money, :lastlogin)');
+        $stm = $this->db->query('INSERT INTO users (`user_name`, `real_name`, `email`, `pass`, `money`) VALUES 
+                (:user_name, :real_name, :email, :pass, 680)');
 
         $stm->execute([
             'usernmae' => $user->getUserName(),
             'real_name' => $user->getRealName(),
-            'email' => $user->getPass(),
+            'email' => $user->getEmail(),
             'pass' => $user->getPass(),
-            'money' => 680,
-            'lastlogin' => time()
         ]);
 
         return $this->db->lastInsertId();
