@@ -23,11 +23,15 @@ class UserService
         $user = $this->userRepository->check($username);
         /**
          * if (!password_verify($user->getPass(), $password)) {
-            throw new \Exception('Wrong username or password');
-        }
-
+         * throw new \Exception('Wrong username or password');
+         * }
          */
 
         return $user;
+    }
+
+    public function register(UserDTO $userDTO, $confirm_password)
+    {
+
     }
 }
