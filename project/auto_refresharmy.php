@@ -2,12 +2,12 @@
 session_start();
 
 include_once "config.php";
-function getCount($dbc): int
+function getCount(\Database\PDODatabase $database): int
 {
-    //ToDo fix potential bug
-    $result = mysqli_query($dbc, "SELECT * FROM `army`");
-    $army_count = mysqli_num_rows($result);
-    return $army_count;
+    $armyRepository = new \system\Repository\ArmyRepository($database);
+    $armyService = new \system\Service\ArmyService($armyRepository);
+    $army = $armyService->allArmy();
+    return iterator_count($army);
 }
 
 function getArmyById($dbc, int $user_id, int $army_id): string
@@ -21,7 +21,7 @@ function getArmyById($dbc, int $user_id, int $army_id): string
 }
 
 if (@$_POST['getCount'] == true) {
-    echo getCount($dbc);
+    echo getCount($database);
 }
 if (isset($_POST['id'])) {
     $id = trim($_POST['id']);
