@@ -2,11 +2,10 @@
 session_start();
 require 'config.php';
 $attack = new \System\Attack();
-
-
-$defender = mysqli_query($dbc, "SELECT * FROM users WHERE user_name = '" . $_POST['user'] . "'");
-$defender = mysqli_fetch_assoc($defender);
-$defender = $defender['user_id'];
+$userRepository = new system\Repository\UserRepository($database);
+$userService = new \system\Service\UserService($userRepository);
+$defender = $userService->findByUsername($_POST['user']);
+$defender = $defender->getUserId();
 try {
     $attack->startAttack($dbc, intval($_SESSION['user']['user_id']),
         intval($defender));

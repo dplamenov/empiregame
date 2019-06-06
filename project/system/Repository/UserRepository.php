@@ -31,7 +31,7 @@ class UserRepository
         return $this->db->lastInsertId();
     }
 
-    public function getOne(int $user_id)
+    public function getOne(int $user_id) : UserDTO
     {
         $stm = $this->db->query('SELECT * FROM `users` WHERE user_id = :user_id');
         $result = $stm->execute([
@@ -42,7 +42,7 @@ class UserRepository
 
     }
 
-    public function check(string $username)
+    public function check(string $username) : UserDTO
     {
         $stm = $this->db->query('SELECT * FROM `users` WHERE `user_name` = :username');
 
@@ -53,7 +53,7 @@ class UserRepository
         return $result->getOne(UserDTO::class);
     }
 
-    public function getOneByUsername(string $username)
+    public function getOneByUsername(string $username) : UserDTO
     {
         $stm = $this->db->query('SELECT * FROM `users` WHERE user_name = :username');
 

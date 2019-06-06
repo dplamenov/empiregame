@@ -15,7 +15,7 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
-    public function login($username, $password)
+    public function login($username, $password) : UserDTO
     {
         /**
          * @var $user UserDTO
@@ -39,12 +39,12 @@ class UserService
 
     }
 
-    public function findById(int $user_id)
+    public function findById(int $user_id) : UserDTO
     {
         return $this->userRepository->getOne($user_id);
     }
 
-    public function findByUsername(string $username)
+    public function findByUsername(string $username) : UserDTO
     {
         return $this->userRepository->getOneByUsername($username);
     }
