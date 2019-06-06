@@ -55,7 +55,6 @@ if (@count($error) > 0) {
     $userService = new \system\Service\UserService(new \system\Repository\UserRepository($database));
     $dataBinder = new \system\DataBinding;
     $user = $userService->register($dataBinder->bind($_POST, \system\DTO\UserDTO::class), $_POST['pass']);
-    echo '<pre>' . print_r($user, true) . '</pre>';
     /*
      *
      * $sql_to_register = "INSERT INTO `users`(`user_name`, `real_name`, `email`, `pass`, `money`, `lastlogin`) VALUES ('" . $user_name . "','" . $user_realname . "','" . $user_email . "','" . $user_pass . "' , 680, $now)";

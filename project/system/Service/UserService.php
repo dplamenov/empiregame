@@ -32,6 +32,7 @@ class UserService
 
     public function register(UserDTO $userDTO, $confirm_password)
     {
+        $this->userRepository->insert($userDTO);
         return $userDTO;
     }
 }
