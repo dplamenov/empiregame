@@ -17,8 +17,8 @@ class UserRepository
 
     public function insert(UserDTO $user)
     {
-        $stm = $this->db->query('INSERT INTO users (`user_name`, `real_name`, `email`, `pass`, `money`) VALUES 
-                (:user_name, :real_name, :email, :pass, 680)');
+        $stm = $this->db->query('INSERT INTO users (`user_name`, `real_name`, `email`, `pass`) VALUES 
+                (:user_name, :real_name, :email, :pass)');
 
         $stm->execute([
             'usernmae' => $user->getUserName(),
