@@ -19,4 +19,8 @@ class ArmyService
         return $this->armyRepositoy->allArmy();
     }
 
+    public function trainingArmyByUser()
+    {
+        return $this->armyRepositoy->trainingArmyByUserNow();
+    }
 }
