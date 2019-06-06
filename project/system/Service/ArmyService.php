@@ -19,8 +19,8 @@ class ArmyService
         return $this->armyRepositoy->allArmy();
     }
 
-    public function trainingArmyByUser()
+    public function trainingArmyByUser(int $user_id, int $army_id)
     {
-        return $this->armyRepositoy->trainingArmyByUserNow();
+        return $this->armyRepositoy->trainingArmyByUserNow($user_id, $army_id);
     }
 }
