@@ -1,35 +1,9 @@
 <?php
 session_start();
-
-echo '<link rel="stylesheet" href="css/style.css" />';
-echo '<script src="js/jquery.js" type="text/javascript"></script>';
+include 'config.php';
+$title = 'Register';
+include 'layout/header.php';
 ?>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#btn').click(function () {
-            console.log('2');
-            $.ajax({
-                url: 'register_check.php',
-                data: {
-                    user_name: $('#username').val(),
-                    pass: $('#pass').val(),
-                    real_name: $('#realname').val(),
-                    email: $('#email').val()
-                },
-                type: 'post',
-            }).done(function (data) {
-                $('#error').html(data);
-
-
-            }).fail(function (er) {
-                console.log(er);
-            })
-         });
-    });
-
-
-</script>
-
 <div class="header">GREAT EMPIRE</div>
 
 <div class="info"></div>
@@ -44,11 +18,6 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
     </div>
     <div id="error" style="color: black"></div>
 </div>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Регистирай се / Great Empire</title>
-</head>
-</html>
+<?php
+include 'layout/footer.php';
+?>

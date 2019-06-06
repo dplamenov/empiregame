@@ -43,4 +43,28 @@
         });
 
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn').click(function () {
+                console.log('2');
+                $.ajax({
+                    url: 'register_check.php',
+                    data: {
+                        user_name: $('#username').val(),
+                        pass: $('#pass').val(),
+                        real_name: $('#realname').val(),
+                        email: $('#email').val()
+                    },
+                    type: 'post',
+                }).done(function (data) {
+                    $('#error').html(data);
+
+
+                });
+            });
+        });
+
+
+    </script>
 </head>
