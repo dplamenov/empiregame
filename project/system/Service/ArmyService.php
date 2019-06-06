@@ -3,6 +3,7 @@
 namespace system\Service;
 
 
+use system\DTO\ArmyNowDTO;
 use system\Repository\ArmyRepository;
 
 class ArmyService
@@ -19,7 +20,7 @@ class ArmyService
         return $this->armyRepositoy->allArmy();
     }
 
-    public function trainingArmyByUser(int $user_id, int $army_id)
+    public function trainingArmyByUser(int $user_id, int $army_id): ArmyNowDTO
     {
         return $this->armyRepositoy->trainingArmyByUserNow($user_id, $army_id);
     }
