@@ -4,12 +4,10 @@ session_start();
 include_once "config.php";
 $buildingRepository = new \system\Repository\BuildingRepository($database);
 $buildingService = new \system\Service\BuildingService($buildingRepository);
-function getCount($dbc): int
+function getCount(\system\Service\BuildingService $buildingService): int
 {
-    $sql = "SELECT * FROM `building`";
-    $result = mysqli_query($dbc, $sql);
-    $build_count = mysqli_num_rows($result);
-    return $build_count;
+    $buildings = $buildingService->getAllBuildings();
+    return iterator_count($buildings);
 }
 
 function getBuildById($dbc, int $user_id, int $id): string
@@ -23,7 +21,7 @@ function getBuildById($dbc, int $user_id, int $id): string
 }
 
 if (@$_POST['getCount'] == true) {
-    echo getCount($dbc);
+    echo getCount($buildingService);
 }
 if (isset($_POST['id'])) {
     $id = trim($_POST['id']);
