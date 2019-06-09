@@ -16,7 +16,7 @@ class BuildingService
 
     public function getAllBuildings()
     {
-
+        return $this->buildingRepository->allBuildings();
     }
 
 

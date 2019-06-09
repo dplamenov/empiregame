@@ -2,6 +2,8 @@
 session_start();
 
 include_once "config.php";
+$buildingRepository = new \system\Repository\BuildingRepository($database);
+$buildingService = new \system\Service\BuildingService($buildingRepository);
 function getCount($dbc): int
 {
     $sql = "SELECT * FROM `building`";

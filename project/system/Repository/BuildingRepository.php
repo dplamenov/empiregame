@@ -4,6 +4,7 @@ namespace system\Repository;
 
 
 use Database\PDODatabase;
+use system\DTO\BuildingDTO;
 
 class BuildingRepository
 {
@@ -16,6 +17,9 @@ class BuildingRepository
 
     public function allBuildings()
     {
+        $stm = $this->database->query('SELECT * FROM building');
+        $result = $stm->execute();
 
+        return $result->fetch(BuildingDTO::class);
     }
 }
