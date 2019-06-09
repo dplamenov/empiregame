@@ -4,110 +4,129 @@ namespace system\DTO;
 
 class ArmyDTO
 {
+    /**
+     * @var int
+     */
     private $army_id;
 
+    /**
+     * @var string
+     */
     private $army_name;
 
+    /**
+     * @var int
+     */
     private $army_level;
 
+    /**
+     * @var int
+     */
     private $money;
 
+    /**
+     * @var int
+     */
     private $time;
 
+    /**
+     * @var int
+     */
     private $give_xp;
 
+
     /**
-     * @return mixed
+     * @return int
      */
-    public function getArmyId()
+    public function getArmyId(): int
     {
         return $this->army_id;
     }
 
     /**
-     * @param mixed $army_id
+     * @param int $army_id
      */
-    public function setArmyId($army_id): void
+    public function setArmyId(int $army_id): void
     {
         $this->army_id = $army_id;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getArmyName()
+    public function getArmyName(): string
     {
         return $this->army_name;
     }
 
     /**
-     * @param mixed $army_name
+     * @param string $army_name
      */
-    public function setArmyName($army_name): void
+    public function setArmyName(string $army_name): void
     {
         $this->army_name = $army_name;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getArmyLevel()
+    public function getArmyLevel(): int
     {
         return $this->army_level;
     }
 
     /**
-     * @param mixed $army_level
+     * @param int $army_level
      */
-    public function setArmyLevel($army_level): void
+    public function setArmyLevel(int $army_level): void
     {
         $this->army_level = $army_level;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getMoney()
+    public function getMoney(): int
     {
         return $this->money;
     }
 
     /**
-     * @param mixed $money
+     * @param int $money
      */
-    public function setMoney($money): void
+    public function setMoney(int $money): void
     {
         $this->money = $money;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getTime()
+    public function getTime(): int
     {
         return $this->time;
     }
 
     /**
-     * @param mixed $time
+     * @param int $time
      */
-    public function setTime($time): void
+    public function setTime(int $time): void
     {
         $this->time = $time;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getGiveXp()
+    public function getGiveXp(): int
     {
         return $this->give_xp;
     }
 
     /**
-     * @param mixed $give_xp
+     * @param int $give_xp
      */
-    public function setGiveXp($give_xp): void
+    public function setGiveXp(int $give_xp): void
     {
         $this->give_xp = $give_xp;
     }
