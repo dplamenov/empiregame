@@ -25,7 +25,7 @@ class UserRepository
             'real_name' => $user->getRealName(),
             'email' => $user->getEmail(),
             'pass' => $user->getPass(),
-            'lastlogin' => now()
+            'lastlogin' => time()
         ]);
 
         return $this->db->lastInsertId();
