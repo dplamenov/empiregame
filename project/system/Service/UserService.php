@@ -33,6 +33,7 @@ class UserService
     public function register(UserDTO $userDTO, $confirm_password)
     {
         if ($userDTO->getPass() == $confirm_password) {
+            $userDTO->setPass(password_hash($userDTO->getPass(), PASSWORD_BCRYPT));
             return $this->userRepository->insert($userDTO);
         }
         throw new \Exception('Confirm password must be matched password');
