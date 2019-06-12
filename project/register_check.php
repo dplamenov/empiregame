@@ -56,4 +56,7 @@ if (@count($error) > 0) {
     $dataBinder = new \system\DataBinding;
     $user = $userService->register($dataBinder->bind($_POST, \system\DTO\UserDTO::class), $_POST['pass']);
 
+    header('Location: index.php');
+    exit;
+
 }
