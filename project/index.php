@@ -27,7 +27,7 @@ if (!file_exists('setup/database.php')) {
 if (ob == 'yes') {
     ob_start();
 }
-if (@$_SESSION['islogged'] === true) {
+if (@$_SESSION['islogged'] == true) {
     deletebuilding($dbc);
     deletearmy($dbc);
     upgrade_army($dbc);

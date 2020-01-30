@@ -31,7 +31,7 @@ class UserRepository
         return $this->db->lastInsertId();
     }
 
-    public function getOne(int $user_id) : UserDTO
+    public function getOne(int $user_id)
     {
         $stm = $this->db->query('SELECT * FROM `users` WHERE user_id = :user_id');
         $result = $stm->execute([
@@ -42,14 +42,16 @@ class UserRepository
 
     }
 
-    public function check(string $username) : UserDTO
+    public function check(string $username)
     {
         $stm = $this->db->query('SELECT * FROM `users` WHERE `user_name` = :username');
 
         $result = $stm->execute([
             'username' => $username
         ]);
-
+        if(!$result){
+            throw new \Exception('No user.');
+        }
         return $result->getOne(UserDTO::class);
     }
 

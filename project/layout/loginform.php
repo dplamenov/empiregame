@@ -23,6 +23,7 @@
         </div>
         <div id="error_login" class="alert-danger"></div>
     </div>
+    <div id="error_login"></div>
     <div id="form">
         <div class="input-group mb-3" style="width: 70%;">
             <input type="text" class="form-control" placeholder="Username" id="username" aria-label="Username"
@@ -33,7 +34,7 @@
                    aria-describedby="basic-addon1">
         </div>
         <div style="margin-top: 30px;">
-            <a id="login" class="btn btn-primary" href="#">
+            <a id="login" class="btn btn-primary" href="javascript:void(0)">
                 Log in
             </a>
             <a id="registration" class="btn btn-primary" href="register.php">

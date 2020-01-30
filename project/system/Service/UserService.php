@@ -15,13 +15,17 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
-    public function login($username, $password): UserDTO
+    public function login($username, $password)
     {
         /**
          * @var $user UserDTO
          */
-        $user = $this->userRepository->check($username);
-        if (!password_verify($user->getPass(), $password)) {
+        try {
+            $user = $this->userRepository->check($username);
+        } catch (\Exception $exception) {
+            throw new \Exception('Wrong username or password');
+        }
+        if (!password_verify($password, $user->getPass())) {
             throw new \Exception('Wrong username or password');
         }
 
