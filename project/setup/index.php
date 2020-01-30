@@ -17,7 +17,7 @@ if (isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST[
 
     $dbc = mysqli_connect($database_host, $username, $password, $database_name);
     $data = '<?php' . ' ' . "mb_internal_encoding('UTF-8');" . '$dbc = mysqli_connect("' . $database_host . '","' . $username . '","' . $password . '","' . $database_name . '");';
-    $data .= '$dsn = "mysql:host='.$database_host.';dbname='.$database_name.'";' . '$db_username = "'.$username.'"; $db_password = "'.$password.'";';
+    $data .= '$dsn = "mysql:host=' . $database_host . ';dbname=' . $database_name . '";' . '$db_username = "' . $username . '"; $db_password = "' . $password . '";';
     file_put_contents("database.php", $data);
 
     if ($dbc) {
@@ -36,12 +36,15 @@ if (isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST[
 <!doctype html>
 <html lang="bg">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Setup</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="container">
-    <h1>Setup</h1>
-    <h2>Database:</h2>
+<div class="container">
+    <h1>Setup Database</h1>
+
     <form action="index.php" method="post">
         <label>Database host:</label>
         <input name="database_host" placeholder="127.0.0.1"/>
