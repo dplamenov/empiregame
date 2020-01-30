@@ -42,16 +42,19 @@ body {
 .header {
     text-align: center;
     background-color: lightblue;
-    height: 90px;
-    float: left;
-    width: 80%;
+    padding: 40px;
+    width: 100%;
+    display: inline-block;
 
 }
 
 .info {
     background-color: blanchedalmond;
-    height: 90px;
-
+    padding: 40px;
+    display: inline-block;
+    margin-left: 0px;
+    margin-right: 50px;
+    float: left;
 }
 
 .rightbar {
@@ -64,12 +67,7 @@ body {
 }
 
 #form {
-    background-repeat: no-repeat;
-
-
-    align-content: center;
-    text-align: center;
-
+   margin: 50px;
 }
 
 #register p {

@@ -46,19 +46,31 @@ if (isset($_POST['database_host']) && isset($_POST['username']) && isset($_POST[
     <h1>Setup Database</h1>
 
     <form action="index.php" method="post">
-        <label>Database host:</label>
-        <input name="database_host" placeholder="127.0.0.1"/>
-        <br/>
-        <label>Username:</label>
-        <input name="username" placeholder="root"/>
-        <br/>
-        <label>Password:</label>
-        <input name="password" placeholder="password"/>
-        <br/>
-        <label>Database name:</label>
-        <input name="database_name" placeholder="game"/>
-
-        <button type="submit">Next</button>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Host</span>
+            </div>
+            <input type="text" name="database_host" class="form-control" placeholder="Database host" aria-label="Database host" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Username</span>
+            </div>
+            <input type="text" name="username"   class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Password</span>
+            </div>
+            <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Database name</span>
+            </div>
+            <input type="text" name="database_name" class="form-control" placeholder="Database name" aria-label="Database name" aria-describedby="basic-addon1">
+        </div>
+        <button type="submit" class="btn btn-primary">Next</button>
     </form>
 </div>
 </body>
