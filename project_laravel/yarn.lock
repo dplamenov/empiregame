@@ -114,7 +114,7 @@
     "@babel/helper-split-export-declaration" "^7.4.4"
     "@babel/template" "^7.4.4"
     "@babel/types" "^7.4.4"
-    lodash "^4.17.11"
+    lodash "^4.17.12"
 
 "@babel/helper-optimise-call-expression@^7.0.0":
   version "7.0.0"
@@ -130,7 +130,7 @@
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@babel/helper-regex/-/helper-regex-7.4.4.tgz#a47e02bc91fb259d2e6727c2a30013e3ac13c4a2"
   dependencies:
-    lodash "^4.17.11"
+    lodash "^4.17.12"
 
 "@babel/helper-remap-async-to-generator@^7.1.0":
   version "7.1.0"
@@ -279,7 +279,7 @@
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-block-scoping/-/plugin-transform-block-scoping-7.4.4.tgz#c13279fabf6b916661531841a23c4b7dae29646d"
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
-    lodash "^4.17.11"
+    lodash "^4.17.12"
 
 "@babel/plugin-transform-classes@^7.4.4":
   version "7.4.4"
@@ -554,14 +554,14 @@
     "@babel/types" "^7.4.4"
     debug "^4.1.0"
     globals "^11.1.0"
-    lodash "^4.17.11"
+    lodash "^4.17.12"
 
 "@babel/types@^7.0.0", "@babel/types@^7.2.0", "@babel/types@^7.4.4":
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.4.4.tgz#8db9e9a629bb7c29370009b4b779ed93fe57d5f0"
   dependencies:
     esutils "^2.0.2"
-    lodash "^4.17.11"
+    lodash "^4.17.12"
     to-fast-properties "^2.0.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
