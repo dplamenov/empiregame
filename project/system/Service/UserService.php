@@ -22,12 +22,15 @@ class UserService
          */
         try {
             $user = $this->userRepository->check($username);
+            if($user){
+                if (!password_verify($password, $user->getPass())) {
+                    throw new \Exception('Wrong username or password');
+                }
+            }
         } catch (\Exception $exception) {
             throw new \Exception('Wrong username or password');
         }
-        if (!password_verify($password, $user->getPass())) {
-            throw new \Exception('Wrong username or password');
-        }
+
 
         return $user;
     }

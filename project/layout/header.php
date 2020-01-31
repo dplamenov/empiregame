@@ -36,9 +36,8 @@
                     if (data == 'error') {
                         $('#error_login').text("Wrong username or password");
                     }
-
+                    //console.log(data);
                     window.location.href = 'index.php';
-
                 });
             });
         });

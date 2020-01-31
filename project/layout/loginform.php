@@ -30,7 +30,7 @@
                    aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3" style="width: 70%;">
-            <input type="text" class="form-control" placeholder="Password" id="pass" aria-label="Username"
+            <input type="password" class="form-control" placeholder="Password" id="pass" aria-label="Username"
                    aria-describedby="basic-addon1">
         </div>
         <div style="margin-top: 30px;">
