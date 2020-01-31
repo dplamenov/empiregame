@@ -11,15 +11,13 @@ while ($building = mysqli_fetch_assoc($get_build_q)) {
     if (userdata($_SESSION['user']['user_id'], 'money', $dbc) >= $building['money']) {
         $ifbuildexists = mysqli_query($dbc, "SELECT * FROM `users_building` WHERE user_id = " . $_SESSION['user']['user_id'] . " and building_id = " . $building['building_id']);
         if(mysqli_num_rows($ifbuildexists) > 0){
-            $link = '<a href="?build=' . $building['building_id'] . '">Upgrade</a>';
+            $link = '<a style="color: green" href="?build=' . $building['building_id'] . '">Upgrade</a>';
         }else{
-            $link = '<a href="?build=' . $building['building_id'] . '">Build</a>';
+            $link = '<a style="color: green" href="?build=' . $building['building_id'] . '">Build</a>';
         }
-
-        $class = 'ok';
     } else {
-        $link = 'No money';
+        $link = '<a href="" style="color: red">No money</a>';
     }
-    echo '<tr><td>' . ucfirst($building['build_name']) . '</td><td>$' . $building['money'] . '</td><td>' . $building['time'] . ' Min</td><td>' . $link . @$link2 . '</td></tr>';
+    echo '<tr><td>' . ucfirst($building['build_name']) . '</td><td>$' . $building['money'] . '</td><td>' . $building['time'] . ' Min</td><td>' . $link . '</td></tr>';
 }
 echo '</table>';
