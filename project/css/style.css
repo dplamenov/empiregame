@@ -20,7 +20,6 @@ body {
 }
 
 #rightbar {
-    border-left: black solid 0.1px;
     width: 30%;
     float: right;
     text-decoration: none;
@@ -32,12 +31,6 @@ body {
 
 }
 
-#content {
-
-    background: #cccccc;
-    height: 100%;
-    padding-bottom: 200px;
-}
 
 .header {
     text-align: center;
@@ -57,28 +50,10 @@ body {
     float: left;
 }
 
-.rightbar {
-    background-color: lightcoral;
-    width: 20%;
-    height: 91vh;
-    float: right;
-    text-decoration: none;
-
-}
-
 #form {
    margin: 50px;
 }
 
-#register p {
-    color: red;
-}
-
-#register p a {
-    text-decoration: none;
-    color: red;
-
-}
 
 #build td, #ready_build td{
     padding: 2px;

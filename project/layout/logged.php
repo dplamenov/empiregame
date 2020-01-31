@@ -1,6 +1,6 @@
-<div id="header"><p>Hello, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Log out</a>' ?></p>
+<div id="header">
+    <p>Hello, <?php echo $_SESSION['user']['user_name'] . '</br><a href="logout.php">Log out</a>' ?></p>
     <div>
-
         <a href="settings.php">Profile</a>
     </div>
 </div>
@@ -22,8 +22,8 @@
 </div>
 <div id="content" style="padding-bottom: auto">
 
-    <img src="images/map.jpg" alt="" usemap="#Map"/><br>
-    <div><img src="images/global.png" alt=""/></div>
+    <img src="images/map.jpg" alt="" style="margin: 20px 30px" usemap="#Map"/><br>
+    <img src="images/global.png" style="margin: 20px 30px" alt=""/>
     <?php
 
     $user_building = "SELECT * FROM building_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
@@ -100,20 +100,20 @@
             $armyname = "SELECT * FROM army WHERE army_id='" . $u_army['army_name'] . "' ";
             $armyname = mysqli_query($dbc, $armyname);
             $army_name = mysqli_fetch_assoc($armyname);
-            if($u_army['lvl'] == 10){
+            if ($u_army['lvl'] == 10) {
                 $result = '<td>Max Level</td>';
-            }else{
-                $result = '<td onclick="upgrade_army('.$u_army['army_id'].')">Upgrade</td>';
+            } else {
+                $result = '<td onclick="upgrade_army(' . $u_army['army_id'] . ')">Upgrade</td>';
             }
-            echo '<tr><td>' . $army_name['army_name'] . '</td><td>' . $u_army['count'] . '</td><td>'.$u_army['lvl'].'</td>'.$result.
-                '<td onclick="delete_army('.$u_army['army_id'].')">Delete</tr>';
+            echo '<tr><td>' . $army_name['army_name'] . '</td><td>' . $u_army['count'] . '</td><td>' . $u_army['lvl'] . '</td>' . $result .
+                '<td onclick="delete_army(' . $u_army['army_id'] . ')">Delete</tr>';
         }
 
 
         echo '</table><br>';
     }
     $upgrade_army = mysqli_query($dbc, "SELECT * FROM upgrade_army LEFT JOIN user_army ON user_army.army_name = upgrade_army.army_name WHERE user_army.user_id = " . $_SESSION['user']['user_id']);
-    if(mysqli_num_rows($upgrade_army) >= 1){
+    if (mysqli_num_rows($upgrade_army) >= 1) {
         echo '<span>You upgrade that army:</span>';
         echo '<table border="1" id="upgrade_army">';
         echo '<tr><td>Army</td><td>Count</td><td>Level</td><td>Will be ready after:</td></tr>';
@@ -125,7 +125,7 @@
 
             $end_time = $army['end'] - time();
             $end_time = date("H:i:s", $end_time - 7200);
-            echo '<tr><td>' . $army_name . '</td><td>' . $army['count'] . '</td><td>'.$army['level'].'</td><td id="_army_upgrade'.$army['army_id'].'">'. $end_time .'</td>
+            echo '<tr><td>' . $army_name . '</td><td>' . $army['count'] . '</td><td>' . $army['level'] . '</td><td id="_army_upgrade' . $army['army_id'] . '">' . $end_time . '</td>
 </tr>';
 
         }
