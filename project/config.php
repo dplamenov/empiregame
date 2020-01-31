@@ -2,9 +2,9 @@
 declare(strict_types=1);
 spl_autoload_register(function (string $file) {
     $extension = ".php";
-    if(strpos($file, 'Database\\') !== false){
-        include 'system/'. $file . $extension;
-    }else{
+    if (strpos($file, 'Database\\') !== false) {
+        include 'system/' . $file . $extension;
+    } else {
         include $file . $extension;
     }
 
@@ -87,49 +87,47 @@ function deletearmy($dbc)
     if ($get_finish_army >= 1) {
         while ($army_ = mysqli_fetch_assoc($finished_army)) {
             $get_army_id = "SELECT * FROM army_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
-
             $getarmy = mysqli_query($dbc, $get_army_id);
-            $_army = mysqli_fetch_assoc($getarmy);
-            $army_name = $_army['army_name'];
-            $count = $_army['army_num'];
-            $userid = $_army['user_id'];
+            while ($_army = mysqli_fetch_assoc($getarmy)) {
+                $army_name = $_army['army_name'];
+                $count = $_army['army_num'];
+                $userid = $_army['user_id'];
 
-            $select_army_sql = "SELECT * FROM army WHERE army_id ='" . $army_name . "'";
-            $select_army_q = mysqli_query($dbc, $select_army_sql);
-            $select_army_a = mysqli_fetch_assoc($select_army_q);
+                $select_army_sql = "SELECT * FROM army WHERE army_id ='" . $army_name . "'";
+                $select_army_q = mysqli_query($dbc, $select_army_sql);
+                $select_army_a = mysqli_fetch_assoc($select_army_q);
 
-            $givexp = $select_army_a['give_xp'];
-            $give_xp_to_user = "UPDATE users SET xp  = xp +'" . $givexp . "' WHERE user_id=" . $userid;
-            mysqli_query($dbc, $give_xp_to_user);
+                $givexp = $select_army_a['give_xp'];
+                $give_xp_to_user = "UPDATE users SET xp  = xp +'" . $givexp . "' WHERE user_id=" . $userid;
+                mysqli_query($dbc, $give_xp_to_user);
 
 
-            $sql_army_of_user = "SELECT * FROM `user_army` WHERE `user_id` = '" . $_SESSION['user']['user_id'] . "' AND `army_name` = '" . $_army['army_name'] . "'";
-            $army_of_user = mysqli_query($dbc, $sql_army_of_user);
-            if (mysqli_num_rows($army_of_user) == 0) {
-                $insert_army = "INSERT INTO user_army (user_id,army_name,count,lvl) VALUES ('" . $_SESSION['user']['user_id'] . "','" . $_army['army_name'] . "','" . $count . "', 1)";
-                mysqli_query($dbc, $insert_army);
-            } else {
-                $insert_army = "UPDATE `user_army` SET `count` = `count` + " . $count . " WHERE `army_name` = " . $_army['army_name'] . " AND `user_id` = " . $_SESSION['user']['user_id'];
-                mysqli_query($dbc, $insert_army);
+                $sql_army_of_user = "SELECT * FROM `user_army` WHERE `user_id` = '" . $_SESSION['user']['user_id'] . "' AND `army_name` = '" . $_army['army_name'] . "'";
+                $army_of_user = mysqli_query($dbc, $sql_army_of_user);
+                if (mysqli_num_rows($army_of_user) == 0) {
+                    $insert_army = "INSERT INTO user_army (user_id,army_name,count,lvl) VALUES ('" . $_SESSION['user']['user_id'] . "','" . $_army['army_name'] . "','" . $count . "', 1)";
+                    mysqli_query($dbc, $insert_army);
+                } else {
+                    $insert_army = "UPDATE `user_army` SET `count` = `count` + " . $count . " WHERE `army_name` = " . $_army['army_name'] . " AND `user_id` = " . $_SESSION['user']['user_id'];
+                    mysqli_query($dbc, $insert_army);
+                }
             }
-
         }
         $sql_delete = "DELETE FROM army_now WHERE `end_time` < " . $now_unix . " and `user_id` = " . $_SESSION['user']['user_id'];
         mysqli_query($dbc, $sql_delete);
     }
-
 }
 
 function upgrade_army($dbc)
 {
     $now = time();
     $upgrade_army = mysqli_query($dbc, "SELECT * FROM upgrade_army WHERE  `end` < " . $now);
-    if(mysqli_num_rows($upgrade_army) >= 1){
-        while($army = mysqli_fetch_assoc($upgrade_army)){
+    if (mysqli_num_rows($upgrade_army) >= 1) {
+        while ($army = mysqli_fetch_assoc($upgrade_army)) {
 
             $army_name = $army['army_id'];
             $user_army = mysqli_query($dbc, 'SELECT * FROM user_army WHERE army_name = ' . $army_name . ' and user_id = ' . $_SESSION['user']['user_id']);
-            while($army_ = mysqli_fetch_assoc($user_army)){
+            while ($army_ = mysqli_fetch_assoc($user_army)) {
                 $level = $army['level'];
                 $army_id = $army['army_id'];
                 mysqli_query($dbc, "UPDATE `user_army` SET lvl = $level WHERE army_id = $army_id AND user_id = " . $_SESSION['user']['user_id']);
