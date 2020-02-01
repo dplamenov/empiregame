@@ -83,10 +83,11 @@ function deletearmy($dbc)
     $now_unix = time();
     $sql = "SELECT * FROM army_now WHERE end_time <'" . $now_unix . "' AND user_id = '" . $_SESSION['user']['user_id'] . "'";
     $finished_army = mysqli_query($dbc, $sql);
-    $get_finish_army = mysqli_num_rows($finished_army);
-    if ($get_finish_army >= 1) {
+    $finishedArmyCount = mysqli_num_rows($finished_army);
+    if ($finishedArmyCount >= 1) {
         while ($army_ = mysqli_fetch_assoc($finished_army)) {
-            $get_army_id = "SELECT * FROM army_now WHERE user_id='" . $_SESSION['user']['user_id'] . "'";
+            $get_army_id = "SELECT * FROM army_now WHERE user_id='" . $_SESSION['user']['user_id'] . "' AND end_time < '" . $now_unix . "'";
+
             $getarmy = mysqli_query($dbc, $get_army_id);
             while ($_army = mysqli_fetch_assoc($getarmy)) {
                 $army_name = $_army['army_name'];
@@ -97,11 +98,12 @@ function deletearmy($dbc)
                 $select_army_q = mysqli_query($dbc, $select_army_sql);
                 $select_army_a = mysqli_fetch_assoc($select_army_q);
 
+                //give xp
                 $givexp = $select_army_a['give_xp'];
                 $give_xp_to_user = "UPDATE users SET xp  = xp +'" . $givexp . "' WHERE user_id=" . $userid;
                 mysqli_query($dbc, $give_xp_to_user);
 
-
+                //Check if user has already that army
                 $sql_army_of_user = "SELECT * FROM `user_army` WHERE `user_id` = '" . $_SESSION['user']['user_id'] . "' AND `army_name` = '" . $_army['army_name'] . "'";
                 $army_of_user = mysqli_query($dbc, $sql_army_of_user);
                 if (mysqli_num_rows($army_of_user) == 0) {
@@ -109,12 +111,13 @@ function deletearmy($dbc)
                     mysqli_query($dbc, $insert_army);
                 } else {
                     $insert_army = "UPDATE `user_army` SET `count` = `count` + " . $count . " WHERE `army_name` = " . $_army['army_name'] . " AND `user_id` = " . $_SESSION['user']['user_id'];
+                    echo $insert_army;
                     mysqli_query($dbc, $insert_army);
                 }
             }
+            $sql_delete = "DELETE FROM army_now WHERE `end_time` < " . $now_unix . " and `user_id` = " . $_SESSION['user']['user_id'];
+            mysqli_query($dbc, $sql_delete);
         }
-        $sql_delete = "DELETE FROM army_now WHERE `end_time` < " . $now_unix . " and `user_id` = " . $_SESSION['user']['user_id'];
-        mysqli_query($dbc, $sql_delete);
     }
 }
 
@@ -133,11 +136,8 @@ function upgrade_army($dbc)
                 mysqli_query($dbc, "UPDATE `user_army` SET lvl = $level WHERE army_id = $army_id AND user_id = " . $_SESSION['user']['user_id']);
                 mysqli_query($dbc, "DELETE FROM upgrade_army WHERE `army_id` = " . $army_id);
             }
-
         }
     }
-
-
 }
 
 function userdata(int $id, string $param, $dbc)
