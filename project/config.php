@@ -35,7 +35,7 @@ require_once 'setup/database.php';
  * @var $database PDODatabase
  */
 $database = new PDODatabase(new PDO($dsn, $db_username, $db_password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]));
-
+$database->exec('set names utf8');
 mysqli_set_charset($dbc, 'utf8');
 function deletebuilding($dbc)
 {
