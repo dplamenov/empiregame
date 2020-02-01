@@ -120,7 +120,6 @@ $(document).ready(function () {
         }).done(function (data) {
             $('#rightbar').html(data);
 
-
         });
     });
 
@@ -193,7 +192,6 @@ $(document).ready(function () {
             }).done(function (data) {
                 let data_ = JSON.parse(data);
                 if (data_.code == 1) {
-                    console.log(data);
                     let error = document.getElementById('error');
                     error.innerHTML = data_.exception;
                 } else {
@@ -230,7 +228,6 @@ function upgrade_army(army_id) {
         },
         method: "post"
     }).done(function (data) {
-        console.log(data);
         if (data == 1) {
             $.ajax({
                 url: 'upgrade_army.php',

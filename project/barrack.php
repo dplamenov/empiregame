@@ -1,5 +1,4 @@
 <?php
-session_start();
 include 'config.php';
 if (@$_SERVER['HTTP_REFERER'] == "") {
     exit;
@@ -65,7 +64,7 @@ echo '<script src="js/jquery.js" type="text/javascript"></script>';
     </script>
 <?php
 
-echo '<p>Your Money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . '</p>';
+echo '<p>Your money: $' . userdata($_SESSION['user']['user_id'], 'money', $dbc) . '</p>';
 echo '<p>Barrack - train soldiers</p>';
 echo '<p>The maximum number of soldiers you can train at one time is 240</p>';
 echo '<p>Write how many soldiers you want to train and choose a look</p>';

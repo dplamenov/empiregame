@@ -1,5 +1,4 @@
 <?php
-session_start();
 include 'config.php';
 $getbuild_sql = "SELECT * FROM building";
 $get_build_q = mysqli_query($dbc, $getbuild_sql);

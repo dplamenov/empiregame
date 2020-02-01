@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+session_start();
 spl_autoload_register(function (string $file) {
     $extension = ".php";
     if (strpos($file, 'Database\\') !== false) {
@@ -7,8 +8,6 @@ spl_autoload_register(function (string $file) {
     } else {
         include $file . $extension;
     }
-
-
 });
 define('ob', 'no', false);
 define('debug_mode', 'no', false); //IF == YES DEBUG MOD WORKING
