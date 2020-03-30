@@ -21,6 +21,7 @@ $(document).ready(function () {
             },
             type: 'post'
         }).done(function (count) {
+            console.log(count) ;
             if (count >= 1) {
                 for (let i = 1; i <= count; i++) {
 
@@ -31,6 +32,7 @@ $(document).ready(function () {
                         },
                         type: 'post'
                     }).done(function (data) {
+                        console.log(data);
                         if (data == 1) {
                             window.location.href = "refresh_helper.php";
 
@@ -106,7 +108,8 @@ $(document).ready(function () {
     }
 
     setInterval(function () {
-        auto_refresh_army();
+
+       auto_refresh_army();
         auto_refresh_build();
         auto_refresh_upgrade_army();
     }, 1000);

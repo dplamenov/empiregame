@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include_once 'config.php';
 if ($_SESSION['islogged'] == true) {
     $title = "User Settings";

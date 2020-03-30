@@ -1,11 +1,10 @@
 <?php
-session_start();
+
 include 'config.php';
 $title = 'Register';
 include 'layout/header.php';
 ?>
 
-<div class="container">
     <div class="header">
         <h1>HEADER</h1>
     </div>
@@ -53,7 +52,7 @@ include 'layout/header.php';
             </a>
         </div>
     </div>
-</div>
+
 <?php
 include 'layout/footer.php';
 ?>

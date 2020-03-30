@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 include_once "config.php";
 $armyRepository = new \system\Repository\ArmyRepository($database);

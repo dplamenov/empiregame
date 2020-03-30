@@ -15,5 +15,11 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="dimitar@192.168.100.10" uuid="2f61ef88-7337-4287-a706-f07789dfb731">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://192.168.100.10:3306/dimitar</jdbc-url>
+    </data-source>
   </component>
 </project>
